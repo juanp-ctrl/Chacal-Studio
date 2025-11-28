@@ -8,31 +8,33 @@ We use a **Git Flow-inspired** branching model with two primary branches:
 
 ### Primary Branches
 
-| Branch | Purpose | Protected |
-|--------|---------|-----------|
-| `main` | Production-ready code. Deployments to production are made from this branch. | Yes |
-| `develop` | Integration branch. All feature work is merged here before release. | Yes |
+| Branch    | Purpose                                                                     | Protected |
+| --------- | --------------------------------------------------------------------------- | --------- |
+| `main`    | Production-ready code. Deployments to production are made from this branch. | Yes       |
+| `develop` | Integration branch. All feature work is merged here before release.         | Yes       |
 
 ### Supporting Branches
 
-| Branch Type | Naming Convention | Base Branch | Merge Target |
-|-------------|-------------------|-------------|--------------|
-| Feature | `feature/<description>` | `develop` | `develop` |
-| Bugfix | `bugfix/<description>` | `develop` | `develop` |
-| Hotfix | `hotfix/<description>` | `main` | `main` + `develop` |
-| Release | `release/<version>` | `develop` | `main` + `develop` |
+| Branch Type | Naming Convention       | Base Branch | Merge Target       |
+| ----------- | ----------------------- | ----------- | ------------------ |
+| Feature     | `feature/<description>` | `develop`   | `develop`          |
+| Bugfix      | `bugfix/<description>`  | `develop`   | `develop`          |
+| Hotfix      | `hotfix/<description>`  | `main`      | `main` + `develop` |
+| Release     | `release/<version>`     | `develop`   | `main` + `develop` |
 
 ## Development Workflow
 
 ### Starting New Work
 
 1. **Sync your local repository:**
+
    ```bash
    git checkout develop
    git pull origin develop
    ```
 
 2. **Create a feature branch:**
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
@@ -47,21 +49,22 @@ We use a **Git Flow-inspired** branching model with two primary branches:
 
 We follow [Conventional Commits](https://www.conventionalcommits.org/):
 
-| Type | Description |
-|------|-------------|
-| `feat` | New feature |
-| `fix` | Bug fix |
-| `docs` | Documentation changes |
-| `style` | Code style changes (formatting, semicolons, etc.) |
-| `refactor` | Code refactoring (no feature/fix) |
-| `perf` | Performance improvements |
-| `test` | Adding or updating tests |
-| `chore` | Maintenance tasks, dependency updates |
-| `ci` | CI/CD configuration changes |
+| Type       | Description                                       |
+| ---------- | ------------------------------------------------- |
+| `feat`     | New feature                                       |
+| `fix`      | Bug fix                                           |
+| `docs`     | Documentation changes                             |
+| `style`    | Code style changes (formatting, semicolons, etc.) |
+| `refactor` | Code refactoring (no feature/fix)                 |
+| `perf`     | Performance improvements                          |
+| `test`     | Adding or updating tests                          |
+| `chore`    | Maintenance tasks, dependency updates             |
+| `ci`       | CI/CD configuration changes                       |
 
 **Format:** `<type>(<optional-scope>): <description>`
 
 **Examples:**
+
 - `feat(auth): add OAuth2 login support`
 - `fix: resolve navigation crash on mobile`
 - `docs: update README with setup instructions`
@@ -69,6 +72,7 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/):
 ### Submitting Changes
 
 1. **Push your branch:**
+
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -92,6 +96,7 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/):
 ## Release Process
 
 1. Create a release branch from `develop`:
+
    ```bash
    git checkout -b release/v1.0.0 develop
    ```
@@ -99,6 +104,7 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/):
 2. Perform final testing and version bump
 
 3. Merge to `main` and tag:
+
    ```bash
    git checkout main
    git merge release/v1.0.0
@@ -107,6 +113,7 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/):
    ```
 
 4. Back-merge to `develop`:
+
    ```bash
    git checkout develop
    git merge release/v1.0.0
@@ -120,6 +127,7 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/):
 For critical production bugs:
 
 1. Create hotfix branch from `main`:
+
    ```bash
    git checkout -b hotfix/critical-bug main
    ```
@@ -155,4 +163,3 @@ pnpm dev
 ## Questions?
 
 If you have questions about the contribution process, please open an issue for discussion.
-
