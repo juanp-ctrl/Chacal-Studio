@@ -43,9 +43,16 @@ Implemented a sophisticated intro loader animation with 7-image stacking effect,
 7: Patagonia mountains (`photo-1464822759023-fed622ff2c3b`)
 
 ## Issues
-None
+Initial implementation had issues:
+1. Cycling taglines not animating - fixed by using explicit interval management with useRef
+2. Title too small and close to images - increased font sizes and moved to top 10%
+3. Hero image disappeared after animation - restructured to persist as full-screen hero background
+
+## Follow-up Commit
+`fix(intro-loader): bigger title, cycling taglines, persistent hero image`
 
 ## Next Steps
+- Replace hero image with video when video asset is ready
 - Test animation performance on lower-end devices
 - Verify responsive behavior on various screen sizes
 - Consider adding reduced-motion media query support for accessibility

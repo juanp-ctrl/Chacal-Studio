@@ -1,3 +1,4 @@
+import { VideoHeroSection } from "@/components/sections/VideoHeroSection";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { MethodSection } from "@/components/sections/MethodSection";
 import { ImpactSection } from "@/components/sections/ImpactSection";
@@ -160,6 +161,7 @@ export default async function Home({ params }: PageProps) {
     <>
       <JsonLd data={[organizationJsonLd, websiteJsonLd]} />
       <div className="flex min-h-screen flex-col">
+        <VideoHeroSection />
         <HeroSection />
         <MethodSection />
         <ImpactSection />
