@@ -1,64 +1,108 @@
-'use client';
+import { ProjectsClient } from './ProjectsClient';
+import { JsonLd } from '@/components/SEO/JsonLd';
+import { getTranslations } from 'next-intl/server';
+import type { Metadata } from 'next';
+import { routing } from '@/i18n/routing';
 
-import { motion } from 'motion/react';
-import { ArrowLeft } from 'lucide-react';
-import { Link } from '@/i18n/routing';
-import { useTranslations } from 'next-intl';
-import { ProjectCard } from '@/components/molecules/ProjectCard';
-import { projects } from '@/lib/projects';
+interface PageProps {
+  params: Promise<{ locale: string }>;
+}
 
-export default function ProjectsPage() {
-  const t = useTranslations('projects');
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'projects' });
+
+  const baseUrl = 'https://chacalestudio.ar';
+  const currentPath = locale === routing.defaultLocale ? '/projects' : `/${locale}/projects`;
+  const canonicalUrl = `${baseUrl}${currentPath}`;
+  const alternateEs = `${baseUrl}${locale === 'es' ? '/projects' : '/es/projects'}`;
+  const alternateEn = `${baseUrl}${locale === 'en' ? '/projects' : '/en/projects'}`;
+
+  const title =
+    locale === 'es'
+      ? 'Nuestros Proyectos | Chacal Estudio'
+      : 'Our Projects | Chacal Estudio';
+  const description =
+    locale === 'es'
+      ? 'Descubre nuestros proyectos de comunicación con propósito. Casos seleccionados que reflejan nuestro compromiso con el triple impacto y la comunicación estratégica.'
+      : 'Discover our purpose-driven communication projects. Selected cases that reflect our commitment to triple impact and strategic communication.';
+
+  return {
+    title,
+    description,
+    keywords:
+      locale === 'es'
+        ? [
+            'proyectos comunicación',
+            'portfolio agencia Argentina',
+            'casos de estudio',
+            'comunicación con propósito',
+            'proyectos sustentables',
+            'triple impacto',
+          ]
+        : [
+            'communication projects',
+            'agency portfolio Argentina',
+            'case studies',
+            'purpose-driven communication',
+            'sustainable projects',
+            'triple impact',
+          ],
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        es: alternateEs,
+        en: alternateEn,
+        'x-default': alternateEs,
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      siteName: 'Chacal Estudio',
+      locale: locale === 'es' ? 'es_AR' : 'en_US',
+      alternateLocale: locale === 'es' ? 'en_US' : 'es_AR',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
+  };
+}
+
+export default async function ProjectsPage({ params }: PageProps) {
+  const { locale } = await params;
+  const baseUrl = 'https://chacalestudio.ar';
+  const currentPath = locale === routing.defaultLocale ? '/projects' : `/${locale}/projects`;
+  const canonicalUrl = `${baseUrl}${currentPath}`;
+
+  // BreadcrumbList JSON-LD
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: locale === 'es' ? 'Inicio' : 'Home',
+        item: `${baseUrl}${locale === routing.defaultLocale ? '' : `/${locale}`}`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: locale === 'es' ? 'Proyectos' : 'Projects',
+        item: canonicalUrl,
+      },
+    ],
+  };
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Header - Matches Figma/Source Design */}
-      <div className="bg-primary text-primary-foreground py-24 px-6 sm:px-8 lg:px-12 pt-32">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground transition-colors duration-300 mb-8 group"
-            >
-              <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform duration-300" />
-              {t('backHome')}
-            </Link>
-          </motion.div>
-          
-          <motion.h1
-            className="mb-6 tracking-tight font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            {t('allProjects')}
-          </motion.h1>
-          
-          <motion.p
-            className="text-primary-foreground/80 text-lg sm:text-xl max-w-3xl font-light leading-relaxed"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            {t('allProjectsSubtitle')}
-          </motion.p>
-        </div>
-      </div>
-
-      {/* Projects Grid */}
-      <div className="py-24 px-6 sm:px-8 lg:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            {projects.map((project, index) => (
-              <ProjectCard key={project.slug} project={project} index={index} />
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
+    <>
+      <JsonLd data={breadcrumbJsonLd} />
+      <ProjectsClient />
+    </>
   );
 }

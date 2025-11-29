@@ -29,10 +29,7 @@ const alexBrush = Alex_Brush({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Chacal Studio | Regenerative Design & Technology",
-  description: "Strategic design and technology for a regenerative future.",
-};
+// Metadata is now handled per-page via generateMetadata
 
 export default async function LocaleLayout({
   children,

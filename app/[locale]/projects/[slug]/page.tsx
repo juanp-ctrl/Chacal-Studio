@@ -7,6 +7,9 @@ import * as Motion from "motion/react-client";
 import { projects } from "@/lib/projects";
 import { Heading } from "@/components/atoms/Heading";
 import { Text } from "@/components/atoms/Text";
+import { JsonLd } from "@/components/SEO/JsonLd";
+import type { Metadata } from "next";
+import { routing } from "@/i18n/routing";
 
 // Define params type for Next.js 16
 interface PageProps {
@@ -19,19 +22,90 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: PageProps) {
-  const { slug } = await params;
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug, locale } = await params;
   const project = projects.find((p) => p.slug === slug);
 
   if (!project) {
     return {
-      title: "Proyecto no encontrado",
+      title: locale === "es" ? "Proyecto no encontrado" : "Project not found",
     };
   }
 
+  // Get localized content
+  const tProject = await getTranslations({ locale, namespace: `projects.${slug}` });
+  const titleTranslation = tProject("title");
+  const summaryTranslation = tProject("summary");
+  
+  const localizedTitle =
+    titleTranslation !== `projects.${slug}.title` ? titleTranslation : project.title;
+  const localizedSummary =
+    summaryTranslation !== `projects.${slug}.summary` ? summaryTranslation : project.summary;
+
+  const baseUrl = "https://chacalestudio.ar";
+  const currentPath =
+    locale === routing.defaultLocale
+      ? `/projects/${slug}`
+      : `/${locale}/projects/${slug}`;
+  const canonicalUrl = `${baseUrl}${currentPath}`;
+  const alternateEs = `${baseUrl}${locale === "es" ? `/projects/${slug}` : `/es/projects/${slug}`}`;
+  const alternateEn = `${baseUrl}${locale === "en" ? `/projects/${slug}` : `/en/projects/${slug}`}`;
+
+  const title = `${localizedTitle} | Chacal Estudio`;
+  const description = localizedSummary;
+
   return {
-    title: `${project.title} | Chacal Studio`,
-    description: project.summary,
+    title,
+    description,
+    keywords:
+      locale === "es"
+        ? [
+            project.title,
+            "proyecto comunicación",
+            "caso de estudio",
+            "comunicación con propósito",
+            ...(project.tags || []),
+          ]
+        : [
+            project.title,
+            "communication project",
+            "case study",
+            "purpose-driven communication",
+            ...(project.tags || []),
+          ],
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        es: alternateEs,
+        en: alternateEn,
+        "x-default": alternateEs,
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      siteName: "Chacal Estudio",
+      locale: locale === "es" ? "es_AR" : "en_US",
+      alternateLocale: locale === "es" ? "en_US" : "es_AR",
+      type: "article",
+      images: project.thumbnail
+        ? [
+            {
+              url: project.thumbnail,
+              width: 1200,
+              height: 630,
+              alt: localizedTitle,
+            },
+          ]
+        : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: project.thumbnail ? [project.thumbnail] : [],
+    },
   };
 }
 
@@ -74,8 +148,67 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   const nextProjectTitle = nextTitleTranslation !== `projects.${nextProject.slug}.title` ? nextTitleTranslation : nextProject.title;
   const nextProjectSummary = nextSummaryTranslation !== `projects.${nextProject.slug}.summary` ? nextSummaryTranslation : nextProject.summary;
 
+  // Prepare JSON-LD structured data
+  const baseUrl = "https://chacalestudio.ar";
+  const currentPath =
+    locale === routing.defaultLocale
+      ? `/projects/${slug}`
+      : `/${locale}/projects/${slug}`;
+  const canonicalUrl = `${baseUrl}${currentPath}`;
+
+  // BreadcrumbList JSON-LD
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: locale === "es" ? "Inicio" : "Home",
+        item: `${baseUrl}${locale === routing.defaultLocale ? "" : `/${locale}`}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: locale === "es" ? "Proyectos" : "Projects",
+        item: `${baseUrl}${locale === routing.defaultLocale ? "/projects" : `/${locale}/projects`}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: localizedTitle,
+        item: canonicalUrl,
+      },
+    ],
+  };
+
+  // CreativeWork JSON-LD for the project
+  const projectJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: localizedTitle,
+    description: localizedSummary,
+    url: canonicalUrl,
+    image: project.thumbnail,
+    creator: {
+      "@type": "Organization",
+      name: "Chacal Estudio",
+      url: baseUrl,
+    },
+    datePublished: project.year || undefined,
+    keywords: project.tags?.join(", "),
+    ...(project.client && {
+      publisher: {
+        "@type": "Organization",
+        name: project.client,
+      },
+    }),
+  };
+
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <JsonLd data={[breadcrumbJsonLd, projectJsonLd]} />
+      <div className="min-h-screen bg-background">
       {/* Navigation - Absolute positioned below header */}
       <Motion.div
         className="absolute top-24 left-0 right-0 z-40 px-6 sm:px-8 lg:px-12"
@@ -380,6 +513,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           </div>
         </div>
       </Link>
-    </div>
+      </div>
+    </>
   );
 }
