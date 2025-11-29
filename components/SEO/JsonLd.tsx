@@ -1,5 +1,3 @@
-import { Script } from 'next/script';
-
 interface JsonLdProps {
   data: Record<string, unknown> | Record<string, unknown>[];
 }
@@ -10,7 +8,7 @@ export function JsonLd({ data }: JsonLdProps) {
   return (
     <>
       {jsonLd.map((item, index) => (
-        <Script
+        <script
           key={index}
           id={`jsonld-${index}`}
           type="application/ld+json"
