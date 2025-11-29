@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'motion/react';
+import { useTranslations } from 'next-intl';
 import { Project } from '@/lib/projects';
 
 interface ProjectCardProps {
@@ -11,8 +12,16 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, index }: ProjectCardProps) {
+  const t = useTranslations(`projects.${project.slug}`);
   // Use the first tag as the category
   const category = project.tags[0] || 'Project';
+  
+  // Use localized content if available, fallback to project data
+  // If translation returns the key, it means translation doesn't exist, so use project data
+  const titleTranslation = t('title');
+  const summaryTranslation = t('summary');
+  const localizedTitle = titleTranslation !== `projects.${project.slug}.title` ? titleTranslation : project.title;
+  const localizedSummary = summaryTranslation !== `projects.${project.slug}.summary` ? summaryTranslation : project.summary;
 
   return (
     <motion.div
@@ -26,7 +35,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         <div className="relative overflow-hidden rounded-2xl mb-6 aspect-[4/5] bg-muted">
           <Image
             src={project.thumbnail}
-            alt={project.title}
+            alt={localizedTitle}
             fill
             className="object-cover transition-transform duration-700 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -40,10 +49,10 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             {category}
           </p>
           <h2 className="text-foreground text-2xl sm:text-3xl font-bold font-heading group-hover:text-accent transition-colors duration-300">
-            {project.title}
+            {localizedTitle}
           </h2>
           <p className="text-muted-foreground font-light leading-relaxed line-clamp-2">
-            {project.summary}
+            {localizedSummary}
           </p>
         </div>
       </Link>

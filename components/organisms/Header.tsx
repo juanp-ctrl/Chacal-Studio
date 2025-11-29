@@ -126,7 +126,7 @@ export function Header({ className }: HeaderProps) {
               className="flex items-center gap-2 text-white/90 hover:text-accent transition-colors text-sm font-medium uppercase"
             >
               <Globe size={18} />
-              {locale}
+              {locale === 'es-AR' ? 'ES' : 'EN'}
             </button>
             {isLangMenuOpen && (
               <div className="absolute top-full right-0 mt-2 bg-white rounded-lg shadow-lg overflow-hidden py-1 min-w-[100px]">

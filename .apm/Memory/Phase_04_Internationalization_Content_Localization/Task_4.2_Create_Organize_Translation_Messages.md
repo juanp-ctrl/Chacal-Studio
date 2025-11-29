@@ -44,7 +44,7 @@ Completed the internationalization of all major sections, pages, and layout comp
   - `app/[locale]/projects/page.tsx`, `app/[locale]/projects/[slug]/page.tsx`
 
 ## Issues
-- Encountered minor linter warnings regarding Tailwind CSS v4 syntax (`bg-[var(--...)]` vs `bg-(--...)`) and generic types, which were resolved.
+- Encountered minor linter warnings regarding Tailwind CSS v4 syntax (`bg-[ var(--...) ]` vs `bg-(--...)`) and generic types, which were resolved.
 - Tool failed to list `Footer.tsx` in `components/sections/` because it was located in `components/organisms/`, resolved by correcting the path.
 
 ## Next Steps

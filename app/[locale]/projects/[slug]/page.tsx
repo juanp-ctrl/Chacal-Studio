@@ -38,6 +38,7 @@ export async function generateMetadata({ params }: PageProps) {
 export default async function ProjectDetailPage({ params }: PageProps) {
   const { slug, locale } = await params;
   const t = await getTranslations({locale, namespace: 'projects.detail'});
+  const tProject = await getTranslations({locale, namespace: `projects.${slug}`});
   const project = projects.find((p) => p.slug === slug);
 
   if (!project) {
@@ -47,6 +48,31 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   const currentIndex = projects.findIndex((p) => p.slug === slug);
   const nextProject =
     currentIndex < projects.length - 1 ? projects[currentIndex + 1] : projects[0];
+  
+  // Get next project translations
+  const tNextProject = await getTranslations({locale, namespace: `projects.${nextProject.slug}`});
+  
+  // Use localized content if available, fallback to project data
+  // If translation returns the key path, it means translation doesn't exist, so use project data
+  const titleTranslation = tProject('title');
+  const summaryTranslation = tProject('summary');
+  const descriptionTranslation = tProject('description');
+  const challengeTranslation = tProject('challenge');
+  const solutionTranslation = tProject('solution');
+  const resultsTranslation = tProject('results');
+  
+  const localizedTitle = titleTranslation !== `projects.${slug}.title` ? titleTranslation : project.title;
+  const localizedSummary = summaryTranslation !== `projects.${slug}.summary` ? summaryTranslation : project.summary;
+  const localizedDescription = descriptionTranslation !== `projects.${slug}.description` ? descriptionTranslation : (project.description || '');
+  const localizedChallenge = challengeTranslation !== `projects.${slug}.challenge` ? challengeTranslation : (project.challenge || '');
+  const localizedSolution = solutionTranslation !== `projects.${slug}.solution` ? solutionTranslation : (project.solution || '');
+  const localizedResults = resultsTranslation !== `projects.${slug}.results` ? resultsTranslation : (project.results || '');
+  
+  // Next project localized content
+  const nextTitleTranslation = tNextProject('title');
+  const nextSummaryTranslation = tNextProject('summary');
+  const nextProjectTitle = nextTitleTranslation !== `projects.${nextProject.slug}.title` ? nextTitleTranslation : nextProject.title;
+  const nextProjectSummary = nextSummaryTranslation !== `projects.${nextProject.slug}.summary` ? nextSummaryTranslation : nextProject.summary;
 
   return (
     <div className="min-h-screen bg-background">
@@ -107,10 +133,10 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   as="h1"
                   className="text-white mb-4 sm:mb-6 tracking-tight text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-5xl"
                 >
-                  {project.title}
+                  {localizedTitle}
                 </Heading>
                 <Text className="text-white/90 text-lg sm:text-xl md:text-2xl font-light leading-relaxed max-w-3xl mb-8 sm:mb-10">
-                  {project.summary}
+                  {localizedSummary}
                 </Text>
 
                 {/* Project Meta Info */}
@@ -149,7 +175,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       </div>
 
       {/* Challenge Section */}
-      {project.challenge && (
+      {localizedChallenge && (
         <div className="py-24 sm:py-32 bg-background">
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -168,7 +194,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   </Heading>
                 </div>
                 <Text className="text-muted-foreground text-lg sm:text-xl leading-relaxed">
-                  {project.challenge}
+                  {localizedChallenge}
                 </Text>
               </Motion.div>
 
@@ -201,7 +227,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       )}
 
       {/* Solution/Process Section */}
-      {(project.solution || project.description) && (
+      {(localizedSolution || localizedDescription) && (
         <div className="py-24 sm:py-32 bg-primary text-white">
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
             <Motion.div
@@ -220,7 +246,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 </Heading>
               </div>
               <Text className="text-white/80 text-lg sm:text-xl leading-relaxed max-w-4xl">
-                {project.solution || project.description}
+                {localizedSolution || localizedDescription}
               </Text>
             </Motion.div>
 
@@ -245,7 +271,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       )}
 
       {/* Results Section */}
-      {project.results && (
+      {localizedResults && (
         <div className="py-24 sm:py-32 bg-secondary/50">
           <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
             <Motion.div
@@ -263,7 +289,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 </Heading>
               </div>
               <Text className="text-primary/80 text-xl sm:text-2xl leading-relaxed font-light">
-                {project.results}
+                {localizedResults}
               </Text>
             </Motion.div>
           </div>
@@ -315,7 +341,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         <div className="absolute inset-0">
           <Image
             src={nextProject.thumbnail}
-            alt={nextProject.title}
+            alt={nextProjectTitle}
             fill
             className="object-cover opacity-30 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700"
           />
@@ -339,7 +365,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     as="h2"
                     className="text-white font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl group-hover:text-accent transition-colors duration-300"
                   >
-                    {nextProject.title}
+                    {nextProjectTitle}
                   </Heading>
                   <ArrowRight
                     size={48}
@@ -347,7 +373,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   />
                 </div>
                 <Text className="text-white/80 text-lg sm:text-xl max-w-3xl">
-                  {nextProject.summary}
+                  {nextProjectSummary}
                 </Text>
               </Motion.div>
             </div>

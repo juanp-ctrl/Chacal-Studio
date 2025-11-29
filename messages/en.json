@@ -46,126 +46,122 @@
   },
   "impact": {
     "title": "Our impact",
-    "subtitle": "We generate tangible value through three fundamental pillars, ensuring that every action has a positive purpose.",
+    "subtitle": "We commit to being a force for good in the world.",
     "team": {
       "title": "In the team",
-      "description": "We foster an inclusive and collaborative work environment, where each member can grow and contribute their unique perspective to collective success."
+      "description": "We foster a safe, inclusive and equitable work space, where there is no place for discrimination or harassment. We believe in flexibility and remote work as part of a real balance between professional and personal life. We seek for each collaborator's growth to be aligned with their purpose, with fair and transparent remuneration."
     },
     "community": {
       "title": "In the community",
-      "description": "We commit to social development, supporting local initiatives and creating bonds that strengthen the community fabric."
+      "description": "We guide other organizations to adopt triple impact practices. We support local suppliers and prioritize those from underrepresented groups. We offer reduced rates and pro bono services to NGOs and vulnerable groups, we reserve the right not to collaborate with clients or suppliers whose activity is incompatible with our values."
     },
     "planet": {
       "title": "On the planet",
-      "description": "We adopt sustainable and responsible practices to minimize our ecological footprint and contribute to environmental preservation."
-    },
-    "impact": {
-      "title": "Global Impact",
-      "text": "We join cities, organizations and individuals to push for a global shift in food and climate policies."
+      "description": "We measure our energy and water consumption and our emissions to understand and reduce our impact. We share resources with our team to encourage sustainable practices in their workspaces, such as efficient use of energy and safe disposal of electronic waste. We promote digitization and have a zero waste to landfill commitment, separating our waste for recycling or composting."
     }
   },
   "services": {
     "title": "What we do",
     "consulting": {
-      "title": "Consulting",
-      "description": "Expert advice to navigate complex challenges and find strategic growth opportunities."
+      "title": "Consulting and strategy",
+      "description": "We help our clients achieve their goals through defining their target and determining goals, then developing a comprehensive and personalized communication plan for them."
     },
     "advisory": {
-      "title": "Advisory",
-      "description": "Ongoing support for informed decision-making and internal capacity building."
+      "title": "Communication advisory",
+      "description": "A personalized space to understand, analyze and find the right strategy according to each objective. We do this through a one-to-one relationship, seeking to understand the current situation and understand the needs."
     },
     "diagnostic": {
-      "title": "Diagnostic",
-      "description": "Comprehensive assessment of current state to identify gaps and potential improvement areas."
+      "title": "Communication diagnosis",
+      "description": "We research, evaluate and develop strategies to help our clients understand how they are currently communicating and identify opportunities for improvement."
     },
     "management": {
-      "title": "Management",
-      "description": "Optimization of processes and resources to ensure operational efficiency and goal achievement."
+      "title": "Communication management",
+      "description": "We take care of planning and managing the internal and/or external communication of brands, based on solid and practical strategies and tactics."
     },
     "sustainability": {
       "title": "Sustainability Consulting",
-      "description": "We integrate sustainability into the core of your strategy, ensuring that today's growth does not compromise tomorrow's well-being."
+      "description": "Every task and every project is carried out with a socio-environmental focus, where we carry out organizational and product carbon footprint inventories, design sustainability strategies, Life Cycle Analysis (LCA), preparation and design of sustainability reports, in-company training, etc."
     }
   },
   "plantBased": {
-    "title": "Plant Based Treaty",
-    "intro": "As the first design agency to sign the Plant Based Treaty, we commit to promoting a food system that respects our planet.",
-    "mission": "Our Mission",
-    "missionText1": "To advocate for a systemic shift towards plant-based diets to combat the climate crisis, promoting the transition away from animal agriculture.",
-    "missionText2": "We believe visual communication is a powerful tool to accelerate this necessary change.",
+    "title": "Alliance with Plant Based Treaty",
+    "intro": "We are proud to work alongside the Plant Based Treaty, a grassroots global initiative that seeks to put food systems at the center of the debate on the climate crisis.",
+    "mission": "The mission of the Treaty",
+    "missionText1": "The Plant Based Treaty is a direct response to the climate emergency. Its mission is to promote an urgent change towards a fair and plant-based food system, that allows us to live safely within our planetary boundaries and reforest the Earth.",
+    "missionText2": "Following the Paris Agreement model, the treaty is based on three fundamental principles (3Rs):",
     "relinquish": {
       "title": "Relinquish",
-      "description": "Stop the expansion of animal agriculture and deforestation."
+      "description": "Stop the degradation of ecosystems caused by animal agriculture."
     },
     "redirect": {
       "title": "Redirect",
-      "description": "Promote an active transition towards plant-based food systems."
+      "description": "Redirect policies and subsidies towards a plant-based food system."
     },
     "restore": {
       "title": "Restore",
-      "description": "Heal key ecosystems and reforest the Earth."
+      "description": "Reforest and restore key ecosystems damaged by livestock."
     },
     "contribution": {
-      "title": "Our Contribution",
-      "text": "We design impact campaigns to raise awareness about the climate crisis and food, using our creative expertise to amplify the message."
+      "title": "Our contribution",
+      "text": "We actively support this cause by donating pro bono consulting and strategic management hours to amplify its message, and we donate 2% of our total monthly sales to fund its programs."
     },
     "impact": {
-      "title": "Global Impact",
-      "text": "We join cities, organizations and individuals to push for a global shift in food and climate policies."
+      "title": "The Impact",
+      "text": "This initiative has already gained the support of cultural figures such as Paul McCartney and Dr. Jane Goodall, and has been adopted by 34 cities in 10 countries, including capitals and major urban centers such as Los Angeles, Amsterdam, Edinburgh and Belfast."
     },
-    "join": "Join the Movement",
-    "signIndividual": "Sign as an Individual",
-    "signOrg": "Sign as an Organization",
-    "signBusiness": "Sign as a Business",
+    "join": "Join the movement",
+    "signIndividual": "Sign as an individual",
+    "signOrg": "Sign as an organization",
+    "signBusiness": "Sign as a business",
     "donate": {
-      "title": "Support the Cause",
-      "text": "Your donation helps fund global campaigns, educational materials, and direct actions to promote a plant-based food system.",
-      "cta": "Make a Donation"
+      "title": "Make your donation",
+      "text": "Your support helps us amplify the message and work for a more sustainable future",
+      "cta": "Donate now"
     },
-    "learnMore": "Learn more about the Treaty"
+    "learnMore": "Learn more about Plant Based Treaty"
   },
   "sdg": {
     "title": "Sustainable Development Goals",
-    "subtitle": "Our commitment to a better future is reflected in our alignment with the UN SDGs.",
+    "subtitle": "Our policies and impact actions directly contribute to the United Nations SDG goals, focusing our efforts on:",
     "5": {
       "title": "Gender Equality",
-      "description": "We actively work to ensure equal opportunities and empowerment for all women and girls through our internal policies and narrative."
+      "description": "We contribute to goals 5.1 (eliminate discrimination) and 5.5 (ensure full participation) through our non-discrimination policies and preference for suppliers from underrepresented groups, including women-led businesses."
     },
     "8": {
       "title": "Decent Work and Economic Growth",
-      "description": "We promote inclusive and sustainable economic growth, guaranteeing fair, creative and dignified work conditions for our entire team."
+      "description": "We promote goals 8.5 (full and productive employment with fair pay), 8.6 (employment and training for youth) and 8.7 (eradicate forced labor and child labor) through our equitable remuneration policies, prohibition of child/forced labor and a flexible work environment."
     },
     "11": {
       "title": "Sustainable Cities and Communities",
-      "description": "We contribute to creating more inclusive and sustainable communities, supporting local initiatives that improve urban and rural quality of life."
+      "description": "We contribute to goal 11.6 (reduce the environmental impact of cities) thanks to our environmental management plan, which includes proper waste management and separation and safe disposal of electronic waste."
     },
     "12": {
       "title": "Responsible Production and Consumption",
-      "description": "We adopt conscious consumption practices and promote responsible production, minimizing waste and optimizing resources in every project."
+      "description": "We work towards goal 12.5 (reduce waste generation) by promoting digitization to minimize paper use and encouraging the circular economy in our operations."
     },
     "13": {
       "title": "Climate Action",
-      "description": "We take urgent action to combat climate change, integrating environmental sustainability into the heart of our business and communication strategy."
+      "description": "We contribute to goals 13.2 (incorporate climate change measures into policies) and 13.3 (improve education and awareness) through measuring and offsetting our carbon footprint and actively educating our clients in sustainable practices."
     }
   },
   "partners": {
     "title": "We are part of",
-    "subtitle": "We weave collaborative networks with organizations that share our ethical and environmental values.",
+    "subtitle": "We collaborate with organizations that share our vision of a more just and sustainable world",
     "animalSave": {
       "name": "Animal Save Movement",
-      "description": "Global movement based on love and non-violence, documenting and spreading the reality of animals exploited for food."
+      "description": "We align with Animal Save Movement's mission to create a movement of justice, compassion and veganism through public awareness and education, seeking to end animal exploitation and objectification, and actively adopting an anti-speciesist stance against all forms of discrimination and oppression."
     },
     "cleanCreatives": {
       "name": "Clean Creatives",
-      "description": "Movement of communication professionals refusing to work with the fossil fuel industry."
+      "description": "As a studio, we commit to rejecting contracts with the fossil fuel industry. We believe that the creative industry should not use its talent to greenwash the image of corporations that drive the climate crisis."
     },
     "ati": {
-      "name": "ATI",
-      "description": "Association of Impact Tourism. Promoting responsible tourism that benefits local communities and the environment."
+      "name": "ati (Triple Impact Agencies)",
+      "description": "The first Latin American community that brings together communication, advertising and marketing agencies with purpose. Founded by done! and Bi, ati. seeks to capitalize creative talent to contribute to solving the most urgent socio-environmental problems and drive the transition to a new social and economic model."
     },
     "redCreer": {
       "name": "Red Creer",
-      "description": "Collaborative network for economic and social empowerment, fostering inclusive and ethical business practices."
+      "description": "We are part of Red Creer, a collaborative network of more than 160 organizations from the public, private and social sectors in Argentina, which seeks to generate socio-economic inclusion opportunities for people who are or were deprived of their liberty, addressing stigma and building a society with greater opportunities for all."
     },
     "learnMore": "Learn more"
   },
@@ -179,6 +175,7 @@
   },
   "projects": {
     "title": "Projects",
+    "subtitle": "Selected cases that reflect our commitment to purposeful communication and triple impact.",
     "viewAll": "View all projects",
     "backHome": "Back to home",
     "allProjects": "Our Projects",
@@ -193,6 +190,54 @@
       "results": "Results",
       "gallery": "Gallery",
       "nextProject": "Next Project"
+    },
+    "ecosfera-urbana": {
+      "title": "Urban Ecosphere",
+      "summary": "Creative campaign to promote sustainable practices in Latin American cities.",
+      "description": "A comprehensive initiative to transform the relationship between citizens and their urban environment through artistic interventions and strategic communication.",
+      "challenge": "Emotionally connect inhabitants of large cities with the importance of everyday sustainability, overcoming apathy and cynicism.",
+      "solution": "We developed a vibrant visual identity and a friendly tone of voice that celebrates small actions, using urban art as the main channel.",
+      "results": "Reach of over 2 million people in 3 countries and a 40% increase in participation in municipal recycling programs."
+    },
+    "conexion-aula": {
+      "title": "Classroom Connection",
+      "summary": "Educational platform that humanizes digital learning for vulnerable communities.",
+      "description": "User experience design for a remote learning platform specifically designed for areas with low connectivity.",
+      "challenge": "Create an intuitive and lightweight interface that works on older devices and unstable connections, without sacrificing pedagogical quality.",
+      "solution": "We implemented an \"offline-first\" design with a clean and friendly aesthetic, prioritizing clarity and accessibility over heavy decorative elements.",
+      "results": "Adoption by more than 50 rural schools and an 85% course completion rate."
+    },
+    "raices-del-futuro": {
+      "title": "Roots of the Future",
+      "summary": "Visual identity and storytelling for an organization focused on community reforestation.",
+      "description": "Complete rebranding for an NGO that seeks to empower local communities through reforestation and soil care.",
+      "challenge": "The organization was perceived as technical and distant. They needed a brand that inspired belonging and community action.",
+      "solution": "We created a visual system based on organic shapes and earth colors, accompanied by a narrative that puts the community at the center of the story.",
+      "results": "200% increase in local volunteering and international recognition for best practices in environmental communication."
+    },
+    "impacto-visual": {
+      "title": "Visual Impact",
+      "summary": "Interactive annual report design for human rights NGO.",
+      "description": "Transformation of a dense and technical report into an interactive and moving digital experience.",
+      "challenge": "Make complex data on human rights violations accessible and understandable without trivializing suffering.",
+      "solution": "We used scrollytelling and interactive data visualization to guide the user through the information, balancing hard data with personal stories.",
+      "results": "The most read report in the organization's history, with an average dwell time of 8 minutes."
+    },
+    "voces-nativas": {
+      "title": "Native Voices",
+      "summary": "Podcast platform to preserve endangered indigenous languages.",
+      "description": "A living sound archive that celebrates linguistic and cultural diversity through stories told in first person.",
+      "challenge": "Preserve oral languages in a modern digital format that is attractive to new generations.",
+      "solution": "We designed an immersive auditory experience accompanied by a minimalist visual interface that gives prominence to the voice and soundscape.",
+      "results": "Documentation of 12 endangered languages and creation of an active community of young speakers."
+    },
+    "energia-limpia": {
+      "title": "Clean Energy",
+      "summary": "Rebranding for accessible solar energy startup.",
+      "description": "Brand redefinition for a company that seeks to democratize access to solar energy in low-income households.",
+      "challenge": "Differentiate in a market saturated with \"cold\" technology and connect with the real needs of families.",
+      "solution": "We built a warm and optimistic brand, focused on well-being and family savings, moving away from the usual technicality of the sector.",
+      "results": "Doubling of monthly installations and opening of two new regional branches."
     }
   }
 }
