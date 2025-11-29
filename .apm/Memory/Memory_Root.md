@@ -113,3 +113,25 @@
 
 ---
 
+## Phase 06 – Contact Flow Integration Summary
+
+**Outcome:** Implemented a complete, production-ready contact form flow with validation, spam protection, and email delivery. The Contact section was added to the Home page featuring a localized form with fields for name, email, phone, organization, message, and policy acceptance checkbox, styled with design system components and motion animations. The section includes contact information display (email, Instagram, LinkedIn) and B-Corp commitment text. React Hook Form was integrated with Zod schema validation providing inline error display with localized messages. A secure API route (`/api/contact`) handles form submissions with server-side Zod validation, Cloudflare Turnstile token verification for spam protection, and Resend SDK integration to deliver formatted HTML emails to `hola@chacalestudio.ar`. The frontend provides clear user feedback via toast notifications for success and error states. All environment variables are documented in `.env.example`.
+
+**Agents Involved:**
+- Agent_Contact_Integration
+
+**Task Logs:**
+- [Task 6.1 - Design and Implement Contact Form UI](Phase_06_Contact_Flow_Integration/Task_6.1_Design_Implement_Contact_Form_UI.md)
+- [Task 6.2 - Implement Validation with RHF and Zod](Phase_06_Contact_Flow_Integration/Task_6.2_Implement_Validation_RHF_Zod.md)
+- [Task 6.3 - Integrate Resend and Turnstile](Phase_06_Contact_Flow_Integration/Task_6.3_Integrate_Resend_Turnstile.md)
+
+**Key Artifacts:**
+- Contact form: `components/organisms/ContactForm.tsx`
+- Contact section: `components/sections/ContactSection.tsx`
+- Validation schema: `lib/schemas/contact.ts`
+- API route: `app/api/contact/route.ts`
+- Environment: `.env.example` (updated with Turnstile and Resend keys)
+- i18n: Extended `messages/es.json`, `messages/en.json` with contact namespace and error messages
+
+---
+

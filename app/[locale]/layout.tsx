@@ -5,6 +5,7 @@ import { routing } from '@/i18n/routing';
 import { Header } from "@/components/organisms/Header";
 import { Footer } from "@/components/organisms/Footer";
 import { CookieBanner } from "@/components/organisms/CookieBanner";
+import { IntroLoader } from "@/components/organisms/IntroLoader";
 import "../globals.css"; 
 import { Crimson_Text, DM_Sans, Alex_Brush } from "next/font/google";
 
@@ -54,6 +55,7 @@ export default async function LocaleLayout({
     <html lang={locale} className={`scroll-smooth ${crimsonText.variable} ${dmSans.variable} ${alexBrush.variable}`}>
       <body className="antialiased bg-background text-foreground font-body">
         <NextIntlClientProvider messages={messages}>
+          <IntroLoader />
           <a 
             href="#main-content" 
             className="sr-only focus:not-sr-only focus:absolute focus:z-60 focus:top-4 focus:left-4 focus:p-4 focus:bg-white focus:text-(--brand-blue) focus:rounded-md focus:shadow-lg"
