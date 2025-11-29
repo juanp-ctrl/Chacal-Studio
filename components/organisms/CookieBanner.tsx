@@ -47,13 +47,13 @@ export function CookieBanner() {
         isVisible ? "translate-y-0" : "translate-y-[calc(100%+1rem)]"
       )}
     >
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8">
-        <div className="flex items-start md:items-center gap-4 flex-1">
-          <div className="hidden md:flex p-2 bg-white/10 rounded-full shrink-0">
-            <Cookie className="w-6 h-6 text-accent" />
+      <div className="container mx-auto flex flex-col items-start gap-4 md:gap-6">
+        <div className="flex items-start gap-4 w-full">
+          <div className="p-2 bg-white/10 rounded-full shrink-0 mt-1">
+            <Cookie className="w-5 h-5 text-accent" />
           </div>
           <div className="space-y-2">
-            <Text size="sm" className="text-white/90 max-w-3xl">
+            <Text size="sm" className="text-white/90">
               {t("message")}{" "}
               <Link 
                 href="/terms" 
@@ -65,12 +65,12 @@ export function CookieBanner() {
           </div>
         </div>
 
-        <div className="flex flex-row items-center gap-3 w-full md:w-auto justify-end md:justify-start shrink-0">
+        <div className="flex flex-row items-center gap-3 w-full justify-end">
           <Button
             variant="outline"
             size="sm"
             onClick={handleDecline}
-            className="border-white/20 bg-transparent text-white hover:bg-white/10 hover:text-white focus-visible:ring-accent w-full md:w-auto"
+            className="border-white/20 bg-transparent text-white hover:bg-white/10 hover:text-white focus-visible:ring-accent flex-1 md:flex-none"
           >
             {t("decline")}
           </Button>
@@ -78,7 +78,7 @@ export function CookieBanner() {
             variant="default"
             size="sm"
             onClick={handleAccept}
-            className="bg-accent hover:bg-accent/90 text-white focus-visible:ring-white w-full md:w-auto"
+            className="bg-accent hover:bg-accent/90 text-white focus-visible:ring-white flex-1 md:flex-none"
           >
             {t("accept")}
           </Button>
