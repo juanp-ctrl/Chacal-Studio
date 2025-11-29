@@ -3,6 +3,8 @@ import { MethodSection } from "@/components/sections/MethodSection";
 import { ImpactSection } from "@/components/sections/ImpactSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { PlantBasedTreatySection } from "@/components/sections/PlantBasedTreatySection";
+import { SDGSection } from "@/components/sections/SDGSection";
+import { PartnersSection } from "@/components/sections/PartnersSection";
 
 export default function Home() {
   return (
@@ -12,6 +14,8 @@ export default function Home() {
       <ImpactSection />
       <ServicesSection />
       <PlantBasedTreatySection />
+      <SDGSection />
+      <PartnersSection />
     </div>
   );
 }
