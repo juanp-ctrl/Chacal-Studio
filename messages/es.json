@@ -430,7 +430,15 @@
       "success": "Mensaje enviado con éxito",
       "error": {
         "policies": "Debés aceptar las políticas de privacidad",
-        "messageLength": "El mensaje debe tener al menos 20 caracteres"
+        "messageLength": "El mensaje debe tener al menos 20 caracteres",
+        "nameRequired": "El nombre es obligatorio",
+        "nameMinLength": "El nombre debe tener al menos 2 caracteres",
+        "emailRequired": "El correo electrónico es obligatorio",
+        "emailInvalid": "Por favor ingresá un correo electrónico válido",
+        "phoneInvalid": "Por favor ingresá un número de teléfono válido",
+        "messageRequired": "El mensaje es obligatorio",
+        "messageMinLength": "El mensaje debe tener al menos 10 caracteres",
+        "policiesRequired": "Debés aceptar las políticas de privacidad para continuar"
       }
     },
     "connect": "Conectemos",

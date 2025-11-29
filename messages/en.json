@@ -430,7 +430,15 @@
       "success": "Message sent successfully",
       "error": {
         "policies": "You must accept the privacy policy",
-        "messageLength": "Message must be at least 20 characters long"
+        "messageLength": "Message must be at least 20 characters long",
+        "nameRequired": "Name is required",
+        "nameMinLength": "Name must be at least 2 characters",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Please enter a valid email address",
+        "phoneInvalid": "Please enter a valid phone number",
+        "messageRequired": "Message is required",
+        "messageMinLength": "Message must be at least 10 characters",
+        "policiesRequired": "You must accept the privacy policy to continue"
       }
     },
     "connect": "Let's connect",
