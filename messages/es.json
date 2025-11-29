@@ -407,5 +407,35 @@
     "accept": "Aceptar",
     "decline": "Rechazar",
     "link": "Leer más"
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "Queremos escuchar tu historia y ayudarte a contarla. Escribinos para empezar a trabajar juntos.",
+    "form": {
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "phone": "Teléfono",
+      "organization": "Organización",
+      "message": "Mensaje",
+      "policies": "Acepto las políticas de privacidad",
+      "placeholder": {
+        "name": "Tu nombre",
+        "email": "tu@email.com",
+        "phone": "+54 9 ...",
+        "organization": "Nombre de tu organización",
+        "message": "Contanos sobre tu proyecto..."
+      },
+      "submit": "Enviar mensaje",
+      "sending": "Enviando...",
+      "success": "Mensaje enviado con éxito",
+      "error": {
+        "policies": "Debés aceptar las políticas de privacidad",
+        "messageLength": "El mensaje debe tener al menos 20 caracteres"
+      }
+    },
+    "connect": "Conectemos",
+    "connectText": "Estamos siempre abiertos a nuevas ideas y colaboraciones. Si tenés un proyecto en mente o simplemente querés saludar, no dudes en contactarnos.",
+    "bCorp": "Compromiso de Impacto",
+    "bCorpText": "Como empresa comprometida con el triple impacto, buscamos trabajar con organizaciones que compartan nuestros valores de sustentabilidad y responsabilidad social."
   }
 }

@@ -5,6 +5,7 @@ import { ServicesSection } from "@/components/sections/ServicesSection";
 import { PlantBasedTreatySection } from "@/components/sections/PlantBasedTreatySection";
 import { SDGSection } from "@/components/sections/SDGSection";
 import { PartnersSection } from "@/components/sections/PartnersSection";
+import { ContactSection } from "@/components/sections/ContactSection";
 import { JsonLd } from "@/components/SEO/JsonLd";
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
@@ -166,6 +167,7 @@ export default async function Home({ params }: PageProps) {
         <PlantBasedTreatySection />
         <SDGSection />
         <PartnersSection />
+        <ContactSection />
       </div>
     </>
   );

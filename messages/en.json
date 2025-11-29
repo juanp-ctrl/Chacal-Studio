@@ -407,5 +407,35 @@
     "accept": "Accept",
     "decline": "Decline",
     "link": "Read more"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "We want to hear your story and help you tell it. Write to us to start working together.",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "organization": "Organization",
+      "message": "Message",
+      "policies": "I accept the privacy policy",
+      "placeholder": {
+        "name": "Your name",
+        "email": "you@email.com",
+        "phone": "+54 9 ...",
+        "organization": "Your organization name",
+        "message": "Tell us about your project..."
+      },
+      "submit": "Send message",
+      "sending": "Sending...",
+      "success": "Message sent successfully",
+      "error": {
+        "policies": "You must accept the privacy policy",
+        "messageLength": "Message must be at least 20 characters long"
+      }
+    },
+    "connect": "Let's connect",
+    "connectText": "We are always open to new ideas and collaborations. If you have a project in mind or just want to say hello, do not hesitate to contact us.",
+    "bCorp": "Impact Commitment",
+    "bCorpText": "As a company committed to triple impact, we seek to work with organizations that share our values of sustainability and social responsibility."
   }
 }
