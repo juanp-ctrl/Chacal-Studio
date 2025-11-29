@@ -1,0 +1,98 @@
+"use client";
+
+import { motion } from "motion/react";
+import { Compass, MessageCircle, Search, Settings, Leaf } from "lucide-react";
+import { Heading } from "@/components/atoms/Heading";
+import { Text } from "@/components/atoms/Text";
+
+const services = [
+  {
+    icon: Compass,
+    title: "Consultoría",
+    description: "Asesoramiento experto para navegar desafíos complejos y encontrar oportunidades de crecimiento estratégico.",
+  },
+  {
+    icon: MessageCircle,
+    title: "Asesoría",
+    description: "Acompañamiento continuo para la toma de decisiones informadas y el desarrollo de capacidades internas.",
+  },
+  {
+    icon: Search,
+    title: "Diagnóstico",
+    description: "Evaluación exhaustiva del estado actual para identificar brechas y áreas de mejora potencial.",
+  },
+  {
+    icon: Settings,
+    title: "Gestión",
+    description: "Optimización de procesos y recursos para garantizar la eficiencia operativa y el cumplimiento de objetivos.",
+  },
+];
+
+export function ServicesSection() {
+  return (
+    <section id="servicios" className="bg-secondary/30 px-6 py-24 sm:px-8 sm:py-32 lg:px-12 dark:bg-blue-dark border-t border-transparent dark:border-white/10">
+      <div className="mx-auto max-w-7xl">
+        <motion.div
+          className="mb-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <Heading
+            as="h2"
+            className="mb-6 text-3xl font-medium tracking-tight text-primary sm:text-4xl md:text-5xl"
+          >
+            Lo que hacemos
+          </Heading>
+        </motion.div>
+
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 mb-20">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.title}
+              className="group rounded-3xl border border-transparent bg-white p-10 transition-all duration-300 hover:border-accent/20 dark:bg-primary/40"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+            >
+              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/5 transition-all duration-300 group-hover:bg-accent/10 dark:bg-white/5">
+                <service.icon className="h-7 w-7 text-primary transition-colors duration-300 group-hover:text-accent dark:text-white" strokeWidth={1.5} />
+              </div>
+              <Heading as="h3" className="mb-4 text-2xl font-bold text-primary dark:text-white">
+                {service.title}
+              </Heading>
+              <Text className="font-light leading-relaxed text-primary/70 dark:text-white/70">
+                {service.description}
+              </Text>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Sustainability Banner */}
+        <motion.div
+          className="rounded-3xl bg-gradient-to-br from-primary via-primary to-accent/80 p-12 text-white md:p-16"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          <div className="flex flex-col items-center gap-8 md:flex-row max-w-5xl">
+            <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-2xl bg-white/10">
+              <Leaf className="h-10 w-10 text-white" strokeWidth={1.5} />
+            </div>
+            <div className="text-center md:text-left">
+              <Heading as="h3" className="mb-4 text-3xl font-bold text-white">
+                Consultoría Sustentable
+              </Heading>
+              <Text className="text-lg font-light leading-relaxed text-white/90">
+                Integramos la sostenibilidad en el núcleo de tu estrategia, asegurando que el crecimiento de hoy no comprometa el bienestar del mañana.
+              </Text>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}

@@ -148,6 +148,10 @@ git push origin feature/your-feature-name
 
 For detailed contribution guidelines, see [CONTRIBUTING.md](./CONTRIBUTING.md).
 
+## Deployment
+
+For detailed deployment instructions, including connecting to AWS Amplify and configuring environment variables, please see [DEPLOYMENT.md](./DEPLOYMENT.md).
+
 ## Learn More
 
 - [Next.js Documentation](https://nextjs.org/docs) — Learn about Next.js features and API

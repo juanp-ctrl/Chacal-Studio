@@ -1,26 +1,157 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 :root {
+  /* Typography variables are now injected by next/font/google in app/layout.tsx */
+  /* --font-family-heading: 'Crimson Text', serif; */
+  /* --font-family-body: 'DM Sans', sans-serif; */
+  
+  /* Brand Colors */
+  --brand-blue: #2F2E59;
+
+  /* Light mode - clean and professional with brand colors */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #2F2E59;
+  --card: #f8f9fa;
+  --card-foreground: #2F2E59;
+  --popover: #ffffff;
+  --popover-foreground: #2F2E59;
+  
+  /* Primary = Brand blue */
+  --primary: #2F2E59;
+  --primary-foreground: #ffffff;
+  
+  /* Secondary = Lighter blue tints */
+  --secondary: #f0f1f7;
+  --secondary-foreground: #2F2E59;
+  
+  --muted: #e8e9f2;
+  --muted-foreground: #5a5987;
+  
+  /* Accent = Orange ONLY for CTAs */
+  --accent: #FD9A6B;
+  --accent-foreground: #ffffff;
+  
+  /* Utility colors */
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: rgba(47, 46, 89, 0.12);
+  --input: transparent;
+  --input-background: #f9fafb;
+  --switch-background: #d1d5db;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #FD9A6B;
+  
+  /* Charts - blue dominant */
+  --chart-1: #2F2E59;
+  --chart-2: #4a4879;
+  --chart-3: #6b689d;
+  --chart-4: #FD9A6B;
+  --chart-5: #8b88b8;
+  
+  --radius: 0.625rem;
+  
+  /* Sidebar */
+  --sidebar: #f9fafb;
+  --sidebar-foreground: #2F2E59;
+  --sidebar-primary: #2F2E59;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e8e9f2;
+  --sidebar-accent-foreground: #2F2E59;
+  --sidebar-border: rgba(47, 46, 89, 0.1);
+  --sidebar-ring: #2F2E59;
+
+  /* Extended blue scale */
+  --blue-darkest: #1a1a3d;
+  --blue-darker: #251e4a;
+  --blue-dark: #2F2E59;
+  --blue-base: #3d3c6e;
+  --blue-medium: #4a4879;
+  --blue-light: #5a5987;
+  --blue-lighter: #6b689d;
+  --blue-lightest: #7e7bb3;
+  --blue-subtle: #9591c9;
+
+  /* Plant Based Treaty */
+  --pbt-green: #52B788;
+  --pbt-green-light: #74C69D;
+  --pbt-green-dark: #40916C;
+  --pbt-earth: #95D5B2;
 }
 
 @theme inline {
+  --font-heading: var(--font-family-heading);
+  --font-body: var(--font-family-body);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  
+  /* Extended blue scale */
+  --color-blue-darkest: var(--blue-darkest);
+  --color-blue-darker: var(--blue-darker);
+  --color-blue-dark: var(--blue-dark);
+  --color-blue-base: var(--blue-base);
+  --color-blue-medium: var(--blue-medium);
+  --color-blue-light: var(--blue-light);
+  --color-blue-lighter: var(--blue-lighter);
+  --color-blue-lightest: var(--blue-lightest);
+  --color-blue-subtle: var(--blue-subtle);
+  
+  /* Plant Based Treaty */
+  --color-pbt-green: var(--pbt-green);
+  --color-pbt-green-light: var(--pbt-green-light);
+  --color-pbt-green-dark: var(--pbt-green-dark);
+  --color-pbt-earth: var(--pbt-earth);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    font-family: var(--font-family-body);
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-family-body);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-heading);
+  }
 }

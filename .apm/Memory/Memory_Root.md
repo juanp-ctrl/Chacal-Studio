@@ -1,0 +1,48 @@
+# Chacal Estudio Website – Memory Root
+
+**Project:** Rebuild Chacal Estudio website as Next.js App Router landing page
+**Memory Strategy:** Dynamic-MD
+
+---
+
+## Phase 01 – Project Setup & Tooling Summary
+
+**Outcome:** Successfully established the complete development infrastructure for the Chacal Estudio website rebuild. The project now has a robust Git workflow with `main`/`develop` branches, automated quality gates via Husky hooks (pre-commit lint, pre-push lint + build), comprehensive ESLint + Prettier configuration with Tailwind support, and Next.js 16 configured with React Compiler. All core dependencies for future phases are installed (next-intl, react-hook-form, zod, resend, @marsidev/react-turnstile). AWS Amplify deployment pipeline is fully documented with build specifications and environment variable documentation ready for production deployment.
+
+**Agents Involved:**
+- Agent_Frontend_Architecture
+
+**Task Logs:**
+- [Task 1.1 - Initialize Workflow, Branches, Tooling](Phase_01_Project_Setup_Tooling/Task_1.1_Initialize_Workflow_Branches_Tooling.md)
+- [Task 1.2 - Configure NextJS, React Compiler](Phase_01_Project_Setup_Tooling/Task_1.2_Configure_NextJS_React_Compiler.md)
+- [Task 1.3 - Prepare AWS Amplify Pipeline](Phase_01_Project_Setup_Tooling/Task_1.3_Prepare_AWS_Amplify_Pipeline.md)
+
+**Key Artifacts:**
+- Git branches: `main` (production), `develop` (integration)
+- Quality tooling: `.husky/`, `eslint.config.mjs`, `prettier.config.mjs`
+- Documentation: `README.md`, `CONTRIBUTING.md`, `DEPLOYMENT.md`
+- Deployment: `amplify.yml`, `.env.example`
+
+---
+
+## Phase 02 – Design System & Global Layout Summary
+
+**Outcome:** Established a comprehensive design system and global layout structure. Design tokens were extracted from Figma and implemented as CSS custom properties (brand blue `#2F2E59`, accent colors, typography with Crimson Text and DM Sans). A complete atomic component library was built including Button, Heading, Text, Link, Badge, Input, and Card components using CVA for variants and Radix UI for accessibility. The global layout shell is complete with a sticky Header featuring smooth-scroll navigation and responsive mobile menu, and a Footer with contact, social, and legal links. Font loading was optimized using `next/font/google`. The reference source folder from Figma was properly excluded from build/lint processes.
+
+**Agents Involved:**
+- Agent_Design_System
+
+**Task Logs:**
+- [Task 2.1 - Define Design Tokens, Theming](Phase_02_Design_System_Global_Layout/Task_2.1_Define_Design_Tokens_Theming.md)
+- [Task 2.2 - Build Core Atomic Components](Phase_02_Design_System_Global_Layout/Task_2.2_Build_Core_Atomic_Components.md)
+- [Task 2.3 - Implement Global Layout, Navigation, Footer](Phase_02_Design_System_Global_Layout/Task_2.3_Implement_Global_Layout_Navigation_Footer.md)
+
+**Key Artifacts:**
+- Design tokens: `app/globals.css`
+- Atoms: `components/atoms/` (Button, Heading, Text, Link, Badge, Input, Logo)
+- Molecules: `components/molecules/` (Card)
+- Organisms: `components/organisms/` (Header, Footer)
+- Utils: `lib/utils.ts` (cn helper)
+
+---
+
