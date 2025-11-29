@@ -2,43 +2,43 @@
 
 import { motion } from "motion/react";
 import { ExternalLink, Leaf, Globe2, Sprout } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Heading } from "@/components/atoms/Heading";
 import { Text } from "@/components/atoms/Text";
 
-const principles = [
-  {
-    title: "Renunciar",
-    description: "Detener la expansión de la agricultura animal y la deforestación.",
-    icon: Sprout,
-  },
-  {
-    title: "Redirigir",
-    description: "Promover una transición activa hacia sistemas alimentarios basados en plantas.",
-    icon: Globe2,
-  },
-  {
-    title: "Restaurar",
-    description: "Sanar ecosistemas clave y reforestar la Tierra.",
-    icon: Leaf,
-  },
-];
-
-const actions = [
-  {
-    title: "Firmar como Individuo",
-    url: "https://plantbasedtreaty.org/sign-as-an-individual",
-  },
-  {
-    title: "Firmar como Organización",
-    url: "https://plantbasedtreaty.org/sign-as-an-organization",
-  },
-  {
-    title: "Firmar como Negocio",
-    url: "https://plantbasedtreaty.org/sign-as-a-business",
-  },
-];
-
 export function PlantBasedTreatySection() {
+  const t = useTranslations("plantBased");
+
+  const principles = [
+    {
+      key: "relinquish",
+      icon: Sprout,
+    },
+    {
+      key: "redirect",
+      icon: Globe2,
+    },
+    {
+      key: "restore",
+      icon: Leaf,
+    },
+  ];
+
+  const actions = [
+    {
+      key: "signIndividual",
+      url: "https://plantbasedtreaty.org/sign-as-an-individual",
+    },
+    {
+      key: "signOrg",
+      url: "https://plantbasedtreaty.org/sign-as-an-organization",
+    },
+    {
+      key: "signBusiness",
+      url: "https://plantbasedtreaty.org/sign-as-a-business",
+    },
+  ];
+
   return (
     <section 
       id="plant-based-treaty" 
@@ -69,14 +69,14 @@ export function PlantBasedTreatySection() {
             <div className="w-10 h-10 rounded-full flex items-center justify-center bg-pbt-green">
               <Leaf className="w-5 h-5 text-white" />
             </div>
-            <span className="text-white/70 uppercase tracking-wider text-sm font-medium">Alianza Estratégica</span>
+            <span className="text-white/70 uppercase tracking-wider text-sm font-medium">{t("title")}</span>
           </div>
           
           <Heading as="h2" className="mb-6 text-3xl font-normal tracking-tight text-white sm:text-4xl md:text-5xl capitalize">
-            Tratado Basado en Plantas
+            {t("title")}
           </Heading>
           <Text className="text-white/70 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed font-light">
-            Como primera agencia de diseño en firmar el Tratado Basado en Plantas, nos comprometemos a promover un sistema alimentario que respete nuestro planeta.
+            {t("intro")}
           </Text>
         </motion.div>
 
@@ -88,19 +88,19 @@ export function PlantBasedTreatySection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <Heading as="h3" className="text-white mb-6 text-2xl font-bold">Nuestra Misión</Heading>
+            <Heading as="h3" className="text-white mb-6 text-2xl font-bold">{t("mission")}</Heading>
             <Text className="text-white/70 mb-4 leading-relaxed font-light">
-              Abogar por un cambio sistémico hacia dietas basadas en plantas para combatir la crisis climática, promoviendo la transición lejos de la agricultura animal.
+              {t("missionText1")}
             </Text>
             <Text className="text-white/70 mb-8 leading-relaxed font-light">
-              Creemos que la comunicación visual es una herramienta poderosa para acelerar este cambio necesario.
+              {t("missionText2")}
             </Text>
             
             {/* 3Rs Principles */}
             <div className="space-y-4">
               {principles.map((principle, index) => (
                 <motion.div
-                  key={principle.title}
+                  key={principle.key}
                   className="relative group"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -112,8 +112,8 @@ export function PlantBasedTreatySection() {
                       <principle.icon className="w-5 h-5" />
                     </div>
                     <div className="flex-1">
-                      <p className="text-white font-medium mb-1">{principle.title}</p>
-                      <p className="text-white/60 text-sm leading-relaxed font-light">{principle.description}</p>
+                      <p className="text-white font-medium mb-1">{t(`${principle.key}.title`)}</p>
+                      <p className="text-white/60 text-sm leading-relaxed font-light">{t(`${principle.key}.description`)}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -135,10 +135,10 @@ export function PlantBasedTreatySection() {
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mr-4 bg-pbt-green">
                   <Leaf className="w-6 h-6 text-white" />
                 </div>
-                <Heading as="h3" className="text-white text-xl font-bold">Nuestra Contribución</Heading>
+                <Heading as="h3" className="text-white text-xl font-bold">{t("contribution.title")}</Heading>
               </div>
               <Text className="text-white/70 leading-relaxed font-light">
-                Diseñamos campañas de impacto para elevar la conciencia sobre la crisis climática y la alimentación, utilizando nuestra experiencia creativa para amplificar el mensaje.
+                {t("contribution.text")}
               </Text>
             </div>
 
@@ -148,10 +148,10 @@ export function PlantBasedTreatySection() {
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mr-4 bg-blue-base">
                   <Globe2 className="w-6 h-6 text-white" />
                 </div>
-                <Heading as="h3" className="text-white text-xl font-bold">Impacto Global</Heading>
+                <Heading as="h3" className="text-white text-xl font-bold">{t("impact.title")}</Heading>
               </div>
               <Text className="text-white/70 leading-relaxed font-light">
-                Nos unimos a ciudades, organizaciones e individuos para presionar por un cambio global en las políticas alimentarias y climáticas.
+                {t("impact.text")}
               </Text>
             </div>
 
@@ -173,11 +173,11 @@ export function PlantBasedTreatySection() {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <div className="text-center">
-            <Heading as="h3" className="text-white mb-10 text-3xl font-medium">Únete al Movimiento</Heading>
+            <Heading as="h3" className="text-white mb-10 text-3xl font-medium">{t("join")}</Heading>
             <div className="flex flex-wrap justify-center gap-4 mb-12">
               {actions.map((action, index) => (
                 <motion.a
-                  key={action.title}
+                  key={action.key}
                   href={action.url}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -187,7 +187,7 @@ export function PlantBasedTreatySection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
                 >
-                  {action.title}
+                  {t(action.key)}
                   <ExternalLink size={16} />
                 </motion.a>
               ))}
@@ -202,9 +202,9 @@ export function PlantBasedTreatySection() {
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-6 bg-pbt-green">
                 <Leaf className="w-8 h-8 text-white" />
               </div>
-              <Heading as="h3" className="text-white mb-4 text-2xl font-bold">Apoya la Causa</Heading>
+              <Heading as="h3" className="text-white mb-4 text-2xl font-bold">{t("donate.title")}</Heading>
               <Text className="text-white/80 mb-8 text-lg leading-relaxed font-light">
-                Tu donación ayuda a financiar campañas globales, materiales educativos y acciones directas para promover un sistema alimentario basado en plantas.
+                {t("donate.text")}
               </Text>
               <a
                 href="https://plantbasedtreaty.org/donate"
@@ -212,7 +212,7 @@ export function PlantBasedTreatySection() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-pbt-green text-white font-medium"
               >
-                Hacer una Donación
+                {t("donate.cta")}
                 <ExternalLink size={20} />
               </a>
             </div>
@@ -224,7 +224,7 @@ export function PlantBasedTreatySection() {
                 rel="noopener noreferrer"
                 className="text-white/70 hover:text-white transition-all duration-300 inline-flex items-center gap-2 group font-light"
               >
-                Conocer más sobre el Tratado
+                {t("learnMore")}
                 <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
               </a>
             </div>
@@ -234,4 +234,3 @@ export function PlantBasedTreatySection() {
     </section>
   );
 }
-

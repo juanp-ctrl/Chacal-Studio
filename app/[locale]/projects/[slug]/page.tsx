@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
+import { getTranslations } from "next-intl/server";
 import { ArrowLeft, ArrowRight, Target, Lightbulb, TrendingUp } from "lucide-react";
 import * as Motion from "motion/react-client";
 import { projects } from "@/lib/projects";
@@ -9,7 +10,7 @@ import { Text } from "@/components/atoms/Text";
 
 // Define params type for Next.js 16
 interface PageProps {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; locale: string }>;
 }
 
 export async function generateStaticParams() {
@@ -35,7 +36,8 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 export default async function ProjectDetailPage({ params }: PageProps) {
-  const { slug } = await params;
+  const { slug, locale } = await params;
+  const t = await getTranslations({locale, namespace: 'projects.detail'});
   const project = projects.find((p) => p.slug === slug);
 
   if (!project) {
@@ -64,7 +66,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               size={20}
               className="group-hover:-translate-x-1 transition-transform duration-300"
             />
-            Volver a proyectos
+            {t('backToProjects')}
           </Link>
         </div>
       </Motion.div>
@@ -116,7 +118,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   {project.client && (
                     <div>
                       <p className="text-white/50 text-sm uppercase tracking-wider mb-1">
-                        Cliente
+                        {t('client')}
                       </p>
                       <p className="text-base sm:text-lg">{project.client}</p>
                     </div>
@@ -124,7 +126,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   {project.year && (
                     <div>
                       <p className="text-white/50 text-sm uppercase tracking-wider mb-1">
-                        Año
+                        {t('year')}
                       </p>
                       <p className="text-base sm:text-lg">{project.year}</p>
                     </div>
@@ -132,7 +134,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   {project.services && (
                     <div>
                       <p className="text-white/50 text-sm uppercase tracking-wider mb-1">
-                        Servicios
+                        {t('services')}
                       </p>
                       <p className="text-base sm:text-lg">
                         {project.services.join(", ")}
@@ -162,7 +164,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     <Target className="w-6 h-6 text-accent" />
                   </div>
                   <Heading as="h2" className="text-primary text-2xl sm:text-3xl md:text-4xl">
-                    El desafío
+                    {t('challenge')}
                   </Heading>
                 </div>
                 <Text className="text-muted-foreground text-lg sm:text-xl leading-relaxed">
@@ -214,7 +216,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   <Lightbulb className="w-6 h-6 text-accent" />
                 </div>
                 <Heading as="h2" className="text-white text-3xl sm:text-4xl md:text-5xl">
-                  La solución
+                  {t('solution')}
                 </Heading>
               </div>
               <Text className="text-white/80 text-lg sm:text-xl leading-relaxed max-w-4xl">
@@ -257,7 +259,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   <TrendingUp className="w-6 h-6 text-accent" />
                 </div>
                 <Heading as="h2" className="text-primary text-3xl sm:text-4xl md:text-5xl">
-                  Resultados
+                  {t('results')}
                 </Heading>
               </div>
               <Text className="text-primary/80 text-xl sm:text-2xl leading-relaxed font-light">
@@ -279,7 +281,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              Galería
+              {t('gallery')}
             </Motion.h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
@@ -330,7 +332,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 transition={{ duration: 0.8 }}
               >
                 <Text className="text-accent uppercase tracking-wider font-medium mb-4 sm:mb-6">
-                  Siguiente proyecto
+                  {t('nextProject')}
                 </Text>
                 <div className="flex items-center gap-6 mb-6">
                   <Heading
@@ -355,4 +357,3 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     </div>
   );
 }
-
