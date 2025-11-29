@@ -241,6 +241,99 @@
       "description": "Learn how Chacal Estudio collects, uses, and protects your personal data. Our privacy policy reflects our commitment to transparency and ethics."
     }
   },
+  "terms": {
+    "title": "Terms & Conditions",
+    "lastUpdated": "Last updated",
+    "intro": {
+      "title": "Welcome",
+      "text": "By accessing and using the Chacal Estudio website, you agree to comply with these terms and conditions. We ask that you read them carefully before browsing our site. If you do not agree with any part of these terms, we recommend that you do not use our website."
+    },
+    "services": {
+      "title": "Description of services",
+      "text": "Chacal Estudio is a purpose-driven communication and design studio located in Patagonia, Argentina. This website is for informational purposes and to present our services, which include communication consulting, advisory, diagnosis and communication management, as well as sustainability consulting. The content of the site does not constitute a binding contractual offer."
+    },
+    "intellectualProperty": {
+      "title": "Intellectual property",
+      "text": "All content on this website, including but not limited to texts, images, logos, designs, icons and graphic material, is the property of Chacal Estudio or its respective owners and is protected by Argentina's intellectual property laws and international treaties.",
+      "restrictions": "Reproduction, distribution, modification or use of the content without prior written authorization from Chacal Estudio is prohibited, except for personal and non-commercial use."
+    },
+    "userConduct": {
+      "title": "User conduct",
+      "intro": "By using our website, you agree to:",
+      "items": {
+        "lawful": "Use the site in a legal and respectful manner",
+        "noHarm": "Not attempt to damage, disable or overload our servers",
+        "noMalware": "Not introduce viruses, malicious code or any harmful technology",
+        "noUnauthorized": "Not attempt to gain unauthorized access to any part of the site"
+      }
+    },
+    "liability": {
+      "title": "Limitation of liability",
+      "text": "The information provided on this website is offered \"as is\" and for informational purposes. Chacal Estudio does not guarantee the accuracy, completeness or timeliness of the information and is not responsible for errors or omissions.",
+      "disclaimer": "In no event shall Chacal Estudio be liable for direct, indirect, incidental, consequential or punitive damages arising from the use or inability to use this website."
+    },
+    "externalLinks": {
+      "title": "External links",
+      "text": "This site may contain links to third-party websites. These links are provided solely for your convenience. Chacal Estudio has no control over the content of these sites and is not responsible for their content, privacy policies or practices."
+    },
+    "modifications": {
+      "title": "Modifications",
+      "text": "Chacal Estudio reserves the right to modify these terms and conditions at any time. Modifications will take effect immediately after being posted on this site. We recommend that you review this page periodically to stay informed of any changes."
+    },
+    "governingLaw": {
+      "title": "Governing law",
+      "text": "These terms and conditions are governed by the laws of the Argentine Republic. Any dispute related to the use of this website shall be subject to the exclusive jurisdiction of the competent courts of Argentina."
+    },
+    "cookies": {
+      "sectionTitle": "Cookie Policy",
+      "what": {
+        "title": "What are cookies?",
+        "text": "Cookies are small text files that are stored on your device when you visit a website. They are used to make websites work more efficiently and to provide information to site owners."
+      },
+      "types": {
+        "title": "Types of cookies we use",
+        "essential": {
+          "title": "Essential cookies",
+          "text": "These are necessary for the basic functioning of the site. They allow you to navigate and use essential features such as remembering your language preferences. These cookies cannot be disabled."
+        },
+        "analytics": {
+          "title": "Analytics cookies",
+          "text": "These help us understand how visitors interact with our site by collecting information anonymously. This allows us to continuously improve the user experience."
+        },
+        "preferences": {
+          "title": "Preference cookies",
+          "text": "These allow the site to remember the choices you make (such as your preferred language) to provide a more personalized experience."
+        }
+      },
+      "manage": {
+        "title": "How to manage cookies?",
+        "text": "You can configure your browser to reject cookies or alert you when they are being sent. However, please note that some site features may not work properly if you disable cookies.",
+        "browserSettings": "Most browsers allow you to view, manage, delete and block cookies. Check your browser's help for specific information."
+      },
+      "thirdParty": {
+        "title": "Third-party cookies",
+        "text": "We may use third-party services (such as analytics tools) that may set their own cookies. We have no control over these third-party cookies. We recommend reviewing the privacy policies of these services."
+      },
+      "consent": {
+        "title": "Your consent",
+        "text": "By continuing to browse our site after viewing the cookie banner, you accept the use of cookies in accordance with this policy. You can change your preferences at any time using the cookie settings link in the footer."
+      },
+      "updates": {
+        "title": "Updates to this policy",
+        "text": "We may update this cookie policy occasionally. We will notify you of any significant changes through a notice on our website."
+      }
+    },
+    "contact": {
+      "title": "Contact",
+      "text": "If you have questions about these terms and conditions or our cookie policy, you can contact us:",
+      "email": "Email",
+      "location": "Location"
+    },
+    "meta": {
+      "title": "Terms & Conditions | Chacal Estudio",
+      "description": "Terms and conditions of use for the Chacal Estudio website, including cookie policy. Learn about your rights and obligations when browsing our site."
+    }
+  },
   "projects": {
     "title": "Projects",
     "subtitle": "Selected cases that reflect our commitment to purposeful communication and triple impact.",

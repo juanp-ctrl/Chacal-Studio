@@ -241,6 +241,99 @@
       "description": "Conocé cómo Chacal Estudio recopila, usa y protege tus datos personales. Nuestra política de privacidad refleja nuestro compromiso con la transparencia y la ética."
     }
   },
+  "terms": {
+    "title": "Términos y Condiciones",
+    "lastUpdated": "Última actualización",
+    "intro": {
+      "title": "Bienvenido/a",
+      "text": "Al acceder y utilizar el sitio web de Chacal Estudio, aceptás cumplir con estos términos y condiciones. Te pedimos que los leas atentamente antes de navegar por nuestro sitio. Si no estás de acuerdo con alguna parte de estos términos, te recomendamos no utilizar nuestro sitio web."
+    },
+    "services": {
+      "title": "Descripción de servicios",
+      "text": "Chacal Estudio es un estudio de comunicación y diseño con propósito ubicado en la Patagonia, Argentina. Este sitio web tiene fines informativos y de presentación de nuestros servicios, los cuales incluyen consultoría comunicacional, asesoría, diagnóstico y gestión de la comunicación, así como consultoría sustentable. El contenido del sitio no constituye una oferta contractual vinculante."
+    },
+    "intellectualProperty": {
+      "title": "Propiedad intelectual",
+      "text": "Todo el contenido de este sitio web, incluyendo pero no limitado a textos, imágenes, logotipos, diseños, íconos y material gráfico, es propiedad de Chacal Estudio o de sus respectivos titulares y está protegido por las leyes de propiedad intelectual de Argentina y tratados internacionales.",
+      "restrictions": "Queda prohibida la reproducción, distribución, modificación o uso del contenido sin autorización previa y por escrito de Chacal Estudio, excepto para uso personal y no comercial."
+    },
+    "userConduct": {
+      "title": "Conducta del usuario",
+      "intro": "Al utilizar nuestro sitio web, te comprometés a:",
+      "items": {
+        "lawful": "Usar el sitio de manera legal y respetuosa",
+        "noHarm": "No intentar dañar, deshabilitar o sobrecargar nuestros servidores",
+        "noMalware": "No introducir virus, código malicioso o cualquier tecnología dañina",
+        "noUnauthorized": "No intentar acceder de forma no autorizada a cualquier parte del sitio"
+      }
+    },
+    "liability": {
+      "title": "Limitación de responsabilidad",
+      "text": "La información proporcionada en este sitio web se ofrece \"tal cual\" y con fines informativos. Chacal Estudio no garantiza la exactitud, integridad o actualidad de la información y no se responsabiliza por errores u omisiones.",
+      "disclaimer": "En ningún caso Chacal Estudio será responsable por daños directos, indirectos, incidentales, consecuentes o punitivos que surjan del uso o la imposibilidad de uso de este sitio web."
+    },
+    "externalLinks": {
+      "title": "Enlaces externos",
+      "text": "Este sitio puede contener enlaces a sitios web de terceros. Estos enlaces se proporcionan únicamente para tu conveniencia. Chacal Estudio no tiene control sobre el contenido de estos sitios y no se responsabiliza por su contenido, políticas de privacidad o prácticas."
+    },
+    "modifications": {
+      "title": "Modificaciones",
+      "text": "Chacal Estudio se reserva el derecho de modificar estos términos y condiciones en cualquier momento. Las modificaciones entrarán en vigor inmediatamente después de su publicación en este sitio. Te recomendamos revisar esta página periódicamente para estar informado/a de cualquier cambio."
+    },
+    "governingLaw": {
+      "title": "Legislación aplicable",
+      "text": "Estos términos y condiciones se rigen por las leyes de la República Argentina. Cualquier disputa relacionada con el uso de este sitio web estará sujeta a la jurisdicción exclusiva de los tribunales competentes de Argentina."
+    },
+    "cookies": {
+      "sectionTitle": "Política de Cookies",
+      "what": {
+        "title": "¿Qué son las cookies?",
+        "text": "Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitás un sitio web. Se utilizan para hacer que los sitios funcionen de manera más eficiente y para proporcionar información a los propietarios del sitio."
+      },
+      "types": {
+        "title": "Tipos de cookies que utilizamos",
+        "essential": {
+          "title": "Cookies esenciales",
+          "text": "Son necesarias para el funcionamiento básico del sitio. Permiten navegar y utilizar funciones esenciales como recordar tus preferencias de idioma. Estas cookies no pueden desactivarse."
+        },
+        "analytics": {
+          "title": "Cookies de análisis",
+          "text": "Nos ayudan a entender cómo los visitantes interactúan con nuestro sitio, recopilando información de forma anónima. Esto nos permite mejorar continuamente la experiencia de usuario."
+        },
+        "preferences": {
+          "title": "Cookies de preferencias",
+          "text": "Permiten que el sitio recuerde las elecciones que hacés (como tu idioma preferido) para proporcionar una experiencia más personalizada."
+        }
+      },
+      "manage": {
+        "title": "¿Cómo gestionar las cookies?",
+        "text": "Podés configurar tu navegador para que rechace cookies o te avise cuando se envían. Sin embargo, tené en cuenta que algunas funciones del sitio pueden no funcionar correctamente si deshabilitás las cookies.",
+        "browserSettings": "La mayoría de los navegadores te permiten ver, gestionar, eliminar y bloquear cookies. Consultá la ayuda de tu navegador para obtener información específica."
+      },
+      "thirdParty": {
+        "title": "Cookies de terceros",
+        "text": "Podemos utilizar servicios de terceros (como herramientas de analítica) que pueden establecer sus propias cookies. No tenemos control sobre estas cookies de terceros. Te recomendamos revisar las políticas de privacidad de estos servicios."
+      },
+      "consent": {
+        "title": "Tu consentimiento",
+        "text": "Al continuar navegando por nuestro sitio después de ver el banner de cookies, aceptás el uso de cookies de acuerdo con esta política. Podés cambiar tus preferencias en cualquier momento utilizando el enlace de configuración de cookies en el pie de página."
+      },
+      "updates": {
+        "title": "Actualizaciones de esta política",
+        "text": "Podemos actualizar esta política de cookies ocasionalmente. Te notificaremos sobre cualquier cambio significativo a través de un aviso en nuestro sitio web."
+      }
+    },
+    "contact": {
+      "title": "Contacto",
+      "text": "Si tenés preguntas sobre estos términos y condiciones o nuestra política de cookies, podés contactarnos:",
+      "email": "Correo electrónico",
+      "location": "Ubicación"
+    },
+    "meta": {
+      "title": "Términos y Condiciones | Chacal Estudio",
+      "description": "Términos y condiciones de uso del sitio web de Chacal Estudio, incluyendo política de cookies. Conocé tus derechos y obligaciones al navegar por nuestro sitio."
+    }
+  },
   "projects": {
     "title": "Proyectos",
     "subtitle": "Casos seleccionados que reflejan nuestro compromiso con la comunicación con propósito y triple impacto.",
