@@ -175,6 +175,72 @@
     "privacy": "Privacy Policy",
     "terms": "Terms & Conditions"
   },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated",
+    "intro": {
+      "title": "Introduction",
+      "text": "At Chacal Estudio, we deeply value your privacy and are committed to protecting your personal data with transparency and responsibility. This policy describes how we collect, use, and protect your information when you interact with our website and services."
+    },
+    "dataCollection": {
+      "title": "What data do we collect?",
+      "intro": "We collect information in a limited manner and only when necessary to provide you with better service:",
+      "contactForm": {
+        "title": "Contact form information",
+        "text": "When you write to us, we collect your name, email address, and the content of your message so we can respond to you."
+      },
+      "cookies": {
+        "title": "Cookies and similar technologies",
+        "text": "We use essential cookies for site functionality and, with your consent, analytics cookies to understand how to improve your experience."
+      },
+      "analytics": {
+        "title": "Navigation data",
+        "text": "We may collect anonymous information about how you navigate our site (pages visited, time spent) to improve our content."
+      }
+    },
+    "dataUsage": {
+      "title": "How do we use your data?",
+      "intro": "We use your information exclusively to:",
+      "items": {
+        "respond": "Respond to your inquiries and requests in a personalized manner",
+        "improve": "Improve our website and browsing experience",
+        "communicate": "Send you relevant information about our services, only if you have given us your consent",
+        "legal": "Comply with legal obligations when applicable"
+      }
+    },
+    "dataProtection": {
+      "title": "How do we protect your data?",
+      "text": "We implement technical and organizational security measures to protect your information against unauthorized access, loss, or alteration. This includes the use of encrypted connections (HTTPS), restricted access to personal data, and periodic reviews of our security practices."
+    },
+    "userRights": {
+      "title": "Your rights",
+      "intro": "In accordance with Argentina's Personal Data Protection Law (Law 25.326) and applicable regulations, you have the right to:",
+      "access": "Access your personal data in our possession",
+      "rectification": "Request correction of inaccurate or incomplete data",
+      "deletion": "Request deletion of your data when it is no longer necessary",
+      "opposition": "Object to the processing of your data in certain circumstances",
+      "outro": "To exercise any of these rights, you can contact us at the email address provided at the end of this policy."
+    },
+    "thirdParty": {
+      "title": "Third-party services",
+      "text": "Our site may use third-party services for analytics and functionality (such as web analytics tools). These services may collect information independently according to their own privacy policies. We recommend reviewing the privacy policies of these external services.",
+      "cookieNote": "You can manage your cookie preferences at any time through the cookie settings banner on our site."
+    },
+    "contact": {
+      "title": "Contact",
+      "text": "If you have questions, concerns, or wish to exercise your privacy-related rights, please don't hesitate to contact us:",
+      "email": "Email",
+      "location": "Location"
+    },
+    "updates": {
+      "title": "Updates to this policy",
+      "text": "We may update this privacy policy occasionally to reflect changes in our practices or applicable legislation. Any significant changes will be communicated through our website. We recommend reviewing this page periodically."
+    },
+    "meta": {
+      "title": "Privacy Policy | Chacal Estudio",
+      "description": "Learn how Chacal Estudio collects, uses, and protects your personal data. Our privacy policy reflects our commitment to transparency and ethics."
+    }
+  },
   "projects": {
     "title": "Projects",
     "subtitle": "Selected cases that reflect our commitment to purposeful communication and triple impact.",

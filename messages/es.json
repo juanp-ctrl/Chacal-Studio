@@ -175,6 +175,72 @@
     "privacy": "Políticas de Privacidad",
     "terms": "Términos y Condiciones"
   },
+  "privacy": {
+    "title": "Políticas de Privacidad",
+    "lastUpdated": "Última actualización",
+    "intro": {
+      "title": "Introducción",
+      "text": "En Chacal Estudio valoramos profundamente tu privacidad y nos comprometemos a proteger tus datos personales con transparencia y responsabilidad. Esta política describe cómo recopilamos, utilizamos y protegemos tu información cuando interactúas con nuestro sitio web y servicios."
+    },
+    "dataCollection": {
+      "title": "¿Qué datos recopilamos?",
+      "intro": "Recopilamos información de manera limitada y solo cuando es necesario para brindarte un mejor servicio:",
+      "contactForm": {
+        "title": "Información de formularios de contacto",
+        "text": "Cuando nos escribís, recopilamos tu nombre, correo electrónico y el contenido de tu mensaje para poder responderte."
+      },
+      "cookies": {
+        "title": "Cookies y tecnologías similares",
+        "text": "Utilizamos cookies esenciales para el funcionamiento del sitio y, con tu consentimiento, cookies de análisis para entender cómo mejorar tu experiencia."
+      },
+      "analytics": {
+        "title": "Datos de navegación",
+        "text": "Podemos recopilar información anónima sobre cómo navegás por nuestro sitio (páginas visitadas, tiempo de permanencia) para mejorar nuestro contenido."
+      }
+    },
+    "dataUsage": {
+      "title": "¿Cómo usamos tus datos?",
+      "intro": "Utilizamos tu información exclusivamente para:",
+      "items": {
+        "respond": "Responder a tus consultas y solicitudes de manera personalizada",
+        "improve": "Mejorar nuestro sitio web y la experiencia de navegación",
+        "communicate": "Enviarte información relevante sobre nuestros servicios, solo si nos has dado tu consentimiento",
+        "legal": "Cumplir con obligaciones legales cuando corresponda"
+      }
+    },
+    "dataProtection": {
+      "title": "¿Cómo protegemos tus datos?",
+      "text": "Implementamos medidas de seguridad técnicas y organizativas para proteger tu información contra accesos no autorizados, pérdida o alteración. Esto incluye el uso de conexiones cifradas (HTTPS), acceso restringido a datos personales y revisiones periódicas de nuestras prácticas de seguridad."
+    },
+    "userRights": {
+      "title": "Tus derechos",
+      "intro": "De acuerdo con la Ley de Protección de Datos Personales de Argentina (Ley 25.326) y normativas aplicables, tenés derecho a:",
+      "access": "Acceder a tus datos personales en nuestra posesión",
+      "rectification": "Solicitar la corrección de datos inexactos o incompletos",
+      "deletion": "Pedir la eliminación de tus datos cuando ya no sean necesarios",
+      "opposition": "Oponerte al tratamiento de tus datos en determinadas circunstancias",
+      "outro": "Para ejercer cualquiera de estos derechos, podés contactarnos a través del correo electrónico indicado al final de esta política."
+    },
+    "thirdParty": {
+      "title": "Servicios de terceros",
+      "text": "Nuestro sitio puede utilizar servicios de terceros para análisis y funcionamiento (como herramientas de analítica web). Estos servicios pueden recopilar información de manera independiente según sus propias políticas de privacidad. Te recomendamos revisar las políticas de privacidad de estos servicios externos.",
+      "cookieNote": "Podés gestionar tus preferencias de cookies en cualquier momento a través del banner de configuración de cookies en nuestro sitio."
+    },
+    "contact": {
+      "title": "Contacto",
+      "text": "Si tenés preguntas, inquietudes o querés ejercer tus derechos relacionados con la privacidad, no dudes en contactarnos:",
+      "email": "Correo electrónico",
+      "location": "Ubicación"
+    },
+    "updates": {
+      "title": "Actualizaciones de esta política",
+      "text": "Podemos actualizar esta política de privacidad ocasionalmente para reflejar cambios en nuestras prácticas o en la legislación aplicable. Cualquier modificación significativa será comunicada a través de nuestro sitio web. Te recomendamos revisar esta página periódicamente."
+    },
+    "meta": {
+      "title": "Políticas de Privacidad | Chacal Estudio",
+      "description": "Conocé cómo Chacal Estudio recopila, usa y protege tus datos personales. Nuestra política de privacidad refleja nuestro compromiso con la transparencia y la ética."
+    }
+  },
   "projects": {
     "title": "Proyectos",
     "subtitle": "Casos seleccionados que reflejan nuestro compromiso con la comunicación con propósito y triple impacto.",
