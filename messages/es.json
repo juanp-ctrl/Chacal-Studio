@@ -1,0 +1,456 @@
+{
+  "IntroLoader": {
+    "headline": "Comunicando lo humano",
+    "tagline1": "Con un foco socio ambiental",
+    "tagline2": "Con un impacto global"
+  },
+  "nav": {
+    "method": "El Método",
+    "impact": "Nuestro Impacto",
+    "services": "Servicios",
+    "plantBased": "Plant Based Treaty",
+    "contact": "Contacto",
+    "projects": "Proyectos",
+    "menu": "Menú",
+    "switchLanguage": "Cambiar idioma"
+  },
+  "hero": {
+    "title": "Comunicando lo humano",
+    "subtitle": "Creamos estrategias de comunicación con propósito desde la Patagonia. Somos un estudio de comunicación y diseño que transforma marcas en agentes de cambio, respetando a todos los seres sintientes y el planeta.",
+    "cta": "Descubrí nuestra propuesta"
+  },
+  "method": {
+    "title": "El método",
+    "description": "De una necesidad surge el análisis, en el análisis aparece el descubrimiento/entendimiento, para luego delimitar objetivos, encontrar estrategias, idear soluciones, obtener resultados y dejar huellas. Esas huellas son lo que nos permite ser reconocibles, recordables y diferenciarnos del resto, fortaleciendo valores a través de una comunicación sólida, humana y planificada.",
+    "step1": {
+      "title": "Análisis",
+      "description": "Investigación profunda del contexto y necesidades."
+    },
+    "step2": {
+      "title": "Descubrimiento",
+      "description": "Hallazgos clave para orientar el proyecto."
+    },
+    "step3": {
+      "title": "Objetivos",
+      "description": "Definición clara de metas y alcance."
+    },
+    "step4": {
+      "title": "Estrategias",
+      "description": "Plan de acción a medida y rutas creativas."
+    },
+    "step5": {
+      "title": "Soluciones",
+      "description": "Implementación efectiva y desarrollo."
+    },
+    "step6": {
+      "title": "Resultados",
+      "description": "Medición de impacto y análisis de métricas."
+    },
+    "step7": {
+      "title": "Huellas",
+      "description": "Legado positivo sostenible y seguimiento."
+    }
+  },
+  "impact": {
+    "title": "Nuestro impacto",
+    "subtitle": "Nos comprometemos a ser una fuerza de bien en el mundo.",
+    "team": {
+      "title": "En el equipo",
+      "description": "Fomentamos un espacio de trabajo seguro, inclusivo y equitativo, donde no hay lugar para la discriminación ni el acoso. Creemos en la flexibilidad y el trabajo remoto como parte de un balance real entre la vida profesional y personal. Buscamos que el crecimiento de cada colaborador esté alineado con su propósito, con remuneraciones justas y transparentes."
+    },
+    "community": {
+      "title": "En la comunidad",
+      "description": "Guiamos a otras organizaciones a adoptar prácticas de triple impacto. Apoyamos a proveedores locales y priorizamos a aquellos de grupos subrepresentados. Ofrecemos tarifas reducidas y servicios pro bono a ONGs y grupos en situación de vulnerabilidad, reservamos el derecho de no colaborar con clientes o proveedores cuya actividad sea incompatible con nuestros valores."
+    },
+    "planet": {
+      "title": "En el planeta",
+      "description": "Medimos nuestro consumo de energía, agua y nuestras emisiones para entender y reducir nuestro impacto. Compartimos recursos con nuestro equipo para fomentar prácticas sostenibles en sus espacios de trabajo, como el uso eficiente de la energía y la eliminación segura de residuos electrónicos. Promovemos la digitalización y tenemos un compromiso de cero desechos a vertederos, separando nuestros residuos para reciclaje o compostaje."
+    }
+  },
+  "services": {
+    "title": "Lo que hacemos",
+    "consulting": {
+      "title": "Consultoría y estrategia",
+      "description": "Ayudamos a nuestrxs clientxs a alcanzar sus objetivos a través de la definición de su target y la determinación de metas, para luego desarrollar un plan de comunicación integral y personalizado para ellxs."
+    },
+    "advisory": {
+      "title": "Asesoría comunicacional",
+      "description": "Un espacio personalizado para entender, analizar y encontrar la estrategia adecuada según cada objetivo. Esto lo hacemos a través de un vínculo uno a uno, buscando comprender la situación actual y entender las necesidades."
+    },
+    "diagnostic": {
+      "title": "Diagnóstico comunicacional",
+      "description": "Investigamos, evaluamos y desarrollamos estrategias para ayudar a nuestrxs clientxs a entender cómo están comunicándose actualmente y a identificar oportunidades de mejora."
+    },
+    "management": {
+      "title": "Gestión de la comunicación",
+      "description": "Nos encargamos de la planificación y gestión de la comunicación interna y/o externa de las marcas, basándonos en estrategias y tácticas sólidas y prácticas."
+    },
+    "sustainability": {
+      "title": "Consultoría Sustentable",
+      "description": "Cada tarea y cada proyecto es realizado con un foco socioambiental, donde realizamos inventarios de huella de carbono organizacional y de productos, diseño de estrategias de sustentabilidad, Análisis de Ciclo de Vida (ACV), elaboración y diseño de reportes de sustentabilidad, capacitaciones in company, etc."
+    }
+  },
+  "plantBased": {
+    "title": "Alianza con Plant Based Treaty",
+    "intro": "Estamos orgullosxs de trabajar junto al Plant Based Treaty (Acuerdo Basado en Plantas), una iniciativa global de base que busca poner a los sistemas alimentarios en el centro del debate sobre la crisis climática.",
+    "mission": "La misión del Acuerdo",
+    "missionText1": "El Plant Based Treaty es una respuesta directa a la emergencia climática. Su misión es promover un cambio urgente hacia un sistema alimentario justo y basado en plantas, que nos permita vivir de forma segura dentro de nuestros límites planetarios y reforestar la Tierra.",
+    "missionText2": "Siguiendo el modelo del Acuerdo de París, el tratado se basa en tres principios fundamentales (3R):",
+    "relinquish": {
+      "title": "Relinquish (Renunciar)",
+      "description": "Detener la degradación de los ecosistemas causada por la agricultura animal."
+    },
+    "redirect": {
+      "title": "Redirect (Redirigir)",
+      "description": "Reorientar políticas y subsidios hacia un sistema alimentario basado en plantas."
+    },
+    "restore": {
+      "title": "Restore (Restaurar)",
+      "description": "Reforestar y restaurar ecosistemas clave dañados por la ganadería."
+    },
+    "contribution": {
+      "title": "Nuestra contribución",
+      "text": "Apoyamos activamente esta causa donando horas de consultoría y gestión estratégica pro bono para amplificar su mensaje, y donamos el 2% de nuestras ventas totales mensuales para financiar sus programas."
+    },
+    "impact": {
+      "title": "El Impacto",
+      "text": "Esta iniciativa ya ha conseguido el apoyo de figuras culturales como Paul McCartney y la Dra. Jane Goodall, y ha sido adoptada por 34 ciudades en 10 países, incluyendo capitales y grandes centros urbanos como Los Ángeles, Ámsterdam, Edimburgo y Belfast."
+    },
+    "join": "Sumate al movimiento",
+    "signIndividual": "Firmá como individuo",
+    "signOrg": "Firmá como organización",
+    "signBusiness": "Firmá como negocio",
+    "donate": {
+      "title": "Hacé tu donación",
+      "text": "Tu apoyo nos ayuda a amplificar el mensaje y trabajar por un futuro más sustentable",
+      "cta": "Donar ahora"
+    },
+    "learnMore": "Conocé más sobre Plant Based Treaty"
+  },
+  "sdg": {
+    "title": "Objetivos de Desarrollo Sostenible",
+    "subtitle": "Nuestras políticas y acciones de impacto contribuyen directamente a las metas de los ODS de las Naciones Unidas, enfocando nuestros esfuerzos en:",
+    "5": {
+      "title": "Igualdad de Género",
+      "description": "Contribuimos a las metas 5.1 (eliminar la discriminación) y 5.5 (asegurar la participación plena) a través de nuestras políticas de no discriminación y la preferencia por proveedores de grupos subrepresentados, incluyendo empresas lideradas por mujeres."
+    },
+    "8": {
+      "title": "Trabajo Decente y Crecimiento Económico",
+      "description": "Impulsamos las metas 8.5 (empleo pleno y productivo con pago justo), 8.6 (empleo y capacitación para jóvenes) y 8.7 (erradicar el trabajo forzoso y el trabajo infantil) mediante nuestras políticas de remuneración equitativa, prohibición de trabajo infantil/forzoso y un entorno laboral flexible."
+    },
+    "11": {
+      "title": "Ciudades y Comunidades Sostenibles",
+      "description": "Aportamos a la meta 11.6 (reducir el impacto ambiental de las ciudades) gracias a nuestro plan de gestión ambiental, que incluye la correcta gestión y separación de residuos y la eliminación segura de residuos electrónicos."
+    },
+    "12": {
+      "title": "Producción y Consumo Responsables",
+      "description": "Trabajamos por la meta 12.5 (reducir la generación de desechos) promoviendo la digitalización para minimizar el uso de papel y fomentando la economía circular en nuestras operaciones."
+    },
+    "13": {
+      "title": "Acción por el Clima",
+      "description": "Contribuimos a las metas 13.2 (incorporar medidas de cambio climático en las políticas) y 13.3 (mejorar la educación y sensibilización) a través de la medición y compensación de nuestra huella de carbono y educando activamente a nuestros clientes en prácticas sostenibles."
+    }
+  },
+  "partners": {
+    "title": "Somos parte de",
+    "subtitle": "Colaboramos con organizaciones que comparten nuestra visión de un mundo más justo y sustentable",
+    "animalSave": {
+      "name": "Animal Save Movement",
+      "description": "Nos alineamos con la misión de Animal Save Movement de crear un movimiento de justicia, compasión y veganismo a través de la sensibilización pública y la educación, buscando poner fin a la explotación y cosificación animal, y adoptando activamente una postura anti-especista en contra de todas las formas de discriminación y opresión."
+    },
+    "cleanCreatives": {
+      "name": "Clean Creatives",
+      "description": "Como estudio, nos comprometemos a rechazar contratos con la industria de los combustibles fósiles. Creemos que la industria creativa no debe usar su talento para lavar la imagen de las corporaciones que impulsan la crisis climática."
+    },
+    "ati": {
+      "name": "ati (Agencias Triple Impacto)",
+      "description": "La primera comunidad latinoamericana que reúne a agencias de comunicación, publicidad y marketing con propósito. Fundada por done! y Bi, ati. busca capitalizar el talento creativo para contribuir a solucionar las problemáticas socioambientales más urgentes e impulsar la transición hacia un nuevo modelo social y económico."
+    },
+    "redCreer": {
+      "name": "Red Creer",
+      "description": "Integramos la Red Creer, una red colaborativa de más de 160 organizaciones de los sectores público, privado y social en Argentina, la cual busca generar oportunidades de inclusión socioeconómica para personas que están o estuvieron privadas de su libertad, abordando el estigma y construyendo una sociedad con mayores oportunidades para todos."
+    },
+    "learnMore": "Conocer más"
+  },
+  "footer": {
+    "tagline": "Comunicación y diseño con propósito desde la Patagonia argentina.",
+    "links": "Enlaces",
+    "follow": "Seguinos",
+    "copyright": "Chacal Estudio. Todos los derechos reservados.",
+    "privacy": "Políticas de Privacidad",
+    "terms": "Términos y Condiciones"
+  },
+  "privacy": {
+    "title": "Políticas de Privacidad",
+    "lastUpdated": "Última actualización",
+    "intro": {
+      "title": "Introducción",
+      "text": "En Chacal Estudio valoramos profundamente tu privacidad y nos comprometemos a proteger tus datos personales con transparencia y responsabilidad. Esta política describe cómo recopilamos, utilizamos y protegemos tu información cuando interactúas con nuestro sitio web y servicios."
+    },
+    "dataCollection": {
+      "title": "¿Qué datos recopilamos?",
+      "intro": "Recopilamos información de manera limitada y solo cuando es necesario para brindarte un mejor servicio:",
+      "contactForm": {
+        "title": "Información de formularios de contacto",
+        "text": "Cuando nos escribís, recopilamos tu nombre, correo electrónico y el contenido de tu mensaje para poder responderte."
+      },
+      "cookies": {
+        "title": "Cookies y tecnologías similares",
+        "text": "Utilizamos cookies esenciales para el funcionamiento del sitio y, con tu consentimiento, cookies de análisis para entender cómo mejorar tu experiencia."
+      },
+      "analytics": {
+        "title": "Datos de navegación",
+        "text": "Podemos recopilar información anónima sobre cómo navegás por nuestro sitio (páginas visitadas, tiempo de permanencia) para mejorar nuestro contenido."
+      }
+    },
+    "dataUsage": {
+      "title": "¿Cómo usamos tus datos?",
+      "intro": "Utilizamos tu información exclusivamente para:",
+      "items": {
+        "respond": "Responder a tus consultas y solicitudes de manera personalizada",
+        "improve": "Mejorar nuestro sitio web y la experiencia de navegación",
+        "communicate": "Enviarte información relevante sobre nuestros servicios, solo si nos has dado tu consentimiento",
+        "legal": "Cumplir con obligaciones legales cuando corresponda"
+      }
+    },
+    "dataProtection": {
+      "title": "¿Cómo protegemos tus datos?",
+      "text": "Implementamos medidas de seguridad técnicas y organizativas para proteger tu información contra accesos no autorizados, pérdida o alteración. Esto incluye el uso de conexiones cifradas (HTTPS), acceso restringido a datos personales y revisiones periódicas de nuestras prácticas de seguridad."
+    },
+    "userRights": {
+      "title": "Tus derechos",
+      "intro": "De acuerdo con la Ley de Protección de Datos Personales de Argentina (Ley 25.326) y normativas aplicables, tenés derecho a:",
+      "access": "Acceder a tus datos personales en nuestra posesión",
+      "rectification": "Solicitar la corrección de datos inexactos o incompletos",
+      "deletion": "Pedir la eliminación de tus datos cuando ya no sean necesarios",
+      "opposition": "Oponerte al tratamiento de tus datos en determinadas circunstancias",
+      "outro": "Para ejercer cualquiera de estos derechos, podés contactarnos a través del correo electrónico indicado al final de esta política."
+    },
+    "thirdParty": {
+      "title": "Servicios de terceros",
+      "text": "Nuestro sitio puede utilizar servicios de terceros para análisis y funcionamiento (como herramientas de analítica web). Estos servicios pueden recopilar información de manera independiente según sus propias políticas de privacidad. Te recomendamos revisar las políticas de privacidad de estos servicios externos.",
+      "cookieNote": "Podés gestionar tus preferencias de cookies en cualquier momento a través del banner de configuración de cookies en nuestro sitio."
+    },
+    "contact": {
+      "title": "Contacto",
+      "text": "Si tenés preguntas, inquietudes o querés ejercer tus derechos relacionados con la privacidad, no dudes en contactarnos:",
+      "email": "Correo electrónico",
+      "location": "Ubicación"
+    },
+    "updates": {
+      "title": "Actualizaciones de esta política",
+      "text": "Podemos actualizar esta política de privacidad ocasionalmente para reflejar cambios en nuestras prácticas o en la legislación aplicable. Cualquier modificación significativa será comunicada a través de nuestro sitio web. Te recomendamos revisar esta página periódicamente."
+    },
+    "meta": {
+      "title": "Políticas de Privacidad | Chacal Estudio",
+      "description": "Conocé cómo Chacal Estudio recopila, usa y protege tus datos personales. Nuestra política de privacidad refleja nuestro compromiso con la transparencia y la ética."
+    }
+  },
+  "terms": {
+    "title": "Términos y Condiciones",
+    "lastUpdated": "Última actualización",
+    "intro": {
+      "title": "Bienvenido/a",
+      "text": "Al acceder y utilizar el sitio web de Chacal Estudio, aceptás cumplir con estos términos y condiciones. Te pedimos que los leas atentamente antes de navegar por nuestro sitio. Si no estás de acuerdo con alguna parte de estos términos, te recomendamos no utilizar nuestro sitio web."
+    },
+    "services": {
+      "title": "Descripción de servicios",
+      "text": "Chacal Estudio es un estudio de comunicación y diseño con propósito ubicado en la Patagonia, Argentina. Este sitio web tiene fines informativos y de presentación de nuestros servicios, los cuales incluyen consultoría comunicacional, asesoría, diagnóstico y gestión de la comunicación, así como consultoría sustentable. El contenido del sitio no constituye una oferta contractual vinculante."
+    },
+    "intellectualProperty": {
+      "title": "Propiedad intelectual",
+      "text": "Todo el contenido de este sitio web, incluyendo pero no limitado a textos, imágenes, logotipos, diseños, íconos y material gráfico, es propiedad de Chacal Estudio o de sus respectivos titulares y está protegido por las leyes de propiedad intelectual de Argentina y tratados internacionales.",
+      "restrictions": "Queda prohibida la reproducción, distribución, modificación o uso del contenido sin autorización previa y por escrito de Chacal Estudio, excepto para uso personal y no comercial."
+    },
+    "userConduct": {
+      "title": "Conducta del usuario",
+      "intro": "Al utilizar nuestro sitio web, te comprometés a:",
+      "items": {
+        "lawful": "Usar el sitio de manera legal y respetuosa",
+        "noHarm": "No intentar dañar, deshabilitar o sobrecargar nuestros servidores",
+        "noMalware": "No introducir virus, código malicioso o cualquier tecnología dañina",
+        "noUnauthorized": "No intentar acceder de forma no autorizada a cualquier parte del sitio"
+      }
+    },
+    "liability": {
+      "title": "Limitación de responsabilidad",
+      "text": "La información proporcionada en este sitio web se ofrece \"tal cual\" y con fines informativos. Chacal Estudio no garantiza la exactitud, integridad o actualidad de la información y no se responsabiliza por errores u omisiones.",
+      "disclaimer": "En ningún caso Chacal Estudio será responsable por daños directos, indirectos, incidentales, consecuentes o punitivos que surjan del uso o la imposibilidad de uso de este sitio web."
+    },
+    "externalLinks": {
+      "title": "Enlaces externos",
+      "text": "Este sitio puede contener enlaces a sitios web de terceros. Estos enlaces se proporcionan únicamente para tu conveniencia. Chacal Estudio no tiene control sobre el contenido de estos sitios y no se responsabiliza por su contenido, políticas de privacidad o prácticas."
+    },
+    "modifications": {
+      "title": "Modificaciones",
+      "text": "Chacal Estudio se reserva el derecho de modificar estos términos y condiciones en cualquier momento. Las modificaciones entrarán en vigor inmediatamente después de su publicación en este sitio. Te recomendamos revisar esta página periódicamente para estar informado/a de cualquier cambio."
+    },
+    "governingLaw": {
+      "title": "Legislación aplicable",
+      "text": "Estos términos y condiciones se rigen por las leyes de la República Argentina. Cualquier disputa relacionada con el uso de este sitio web estará sujeta a la jurisdicción exclusiva de los tribunales competentes de Argentina."
+    },
+    "cookies": {
+      "sectionTitle": "Política de Cookies",
+      "what": {
+        "title": "¿Qué son las cookies?",
+        "text": "Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitás un sitio web. Se utilizan para hacer que los sitios funcionen de manera más eficiente y para proporcionar información a los propietarios del sitio."
+      },
+      "types": {
+        "title": "Tipos de cookies que utilizamos",
+        "essential": {
+          "title": "Cookies esenciales",
+          "text": "Son necesarias para el funcionamiento básico del sitio. Permiten navegar y utilizar funciones esenciales como recordar tus preferencias de idioma. Estas cookies no pueden desactivarse."
+        },
+        "analytics": {
+          "title": "Cookies de análisis",
+          "text": "Nos ayudan a entender cómo los visitantes interactúan con nuestro sitio, recopilando información de forma anónima. Esto nos permite mejorar continuamente la experiencia de usuario."
+        },
+        "preferences": {
+          "title": "Cookies de preferencias",
+          "text": "Permiten que el sitio recuerde las elecciones que hacés (como tu idioma preferido) para proporcionar una experiencia más personalizada."
+        }
+      },
+      "manage": {
+        "title": "¿Cómo gestionar las cookies?",
+        "text": "Podés configurar tu navegador para que rechace cookies o te avise cuando se envían. Sin embargo, tené en cuenta que algunas funciones del sitio pueden no funcionar correctamente si deshabilitás las cookies.",
+        "browserSettings": "La mayoría de los navegadores te permiten ver, gestionar, eliminar y bloquear cookies. Consultá la ayuda de tu navegador para obtener información específica."
+      },
+      "thirdParty": {
+        "title": "Cookies de terceros",
+        "text": "Podemos utilizar servicios de terceros (como herramientas de analítica) que pueden establecer sus propias cookies. No tenemos control sobre estas cookies de terceros. Te recomendamos revisar las políticas de privacidad de estos servicios."
+      },
+      "consent": {
+        "title": "Tu consentimiento",
+        "text": "Al continuar navegando por nuestro sitio después de ver el banner de cookies, aceptás el uso de cookies de acuerdo con esta política. Podés cambiar tus preferencias en cualquier momento utilizando el enlace de configuración de cookies en el pie de página."
+      },
+      "updates": {
+        "title": "Actualizaciones de esta política",
+        "text": "Podemos actualizar esta política de cookies ocasionalmente. Te notificaremos sobre cualquier cambio significativo a través de un aviso en nuestro sitio web."
+      }
+    },
+    "contact": {
+      "title": "Contacto",
+      "text": "Si tenés preguntas sobre estos términos y condiciones o nuestra política de cookies, podés contactarnos:",
+      "email": "Correo electrónico",
+      "location": "Ubicación"
+    },
+    "meta": {
+      "title": "Términos y Condiciones | Chacal Estudio",
+      "description": "Términos y condiciones de uso del sitio web de Chacal Estudio, incluyendo política de cookies. Conocé tus derechos y obligaciones al navegar por nuestro sitio."
+    }
+  },
+  "projects": {
+    "title": "Proyectos",
+    "subtitle": "Casos seleccionados que reflejan nuestro compromiso con la comunicación con propósito y triple impacto.",
+    "viewAll": "Ver todos los proyectos",
+    "backHome": "Volver al inicio",
+    "allProjects": "Nuestros Proyectos",
+    "allProjectsSubtitle": "Cada proyecto es una oportunidad para generar impacto positivo. Descubre cómo el diseño y la comunicación pueden transformar realidades.",
+    "detail": {
+      "backToProjects": "Volver a proyectos",
+      "client": "Cliente",
+      "year": "Año",
+      "services": "Servicios",
+      "challenge": "El desafío",
+      "solution": "La solución",
+      "results": "Resultados",
+      "gallery": "Galería",
+      "nextProject": "Siguiente proyecto"
+    },
+    "ecosfera-urbana": {
+      "title": "Ecosfera Urbana",
+      "summary": "Campaña creativa para promover prácticas sostenibles en ciudades latinoamericanas.",
+      "description": "Una iniciativa integral para transformar la relación entre los ciudadanos y su entorno urbano mediante intervenciones artísticas y comunicación estratégica.",
+      "challenge": "Conectar emocionalmente a los habitantes de grandes urbes con la importancia de la sostenibilidad cotidiana, superando la apatía y el cinismo.",
+      "solution": "Desarrollamos una identidad visual vibrante y un tono de voz cercano que celebra las pequeñas acciones, utilizando el arte urbano como canal principal.",
+      "results": "Alcance de más de 2 millones de personas en 3 países y un aumento del 40% en la participación de programas municipales de reciclaje."
+    },
+    "conexion-aula": {
+      "title": "Conexión Aula",
+      "summary": "Plataforma educativa que humaniza el aprendizaje digital para comunidades vulnerables.",
+      "description": "Diseño de experiencia de usuario para una plataforma de aprendizaje remoto diseñada específicamente para zonas con baja conectividad.",
+      "challenge": "Crear una interfaz intuitiva y ligera que funcione en dispositivos antiguos y con conexiones inestables, sin sacrificar la calidad pedagógica.",
+      "solution": "Implementamos un diseño \"offline-first\" con una estética limpia y amigable, priorizando la claridad y la accesibilidad sobre elementos decorativos pesados.",
+      "results": "Adopción por más de 50 escuelas rurales y una tasa de finalización de cursos del 85%."
+    },
+    "raices-del-futuro": {
+      "title": "Raíces del Futuro",
+      "summary": "Identidad visual y storytelling para una organización enfocada en reforestación comunitaria.",
+      "description": "Rebranding completo para una ONG que busca empoderar a comunidades locales a través de la reforestación y el cuidado del suelo.",
+      "challenge": "La organización era percibida como técnica y distante. Necesitaban una marca que inspirara pertenencia y acción comunitaria.",
+      "solution": "Creamos un sistema visual basado en formas orgánicas y colores de la tierra, acompañado de una narrativa que pone a la comunidad en el centro de la historia.",
+      "results": "Aumento del 200% en voluntariado local y reconocimiento internacional por mejores prácticas de comunicación ambiental."
+    },
+    "impacto-visual": {
+      "title": "Impacto Visual",
+      "summary": "Diseño de reporte anual interactivo para ONG de derechos humanos.",
+      "description": "Transformación de un reporte denso y técnico en una experiencia digital interactiva y conmovedora.",
+      "challenge": "Hacer accesibles y comprensibles datos complejos sobre violaciones de derechos humanos sin trivializar el sufrimiento.",
+      "solution": "Utilizamos scrollytelling y visualización de datos interactiva para guiar al usuario a través de la información, equilibrando datos duros con historias personales.",
+      "results": "El reporte más leído en la historia de la organización, con un tiempo promedio de permanencia de 8 minutos."
+    },
+    "voces-nativas": {
+      "title": "Voces Nativas",
+      "summary": "Plataforma de podcast para preservar lenguas indígenas en peligro de extinción.",
+      "description": "Un archivo sonoro vivo que celebra la diversidad lingüística y cultural a través de historias contadas en primera persona.",
+      "challenge": "Preservar lenguas orales en un formato digital moderno que sea atractivo para las nuevas generaciones.",
+      "solution": "Diseñamos una experiencia auditiva inmersiva acompañada de una interfaz visual minimalista que da protagonismo a la voz y al paisaje sonoro.",
+      "results": "Documentación de 12 lenguas en peligro y creación de una comunidad activa de jóvenes hablantes."
+    },
+    "energia-limpia": {
+      "title": "Energía Limpia",
+      "summary": "Rebranding para startup de energía solar accesible.",
+      "description": "Redefinición de la marca para una empresa que busca democratizar el acceso a la energía solar en hogares de bajos recursos.",
+      "challenge": "Diferenciarse en un mercado saturado de tecnología \"fría\" y conectar con las necesidades reales de las familias.",
+      "solution": "Construimos una marca cálida y optimista, centrada en el bienestar y el ahorro familiar, alejándonos del tecnicismo habitual del sector.",
+      "results": "Duplicación de las instalaciones mensuales y apertura de dos nuevas sucursales regionales."
+    }
+  },
+  "cookies": {
+    "title": "Aviso de Cookies",
+    "message": "Usamos cookies para mejorar tu experiencia y analizar nuestro tráfico. Al continuar navegando, aceptás nuestra política de privacidad.",
+    "accept": "Aceptar",
+    "decline": "Rechazar",
+    "link": "Leer más"
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "Queremos escuchar tu historia y ayudarte a contarla. Escribinos para empezar a trabajar juntos.",
+    "form": {
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "phone": "Teléfono",
+      "organization": "Organización",
+      "message": "Mensaje",
+      "policies": "Acepto las políticas de privacidad",
+      "placeholder": {
+        "name": "Tu nombre",
+        "email": "tu@email.com",
+        "phone": "+54 9 ...",
+        "organization": "Nombre de tu organización",
+        "message": "Contanos sobre tu proyecto..."
+      },
+      "submit": "Enviar mensaje",
+      "sending": "Enviando...",
+      "success": "Mensaje enviado con éxito",
+      "error": {
+        "policies": "Debés aceptar las políticas de privacidad",
+        "messageLength": "El mensaje debe tener al menos 20 caracteres",
+        "nameRequired": "El nombre es obligatorio",
+        "nameMinLength": "El nombre debe tener al menos 2 caracteres",
+        "emailRequired": "El correo electrónico es obligatorio",
+        "emailInvalid": "Por favor ingresá un correo electrónico válido",
+        "phoneInvalid": "Por favor ingresá un número de teléfono válido",
+        "messageRequired": "El mensaje es obligatorio",
+        "messageMinLength": "El mensaje debe tener al menos 10 caracteres",
+        "policiesRequired": "Debés aceptar las políticas de privacidad para continuar",
+        "turnstileRequired": "Por favor verifica que eres humano",
+        "generic": "Algo salió mal. Por favor inténtalo de nuevo."
+      }
+    },
+    "connect": "Conectemos",
+    "connectText": "Estamos siempre abiertos a nuevas ideas y colaboraciones. Si tenés un proyecto en mente o simplemente querés saludar, no dudes en contactarnos.",
+    "bCorp": "Compromiso de Impacto",
+    "bCorpText": "Como empresa comprometida con el triple impacto, buscamos trabajar con organizaciones que compartan nuestros valores de sustentabilidad y responsabilidad social."
+  }
+}

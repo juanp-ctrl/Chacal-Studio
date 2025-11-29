@@ -1,41 +1,34 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 import { Heading } from "@/components/atoms/Heading";
 import { Text } from "@/components/atoms/Text";
 
 const sdgColors = ['#EF402D', '#A31C44', '#F99D26', '#CF8D2A', '#48773E'];
 
 export function SDGSection() {
+  const t = useTranslations("sdg");
+
   const sdgs = [
     {
       number: 5,
-      title: "Igualdad de Género",
-      description: "Trabajamos activamente para asegurar la igualdad de oportunidades y el empoderamiento de todas las mujeres y niñas a través de nuestras políticas internas y narrativa.",
       color: sdgColors[0],
     },
     {
       number: 8,
-      title: "Trabajo Decente y Crecimiento Económico",
-      description: "Promovemos un crecimiento económico inclusivo y sostenible, garantizando condiciones de trabajo justas, creativas y dignas para todo nuestro equipo.",
       color: sdgColors[1],
     },
     {
       number: 11,
-      title: "Ciudades y Comunidades Sostenibles",
-      description: "Contribuimos a la creación de comunidades más inclusivas y sostenibles, apoyando iniciativas locales que mejoran la calidad de vida urbana y rural.",
       color: sdgColors[2],
     },
     {
       number: 12,
-      title: "Producción y Consumo Responsables",
-      description: "Adoptamos prácticas de consumo consciente y promovemos la producción responsable, minimizando residuos y optimizando recursos en cada proyecto.",
       color: sdgColors[3],
     },
     {
       number: 13,
-      title: "Acción por el Clima",
-      description: "Tomamos medidas urgentes para combatir el cambio climático, integrando la sostenibilidad ambiental en el corazón de nuestra estrategia de negocio y comunicación.",
       color: sdgColors[4],
     },
   ];
@@ -54,10 +47,10 @@ export function SDGSection() {
             as="h2"
             className="mb-6 text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-5xl"
           >
-            Objetivos de Desarrollo Sostenible
+            {t("title")}
           </Heading>
           <Text className="text-white/80 text-lg sm:text-xl max-w-3xl mx-auto font-light leading-relaxed">
-            Nuestro compromiso con un futuro mejor se refleja en nuestra alineación con los ODS de las Naciones Unidas.
+            {t("subtitle")}
           </Text>
         </motion.div>
 
@@ -83,10 +76,10 @@ export function SDGSection() {
               </div>
               <div className="p-8">
                 <Heading as="h3" className="text-white mb-4 text-xl font-bold leading-tight min-h-[3.5rem] flex items-center">
-                  {sdg.title}
+                  {t(`${sdg.number}.title`)}
                 </Heading>
                 <Text className="text-white/70 leading-relaxed font-light text-sm">
-                  {sdg.description}
+                  {t(`${sdg.number}.description`)}
                 </Text>
               </div>
             </motion.div>
@@ -96,4 +89,3 @@ export function SDGSection() {
     </section>
   );
 }
-

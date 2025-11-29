@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 import { 
   Search, 
   Compass, 
@@ -15,45 +16,19 @@ import { Heading } from "@/components/atoms/Heading";
 import { Text } from "@/components/atoms/Text";
 import { cn } from "@/lib/utils";
 
-const steps = [
-  {
-    icon: Search,
-    title: "Análisis",
-    description: "Investigación profunda del contexto y necesidades.",
-  },
-  {
-    icon: Compass,
-    title: "Descubrimiento",
-    description: "Hallazgos clave para orientar el proyecto.",
-  },
-  {
-    icon: Target,
-    title: "Objetivos",
-    description: "Definición clara de metas y alcance.",
-  },
-  {
-    icon: Map,
-    title: "Estrategias",
-    description: "Plan de acción a medida y rutas creativas.",
-  },
-  {
-    icon: Zap,
-    title: "Soluciones",
-    description: "Implementación efectiva y desarrollo.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Resultados",
-    description: "Medición de impacto y análisis de métricas.",
-  },
-  {
-    icon: Footprints,
-    title: "Huellas",
-    description: "Legado positivo sostenible y seguimiento.",
-  },
-];
-
 export function MethodSection() {
+  const t = useTranslations("method");
+
+  const stepsMapped = [
+    { icon: Search, key: "step1" },
+    { icon: Compass, key: "step2" },
+    { icon: Target, key: "step3" },
+    { icon: Map, key: "step4" }, // Strategies
+    { icon: Zap, key: "step5" }, // Solutions
+    { icon: TrendingUp, key: "step6" }, // Results
+    { icon: Footprints, key: "step7" }, // Footprints
+  ];
+
   return (
     <section 
       id="method" 
@@ -71,18 +46,17 @@ export function MethodSection() {
             as="h2"
             className="mb-6 text-3xl font-medium tracking-tight text-primary sm:text-4xl md:text-5xl"
           >
-            Nuestro Método
+            {t("title")}
           </Heading>
           <Text className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Un proceso integral diseñado para transformar ideas en impacto real,
-            paso a paso, con consciencia y propósito.
+            {t("description")}
           </Text>
         </motion.div>
 
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((step, index) => (
+          {stepsMapped.map((step, index) => (
             <motion.div
-              key={step.title}
+              key={step.key}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -96,11 +70,11 @@ export function MethodSection() {
               </div>
               
               <Heading as="h3" className="mb-3 text-xl font-semibold text-primary">
-                {step.title}
+                {t(`${step.key}.title`)}
               </Heading>
               
               <Text className="text-sm leading-relaxed text-muted-foreground">
-                {step.description}
+                {t(`${step.key}.description`)}
               </Text>
             </motion.div>
           ))}
@@ -109,4 +83,3 @@ export function MethodSection() {
     </section>
   );
 }
-

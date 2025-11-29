@@ -70,3 +70,68 @@
 
 ---
 
+## Phase 04 – Internationalization & Content Localization Summary
+
+**Outcome:** Successfully implemented full internationalization support using `next-intl` with App Router. The site now supports Spanish (es-AR, default) and English (en) with SEO-friendly locale-based routing (`/es-AR/...`, `/en/...`). The app directory was restructured under `app/[locale]/` with middleware for automatic locale detection and redirection. A language switcher (Globe icon) was added to the Header for seamless locale switching. All components were refactored to use `useTranslations` (client) and `getTranslations` (server) hooks. Comprehensive message files contain complete translations for all sections: Hero, Method, Impact, Services, Plant Based Treaty, SDG, Partners, Projects, Navigation, and Footer. Project content was fully localized with bilingual titles, descriptions, challenges, solutions, and results for all 6 projects. English translations were refined to match Chacal Estudio's professional-yet-warm brand voice while preserving the meaning and tone of Spanish originals.
+
+**Agents Involved:**
+- Agent_i18n_SEO_Legal
+
+**Task Logs:**
+- [Task 4.1 - Setup next-intl, App Router, Routing](Phase_04_Internationalization_Content_Localization/Task_4.1_Setup_next_intl_App_Router_Routing.md)
+- [Task 4.2 - Create and Organize Translation Messages](Phase_04_Internationalization_Content_Localization/Task_4.2_Create_Organize_Translation_Messages.md)
+- [Task 4.3 - Localize Long-Form Content](Phase_04_Internationalization_Content_Localization/Task_4.3_Localize_Long_Form_Content.md)
+
+**Key Artifacts:**
+- i18n config: `i18n/routing.ts`, `i18n/request.ts`, `middleware.ts`
+- Messages: `messages/es-AR.json`, `messages/en.json`
+- Locale layout: `app/[locale]/layout.tsx`
+- Language switcher: integrated in `components/organisms/Header.tsx`
+
+---
+
+## Phase 05 – SEO, Accessibility, Legal & Cookie Banner Summary
+
+**Outcome:** Completed comprehensive SEO optimization, accessibility improvements, legal compliance pages, and cookie consent functionality. Locale-aware metadata with Open Graph and Twitter Cards was implemented for all key pages (Home, Projects Index, Project Detail) along with JSON-LD structured data (Organization, LocalBusiness, WebSite, BreadcrumbList, CreativeWork). Accessibility was significantly enhanced with color contrast fixes (accent-foreground updated to brand-blue achieving 5.6:1 ratio), focus-visible states on all interactive elements, ARIA improvements for mobile menu and language switcher, and verified heading hierarchy. Two bilingual legal pages were created: Privacy Policy (aligned with Argentina's Ley 25.326) and combined Terms of Service + Cookie Policy. A responsive, accessible cookie consent banner was implemented with localStorage persistence, appearing on first visit with Accept/Decline options and linking to the cookie policy.
+
+**Agents Involved:**
+- Agent_i18n_SEO_Legal
+
+**Task Logs:**
+- [Task 5.1 - Implement Metadata and JSON-LD](Phase_05_SEO_Accessibility_Legal_Cookie_Banner/Task_5.1_Implement_Metadata_JSON_LD.md)
+- [Task 5.2 - Implement Accessibility Improvements](Phase_05_SEO_Accessibility_Legal_Cookie_Banner/Task_5.2_Implement_Accessibility_Improvements.md)
+- [Task 5.3a - Draft and Implement Privacy Policy](Phase_05_SEO_Accessibility_Legal_Cookie_Banner/Task_5.3a_Draft_Implement_Privacy_Policy.md)
+- [Task 5.3b - Draft and Implement Terms and Cookies Policy](Phase_05_SEO_Accessibility_Legal_Cookie_Banner/Task_5.3b_Draft_Implement_Terms_Cookies_Policy.md)
+- [Task 5.3c - Implement Cookie Consent Banner](Phase_05_SEO_Accessibility_Legal_Cookie_Banner/Task_5.3c_Implement_Cookie_Consent_Banner.md)
+
+**Key Artifacts:**
+- SEO: `components/SEO/JsonLd.tsx`, metadata in page components
+- Accessibility: Updated `globals.css`, `Button.tsx`, `Link.tsx`, `Header.tsx`
+- Legal pages: `app/[locale]/privacy/page.tsx`, `app/[locale]/terms/page.tsx`
+- Cookie banner: `components/organisms/CookieBanner.tsx`
+- i18n: Extended `messages/es.json`, `messages/en.json` with Privacy, Terms, CookieBanner namespaces
+
+---
+
+## Phase 06 – Contact Flow Integration Summary
+
+**Outcome:** Implemented a complete, production-ready contact form flow with validation, spam protection, and email delivery. The Contact section was added to the Home page featuring a localized form with fields for name, email, phone, organization, message, and policy acceptance checkbox, styled with design system components and motion animations. The section includes contact information display (email, Instagram, LinkedIn) and B-Corp commitment text. React Hook Form was integrated with Zod schema validation providing inline error display with localized messages. A secure API route (`/api/contact`) handles form submissions with server-side Zod validation, Cloudflare Turnstile token verification for spam protection, and Resend SDK integration to deliver formatted HTML emails to `hola@chacalestudio.ar`. The frontend provides clear user feedback via toast notifications for success and error states. All environment variables are documented in `.env.example`.
+
+**Agents Involved:**
+- Agent_Contact_Integration
+
+**Task Logs:**
+- [Task 6.1 - Design and Implement Contact Form UI](Phase_06_Contact_Flow_Integration/Task_6.1_Design_Implement_Contact_Form_UI.md)
+- [Task 6.2 - Implement Validation with RHF and Zod](Phase_06_Contact_Flow_Integration/Task_6.2_Implement_Validation_RHF_Zod.md)
+- [Task 6.3 - Integrate Resend and Turnstile](Phase_06_Contact_Flow_Integration/Task_6.3_Integrate_Resend_Turnstile.md)
+
+**Key Artifacts:**
+- Contact form: `components/organisms/ContactForm.tsx`
+- Contact section: `components/sections/ContactSection.tsx`
+- Validation schema: `lib/schemas/contact.ts`
+- API route: `app/api/contact/route.ts`
+- Environment: `.env.example` (updated with Turnstile and Resend keys)
+- i18n: Extended `messages/es.json`, `messages/en.json` with contact namespace and error messages
+
+---
+

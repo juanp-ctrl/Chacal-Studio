@@ -2,11 +2,14 @@
 
 import * as React from "react";
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 import { Heading } from "@/components/atoms/Heading";
 import { Text } from "@/components/atoms/Text";
 import { Button } from "@/components/atoms/Button";
 
 export function HeroSection() {
+  const t = useTranslations("hero");
+
   const scrollToNext = () => {
     const element = document.getElementById("method");
     if (element) {
@@ -17,7 +20,7 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[var(--brand-blue)]"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-(--brand-blue)"
     >
       {/* Subtle pattern overlay */}
       <div className="absolute inset-0 z-0 opacity-5">
@@ -42,7 +45,7 @@ export function HeroSection() {
             as="h1"
             className="mb-12 text-4xl font-normal tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
           >
-            Comunicando lo humano
+            {t("title")}
           </Heading>
         </motion.div>
 
@@ -55,10 +58,7 @@ export function HeroSection() {
             className="mx-auto mb-16 max-w-3xl text-base font-light leading-relaxed text-white/90 sm:text-lg md:text-xl"
             as="p"
           >
-            Creamos estrategias de comunicación con propósito desde la Patagonia.
-            Somos un estudio de comunicación y diseño que transforma marcas en
-            agentes de cambio, respetando a todos los seres sintientes y el
-            planeta.
+            {t("subtitle")}
           </Text>
         </motion.div>
 
@@ -73,11 +73,10 @@ export function HeroSection() {
             className="rounded-full px-8 py-6 text-base font-medium shadow-lg transition-all hover:scale-105 hover:shadow-xl"
             onClick={scrollToNext}
           >
-            Descubrí nuestra propuesta
+            {t("cta")}
           </Button>
         </motion.div>
       </div>
     </section>
   );
 }
-

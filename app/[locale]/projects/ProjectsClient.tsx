@@ -2,11 +2,14 @@
 
 import { motion } from 'motion/react';
 import { ArrowLeft } from 'lucide-react';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
+import { useTranslations } from 'next-intl';
 import { ProjectCard } from '@/components/molecules/ProjectCard';
 import { projects } from '@/lib/projects';
 
-export default function ProjectsPage() {
+export function ProjectsClient() {
+  const t = useTranslations('projects');
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Header - Matches Figma/Source Design */}
@@ -22,7 +25,7 @@ export default function ProjectsPage() {
               className="inline-flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground transition-colors duration-300 mb-8 group"
             >
               <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform duration-300" />
-              Volver al inicio
+              {t('backHome')}
             </Link>
           </motion.div>
           
@@ -32,7 +35,7 @@ export default function ProjectsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Nuestros Proyectos
+            {t('allProjects')}
           </motion.h1>
           
           <motion.p
@@ -41,7 +44,7 @@ export default function ProjectsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            Cada proyecto es una oportunidad para generar impacto positivo. Descubre cómo el diseño y la comunicación pueden transformar realidades.
+            {t('allProjectsSubtitle')}
           </motion.p>
         </div>
       </div>
@@ -59,3 +62,4 @@ export default function ProjectsPage() {
     </div>
   );
 }
+
