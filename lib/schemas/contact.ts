@@ -26,8 +26,8 @@ export const createContactSchema = (t: (key: string) => string) => {
       .string()
       .min(1, { message: t("messageRequired") })
       .min(10, { message: t("messageMinLength") }),
-    acceptedPolicies: z.literal(true, {
-      errorMap: () => ({ message: t("policiesRequired") }),
+    acceptedPolicies: z.boolean().refine((val) => val === true, {
+      message: t("policiesRequired"),
     }),
   });
 };
