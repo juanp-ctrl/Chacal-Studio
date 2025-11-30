@@ -3,10 +3,10 @@ import { Resend } from "resend";
 import { createContactSchema } from "@/lib/schemas/contact";
 import { z } from "zod";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const body = await req.json();
     const { turnstileToken, ...formData } = body;
 
@@ -60,7 +60,7 @@ export async function POST(req: NextRequest) {
           { 
             success: false, 
             error: "Validation failed", 
-            details: error.errors 
+            details: error.issues 
           },
           { status: 400 }
         );
