@@ -97,7 +97,7 @@ export function IntroLoader() {
     // Start cycling taglines
     taglineCycleRef.current = setInterval(() => {
       setCurrentTaglineIndex((prev) => (prev + 1) % taglines.length);
-    }, 1500);
+    }, 300);
 
     return () => {
       if (taglineCycleRef.current) {
@@ -152,7 +152,7 @@ export function IntroLoader() {
     <AnimatePresence>
       {showLoader && (
         <motion.div
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center overflow-hidden"
+          className="fixed inset-0 z-9999 flex flex-col items-center justify-center overflow-hidden"
           style={{ backgroundColor: '#2F2E59' }}
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -228,7 +228,7 @@ export function IntroLoader() {
           {/* Bottom Text - Cycling taglines */}
           <motion.div
             className="absolute z-20"
-            style={{ bottom: '18%' }}
+            style={{ bottom: '12%' }}
             initial={{ opacity: 0 }}
             animate={{
               opacity: textExiting ? 0 : visibleImages.length >= 3 ? 1 : 0,
