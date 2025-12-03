@@ -118,7 +118,7 @@ export function Header({ className }: HeaderProps) {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8" role="navigation">
+        <nav className="hidden lg:flex items-center gap-8" role="navigation">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -183,7 +183,7 @@ export function Header({ className }: HeaderProps) {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden text-white p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-md cursor-pointer"
+          className="lg:hidden text-white p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-md cursor-pointer"
           onClick={() => setIsMobileMenuOpen(true)}
           aria-label="Open menu"
           aria-expanded={isMobileMenuOpen}
@@ -195,7 +195,7 @@ export function Header({ className }: HeaderProps) {
       {/* Mobile Menu Overlay */}
       <div
         className={cn(
-          "fixed inset-0 z-[60] bg-(--brand-blue) md:hidden transition-transform duration-300 ease-in-out flex flex-col h-screen w-screen",
+          "fixed inset-0 z-[60] bg-(--brand-blue) lg:hidden transition-transform duration-300 ease-in-out flex flex-col h-screen w-screen",
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         )}
         role="dialog"
