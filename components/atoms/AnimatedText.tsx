@@ -59,13 +59,13 @@ export function AnimatedText({
       // Cast component to specific heading type for type safety
       const HeadingTag = Component as "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
       return (
-        <Heading as={HeadingTag} className={className}>
+        <Heading as={HeadingTag} className={cn("font-heading", className)}>
           {text}
         </Heading>
       );
     }
     // Otherwise render standard element
-    return <Component className={className}>{text}</Component>;
+    return <Component className={cn("font-body", className)}>{text}</Component>;
   }
 
   // Determine if we should render as a Heading component or standard HTML element
@@ -97,10 +97,13 @@ export function AnimatedText({
     </motion.span>
   );
 
+  // Determine font family class based on component type
+  const fontClass = isHeading ? "font-heading" : "font-body";
+
   if (isHeading) {
     const HeadingTag = Component as "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
     return (
-      <Heading as={HeadingTag} className={cn("relative", className)}>
+      <Heading as={HeadingTag} className={cn("relative", fontClass, className)}>
         <span className="sr-only">{text}</span>
         {content}
       </Heading>
@@ -108,7 +111,7 @@ export function AnimatedText({
   }
 
   return (
-    <Component className={cn("relative", className)}>
+    <Component className={cn("relative", fontClass, className)}>
       <span className="sr-only">{text}</span>
       {content}
     </Component>
