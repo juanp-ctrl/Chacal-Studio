@@ -7,6 +7,7 @@ import { Footer } from "@/components/organisms/Footer";
 import { CookieBanner } from "@/components/organisms/CookieBanner";
 import { IntroLoader } from "@/components/organisms/IntroLoader";
 import { FloatingActions } from "@/components/organisms/FloatingActions";
+import { CustomCursor } from "@/components/organisms/CustomCursor";
 import "../globals.css"; 
 import { Crimson_Text, DM_Sans, Alex_Brush } from "next/font/google";
 
@@ -57,6 +58,7 @@ export default async function LocaleLayout({
       <body className="antialiased bg-background text-foreground font-body">
         <NextIntlClientProvider messages={messages}>
           <IntroLoader />
+          <CustomCursor />
           <a 
             href="#main-content" 
             className="sr-only focus:not-sr-only focus:absolute focus:z-60 focus:top-4 focus:left-4 focus:p-4 focus:bg-white focus:text-(--brand-blue) focus:rounded-md focus:shadow-lg"

@@ -162,3 +162,10 @@
     font-family: var(--font-family-heading);
   }
 }
+
+/* Custom Cursor - Hide default cursor on desktop/fine pointer devices */
+@media (pointer: fine) {
+  body, a, button, input, textarea, select, [role="button"] {
+    cursor: none !important;
+  }
+}
