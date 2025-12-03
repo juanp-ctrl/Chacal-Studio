@@ -138,7 +138,7 @@ export function Header({ className }: HeaderProps) {
               className="flex items-center gap-2 text-white/90 hover:text-accent transition-colors text-sm font-medium uppercase focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm cursor-pointer"
               aria-expanded={isLangMenuOpen}
               aria-haspopup="true"
-              aria-label={t("switchLanguage")}
+              aria-label={`${locale === 'es' ? 'ES' : 'EN'} - ${t("switchLanguage")}`}
             >
               <Globe size={18} />
               {locale === 'es' ? 'ES' : 'EN'}
