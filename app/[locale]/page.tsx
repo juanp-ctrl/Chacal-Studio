@@ -101,7 +101,7 @@ export default async function Home({ params }: PageProps) {
     name: "Chacal Estudio",
     alternateName: "Chacal Studio",
     url: baseUrl,
-    logo: `${baseUrl}/logo.png`,
+    logo: `${baseUrl}/logo.webp`,
     description:
       locale === "es"
         ? "Estudio de comunicación y diseño con propósito desde la Patagonia argentina"

@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from 'next-intl';
+import Image from "next/image";
 import * as motion from "motion/react-client"
 import { useRef } from 'react';
 import { useInView } from 'motion/react';
@@ -11,7 +12,7 @@ export function FutureSection() {
   const t = useTranslations('future');
 
   return (
-    <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-brand-blue text-white overflow-hidden">
+    <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-blue-dark text-white overflow-hidden">
       <div className="max-w-7xl mx-auto" ref={ref}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -36,11 +37,12 @@ export function FutureSection() {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8 }}
           >
-            {/* Using a standard img tag here as Next.js Image might require domain config for unsplash */}
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1688501935726-d231682e79d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlYXJ0aCUyMHBsYW5ldCUyMG5hdHVyZXxlbnwxfHx8fDE3NjMzMTgwOTh8MA&ixlib=rb-4.1.0&q=80&w=1080"
               alt="Earth and nature"
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
           </motion.div>

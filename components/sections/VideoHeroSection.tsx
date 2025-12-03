@@ -9,23 +9,21 @@ const HERO_MEDIA_URL = 'https://images.unsplash.com/photo-1464822759023-fed622ff
 
 export function VideoHeroSection() {
   const [shouldAnimateEntry, setShouldAnimateEntry] = useState(false);
-  // Initialize state based on sessionStorage to avoid animation glitches
-  // We default to true (seen) for SSR to match the most common/static state
-  const [hasSeenIntro] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return !!sessionStorage.getItem('chacal-intro-seen');
-    }
-    return true;
-  });
+  const [hasSeenIntro, setHasSeenIntro] = useState(true);
 
   useEffect(() => {
-    if (!hasSeenIntro) {
+    // Check if intro was seen
+    const seen = sessionStorage.getItem('chacal-intro-seen');
+    if (!seen) {
+      // Avoid synchronous state update warning
+      setTimeout(() => setHasSeenIntro(false), 0);
+      
       // Listen for event
       const handleIntroExit = () => setShouldAnimateEntry(true);
       window.addEventListener('intro-exit-start', handleIntroExit);
       return () => window.removeEventListener('intro-exit-start', handleIntroExit);
     }
-  }, [hasSeenIntro]);
+  }, []);
 
   // Define animation states
   // If intro NOT seen yet (hasSeenIntro = false), start small and invisible
