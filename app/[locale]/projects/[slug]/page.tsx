@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowLeft, ArrowRight, Target, Lightbulb, TrendingUp } from "lucide-react";
 import * as Motion from "motion/react-client";
 import { projects } from "@/lib/projects";
@@ -17,9 +17,13 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  return projects.map((project) => ({
-    slug: project.slug,
-  }));
+  const params = [];
+  for (const locale of routing.locales) {
+    for (const project of projects) {
+      params.push({ locale, slug: project.slug });
+    }
+  }
+  return params;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -89,28 +93,33 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       locale: locale === "es" ? "es_AR" : "en_US",
       alternateLocale: locale === "es" ? "en_US" : "es_AR",
       type: "article",
-      images: project.thumbnail
-        ? [
-            {
-              url: project.thumbnail,
-              width: 1200,
-              height: 630,
-              alt: localizedTitle,
-            },
-          ]
-        : [],
+      ...(project.thumbnail
+        ? {
+            images: [
+              {
+                url: project.thumbnail,
+                width: 1200,
+                height: 630,
+                alt: localizedTitle,
+              },
+            ],
+          }
+        : {}),
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: project.thumbnail ? [project.thumbnail] : [],
+      ...(project.thumbnail ? { images: [project.thumbnail] } : {}),
     },
   };
 }
 
 export default async function ProjectDetailPage({ params }: PageProps) {
   const { slug, locale } = await params;
+  // Enable static rendering
+  setRequestLocale(locale);
+  
   const t = await getTranslations({locale, namespace: 'projects.detail'});
   const tProject = await getTranslations({locale, namespace: `projects.${slug}`});
   const project = projects.find((p) => p.slug === slug);

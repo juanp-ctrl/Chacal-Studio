@@ -58,7 +58,7 @@ export function ContactSection() {
                 className="flex items-center gap-4 text-white/80 hover:text-accent transition-colors duration-300 group"
               >
                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all duration-300">
-                  <Mail className="w-6 h-6" />
+                  <Mail className="w-6 h-6 text-white" />
                 </div>
                 <span>hola@chacalestudio.ar</span>
               </a>
@@ -70,7 +70,7 @@ export function ContactSection() {
                 className="flex items-center gap-4 text-white/80 hover:text-accent transition-colors duration-300 group"
               >
                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all duration-300">
-                  <Instagram className="w-6 h-6" />
+                  <Instagram className="w-6 h-6 text-white" />
                 </div>
                 <span>@chacal.estudio</span>
               </a>
@@ -82,7 +82,7 @@ export function ContactSection() {
                 className="flex items-center gap-4 text-white/80 hover:text-accent transition-colors duration-300 group"
               >
                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all duration-300">
-                  <Linkedin className="w-6 h-6" />
+                  <Linkedin className="w-6 h-6 text-white" />
                 </div>
                 <span>Chacal Estudio</span>
               </a>

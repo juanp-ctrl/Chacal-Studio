@@ -1,5 +1,5 @@
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { Header } from "@/components/organisms/Header";
@@ -33,6 +33,10 @@ const alexBrush = Alex_Brush({
   display: "swap",
 });
 
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({locale}));
+}
+
 export async function generateMetadata({
   params
 }: {
@@ -57,9 +61,38 @@ export async function generateMetadata({
       type: "website",
       locale: locale === "es" ? "es_AR" : "en_US",
       siteName: "Chacal Estudio",
+      title: locale === "es" ? "Chacal Estudio" : "Chacal Studio",
+      description: locale === "es" 
+        ? "Estudio de comunicación y diseño con propósito desde la Patagonia." 
+        : "Purpose-driven communication and design studio from Patagonia.",
+      images: [
+        {
+          url: "/logo.webp",
+          width: 600,
+          height: 600,
+          alt: "Chacal Estudio",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: locale === "es" ? "Chacal Estudio" : "Chacal Studio",
+      description: locale === "es" 
+        ? "Estudio de comunicación y diseño con propósito desde la Patagonia." 
+        : "Purpose-driven communication and design studio from Patagonia.",
+      images: [
+        {
+          url: "/chacal-paisaje-.webp",
+          width: 2435,
+          height: 1350,
+          alt: "Chacal Estudio - Paisaje",
+        },
+      ],
     },
   };
 }
+
+import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 
 export default async function LocaleLayout({
   children,
@@ -69,6 +102,9 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+
+  // Enable static rendering
+  setRequestLocale(locale);
 
   // Ensure that the incoming `locale` is valid
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -81,27 +117,29 @@ export default async function LocaleLayout({
   const messages = await getMessages();
  
   return (
-    <html lang={locale} className={`scroll-smooth ${crimsonText.variable} ${dmSans.variable} ${alexBrush.variable}`}>
+    <html lang={locale} className={`${crimsonText.variable} ${dmSans.variable} ${alexBrush.variable}`}>
       <body className="antialiased bg-background text-foreground font-body">
         <NextIntlClientProvider messages={messages}>
-          <IntroLoader />
-          <CustomCursor />
-          <a 
-            href="#main-content" 
-            className="sr-only focus:not-sr-only focus:absolute focus:z-60 focus:top-4 focus:left-4 focus:p-4 focus:bg-white focus:text-(--brand-blue) focus:rounded-md focus:shadow-lg"
-          >
-            Skip to main content
-          </a>
-          
-          <Header />
-          
-          <main id="main-content" className="min-h-screen">
-            {children}
-          </main>
-          
-          <Footer />
-          <FloatingActions />
-          <CookieBanner />
+          <SmoothScrollProvider>
+            <IntroLoader />
+            <CustomCursor />
+            <a 
+              href="#main-content" 
+              className="sr-only focus:not-sr-only focus:absolute focus:z-60 focus:top-4 focus:left-4 focus:p-4 focus:bg-white focus:text-(--brand-blue) focus:rounded-md focus:shadow-lg"
+            >
+              Skip to main content
+            </a>
+            
+            <Header />
+            
+            <main id="main-content" className="min-h-screen">
+              {children}
+            </main>
+            
+            <Footer />
+            <FloatingActions />
+            <CookieBanner />
+          </SmoothScrollProvider>
         </NextIntlClientProvider>
       </body>
     </html>
