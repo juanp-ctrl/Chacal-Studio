@@ -545,3 +545,19 @@
 3. **Test Dark Mode:** Enable system dark mode and verify all text has sufficient contrast.
 4. **Consistency Check:** Ensure dark mode behavior is consistent across all pages and sections.
 5. **Git Commit:** `git add -A && git commit -m "fix(task-9.4): fix dark mode text contrast issues"`
+
+---
+
+### Task 9.5 – Implement Lenis Smooth Scroll │ Agent_Frontend_Architecture
+
+- **Objective:** Implement smooth scrolling across the entire site using Lenis library for a polished, modern scrolling experience.
+- **Output:** Smooth scrolling enabled site-wide; Lenis integrated with React/Next.js App Router; compatible with existing Framer Motion animations.
+- **Guidance:** Use Lenis (not Locomotive Scroll) as it maintains native scrollbar behavior and works alongside Framer Motion. Create a provider/context for global scroll instance. Ensure compatibility with existing scroll-triggered animations.
+
+1. **Install Lenis:** Add `lenis` package to dependencies.
+2. **Create Scroll Provider:** Build a `SmoothScrollProvider` component that initializes Lenis and provides the scroll instance via React Context.
+3. **Integrate with Layout:** Wrap the app in the SmoothScrollProvider at the layout level.
+4. **Configure Options:** Set appropriate smooth scrolling options (lerp, duration, easing).
+5. **Framer Motion Compatibility:** Ensure existing scroll-triggered animations (useInView, etc.) work correctly with Lenis.
+6. **Accessibility:** Respect `prefers-reduced-motion` preference by disabling smooth scroll for users who prefer it.
+7. **Git Commit:** `git add -A && git commit -m "feat(task-9.5): implement Lenis smooth scroll"`

@@ -92,6 +92,8 @@ export async function generateMetadata({
   };
 }
 
+import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
+
 export default async function LocaleLayout({
   children,
   params
@@ -115,27 +117,29 @@ export default async function LocaleLayout({
   const messages = await getMessages();
  
   return (
-    <html lang={locale} className={`scroll-smooth ${crimsonText.variable} ${dmSans.variable} ${alexBrush.variable}`}>
+    <html lang={locale} className={`${crimsonText.variable} ${dmSans.variable} ${alexBrush.variable}`}>
       <body className="antialiased bg-background text-foreground font-body">
         <NextIntlClientProvider messages={messages}>
-          <IntroLoader />
-          <CustomCursor />
-          <a 
-            href="#main-content" 
-            className="sr-only focus:not-sr-only focus:absolute focus:z-60 focus:top-4 focus:left-4 focus:p-4 focus:bg-white focus:text-(--brand-blue) focus:rounded-md focus:shadow-lg"
-          >
-            Skip to main content
-          </a>
-          
-          <Header />
-          
-          <main id="main-content" className="min-h-screen">
-            {children}
-          </main>
-          
-          <Footer />
-          <FloatingActions />
-          <CookieBanner />
+          <SmoothScrollProvider>
+            <IntroLoader />
+            <CustomCursor />
+            <a 
+              href="#main-content" 
+              className="sr-only focus:not-sr-only focus:absolute focus:z-60 focus:top-4 focus:left-4 focus:p-4 focus:bg-white focus:text-(--brand-blue) focus:rounded-md focus:shadow-lg"
+            >
+              Skip to main content
+            </a>
+            
+            <Header />
+            
+            <main id="main-content" className="min-h-screen">
+              {children}
+            </main>
+            
+            <Footer />
+            <FloatingActions />
+            <CookieBanner />
+          </SmoothScrollProvider>
         </NextIntlClientProvider>
       </body>
     </html>
