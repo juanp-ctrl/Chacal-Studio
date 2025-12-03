@@ -98,6 +98,11 @@ export function AnimatedText({
   );
 
   // Determine font family class based on component type
+  // Note: Heading component already applies font-heading by default, so we don't strictly need to force it here
+  // but we keep it for consistency. The issue might be that Heading's base styles (font-heading) are winning 
+  // or losing against className depending on order.
+  // Using cn("relative", fontClass, className) puts className last (highest specificity in tailwind-merge).
+  // If the user passes 'font-medium', it should work.
   const fontClass = isHeading ? "font-heading" : "font-body";
 
   if (isHeading) {
