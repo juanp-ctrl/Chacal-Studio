@@ -25,7 +25,7 @@ export function FloatingActions() {
 
   const openWhatsApp = () => {
     // Chacal Estudio WhatsApp number (international format without +)
-    const phoneNumber = "5492944000000"; // Replace with actual number
+    const phoneNumber = "5492995803796"; // Replace with actual number
     const message = encodeURIComponent(t("whatsappMessage"));
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
   };

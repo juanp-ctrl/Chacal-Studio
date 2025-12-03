@@ -85,7 +85,9 @@ export function PartnersSection() {
                 className="inline-flex items-center gap-2 text-sm font-medium text-white hover:text-accent transition-colors duration-300 group/link"
                 aria-label={`${t("learnMore")} ${t(`${partner.key}.name`)}`}
               >
-                {t("learnMore")}
+                <span>
+                  {t("learnMore")} <span className="sr-only">{t(`${partner.key}.name`)}</span>
+                </span>
                 <ExternalLink size={14} className="transition-transform duration-300 group-hover/link:translate-x-1" />
               </a>
             </motion.div>

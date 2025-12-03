@@ -10,6 +10,7 @@ import { FloatingActions } from "@/components/organisms/FloatingActions";
 import { CustomCursor } from "@/components/organisms/CustomCursor";
 import "../globals.css"; 
 import { Crimson_Text, DM_Sans, Alex_Brush } from "next/font/google";
+import type { Metadata } from "next";
 
 const crimsonText = Crimson_Text({
   subsets: ["latin"],
@@ -32,7 +33,33 @@ const alexBrush = Alex_Brush({
   display: "swap",
 });
 
-// Metadata is now handled per-page via generateMetadata
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  return {
+    metadataBase: new URL("https://chacalestudio.ar"),
+    title: {
+      template: `%s | Chacal Estudio`,
+      default: "Chacal Estudio",
+    },
+    description: locale === "es" 
+      ? "Estudio de comunicación y diseño con propósito desde la Patagonia." 
+      : "Purpose-driven communication and design studio from Patagonia.",
+    robots: {
+      index: true,
+      follow: true,
+    },
+    openGraph: {
+      type: "website",
+      locale: locale === "es" ? "es_AR" : "en_US",
+      siteName: "Chacal Estudio",
+    },
+  };
+}
 
 export default async function LocaleLayout({
   children,
