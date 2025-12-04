@@ -73,19 +73,35 @@ export async function POST(req: NextRequest) {
 
     try {
       const emailResponse = await resend.emails.send({
-        from: "Chacal Studio Contact <onboarding@resend.dev>", // Update this when domain is verified
-        to: "hola@chacalestudio.ar",
+        from: "Chacal Studio Contact <contact@contact.chacalestudio.ar>",
+        to: ["hola@chacalestudio.ar", "cuentas@chacalestudio.ar"],
         replyTo: email,
-        subject: `New contact message from ${name}`,
+        subject: `¡Nuevo mensaje de contacto de ${name}!`,
         html: `
-          <h1>New Contact Form Submission</h1>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Phone:</strong> ${phone || "N/A"}</p>
-          <p><strong>Organization:</strong> ${organization || "N/A"}</p>
-          <hr />
-          <h2>Message:</h2>
-          <p>${message.replace(/\n/g, "<br>")}</p>
+          <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
+            <h1 style="color: #333;">¡Hola Chacal Estudio!</h1>
+            <p style="font-size: 16px; color: #555;">
+              <strong>${name}</strong> quiere ponerse en contacto con nosotros!
+            </p>
+            
+            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
+              <h3 style="margin-top: 0; color: #333;">Detalles del contacto:</h3>
+              <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+              <p><strong>Teléfono:</strong> ${phone || "No especificado"}</p>
+              <p><strong>Organización:</strong> ${organization || "No especificada"}</p>
+            </div>
+
+            <div style="border-left: 4px solid #333; padding-left: 15px; margin: 20px 0;">
+              <h3 style="margin-top: 0; color: #333;">Mensaje:</h3>
+              <p style="font-size: 16px; line-height: 1.6; color: #444;">
+                ${message.replace(/\n/g, "<br>")}
+              </p>
+            </div>
+            
+            <p style="font-size: 12px; color: #888; margin-top: 30px; border-top: 1px solid #eee; padding-top: 10px;">
+              Este mensaje fue enviado desde el formulario de contacto de chacalestudio.ar
+            </p>
+          </div>
         `,
       });
 
