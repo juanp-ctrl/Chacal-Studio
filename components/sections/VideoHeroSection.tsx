@@ -8,38 +8,27 @@ import { useEffect, useState } from 'react';
 const HERO_MEDIA_URL = 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920';
 
 export function VideoHeroSection() {
-  const [shouldAnimateEntry, setShouldAnimateEntry] = useState(false);
   const [hasSeenIntro, setHasSeenIntro] = useState(true);
 
   useEffect(() => {
     // Check if intro was seen
     const seen = sessionStorage.getItem('chacal-intro-seen');
     if (!seen) {
-      // Avoid synchronous state update warning
       setTimeout(() => setHasSeenIntro(false), 0);
-      
-      // Listen for event
-      const handleIntroExit = () => setShouldAnimateEntry(true);
-      window.addEventListener('intro-exit-start', handleIntroExit);
-      return () => window.removeEventListener('intro-exit-start', handleIntroExit);
     }
   }, []);
 
   // Define animation states
-  // If intro NOT seen yet (hasSeenIntro = false), start small and invisible
+  // If intro NOT seen yet (hasSeenIntro = false), start fully visible (seamless transition)
   // If intro SEEN (hasSeenIntro = true), use standard fade in
   const initial = !hasSeenIntro 
-    ? { opacity: 0, scale: 0.3 } 
+    ? { opacity: 1, scale: 1 } 
     : { opacity: 0, scale: 1.1 };
 
-  // If intro NOT seen: wait for shouldAnimateEntry, then go to full
-  // If intro SEEN: go to full immediately (standard animation)
-  const target = !hasSeenIntro
-    ? (shouldAnimateEntry ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.3 })
-    : { opacity: 1, scale: 1 };
+  const target = { opacity: 1, scale: 1 };
 
   const transition: Transition = !hasSeenIntro
-    ? { delay: 0.5, duration: 2, ease: [0.25, 0.1, 0.25, 1] } // Matches loader exit feel
+    ? { duration: 0 } // No animation when coming from intro
     : { duration: 1.2, ease: 'easeOut' };
 
   return (
@@ -70,7 +59,7 @@ export function VideoHeroSection() {
         className="absolute bottom-28 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: !hasSeenIntro ? 1.5 : 1, duration: 0.8 }}
+        transition={{ delay: !hasSeenIntro ? 0.5 : 1, duration: 0.8 }}
       >
         <motion.div
           className="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center"

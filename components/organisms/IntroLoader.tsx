@@ -5,13 +5,13 @@ import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 
 const LOADER_IMAGES = [
-  'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=800', // Ecosfera Urbana
-  'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800', // Conexión Aula
-  'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=800', // Raíces del Futuro
-  'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800', // Impacto Visual
-  'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=800', // Voces Nativas
-  'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800', // Energía Limpia
-  'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800', // Patagonia mountains
+  'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=1600', // Ecosfera Urbana
+  'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1600', // Conexión Aula
+  'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1600', // Raíces del Futuro
+  'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1600', // Impacto Visual
+  'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=1600', // Voces Nativas
+  'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=1600', // Energía Limpia
+  'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600', // Patagonia mountains
 ];
 
 
@@ -134,18 +134,25 @@ export function IntroLoader() {
               return (
                 <motion.div
                   key={imageIndex}
-                  className="absolute rounded-sm overflow-hidden shadow-2xl"
+                  className="absolute overflow-hidden shadow-2xl"
                   style={{
-                    // Square 500x500 on desktop, smaller on mobile
-                    width: 'clamp(500px, 35vw, 500px)',
-                    height: 'clamp(500px, 35vw, 500px)',
-                    willChange: 'transform',
                     zIndex: imageIndex + 1,
+                    willChange: 'transform, width, height',
                   }}
-                  initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                  initial={{ 
+                    opacity: 0, 
+                    scale: 0.8, 
+                    y: 50,
+                    width: '500px',
+                    height: '500px',
+                    borderRadius: '2px'
+                  }}
                   animate={{
                     opacity: isExpanding ? (isLastImage ? 1 : 0) : 1,
-                    scale: isExpanding ? (isLastImage ? 1.9 : 1) : scale,
+                    scale: isExpanding ? 1 : scale,
+                    width: isExpanding && isLastImage ? '100vw' : '500px',
+                    height: isExpanding && isLastImage ? '100vh' : '500px',
+                    borderRadius: isExpanding && isLastImage ? 0 : '2px',
                     y: 0,
                   }}
                   transition={{
@@ -154,7 +161,16 @@ export function IntroLoader() {
                       duration: isExpanding ? 1.5 : 0.5,
                       ease: isExpanding ? [0.25, 0.1, 0.25, 1] : 'easeOut',
                     },
-                    y: { duration: 0.5, ease: 'easeOut' },
+                    width: {
+                      duration: 1.5,
+                      ease: [0.25, 0.1, 0.25, 1],
+                    },
+                    height: {
+                      duration: 1.5,
+                      ease: [0.25, 0.1, 0.25, 1],
+                    },
+                    borderRadius: { duration: 0.5 },
+                    y: { duration: 0.5, ease: 'easeOut' }, // For initial entry
                   }}
                 >
                   <Image
@@ -162,7 +178,7 @@ export function IntroLoader() {
                     alt={`Chacal project ${imageIndex + 1}`}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 768px) 200px, 300px"
+                    sizes="100vw"
                     priority
                   />
                 </motion.div>
