@@ -3,222 +3,195 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
-
-const LOADER_IMAGES = [
-  'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=1600', // Ecosfera Urbana
-  'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1600', // Conexión Aula
-  'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1600', // Raíces del Futuro
-  'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1600', // Impacto Visual
-  'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=1600', // Voces Nativas
-  'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=1600', // Energía Limpia
-  '/chacal-paisaje-.webp', // Patagonia mountains
-];
-
+import { useLocale } from 'next-intl';
 
 const SESSION_KEY = 'chacal-intro-seen';
+const FINAL_IMAGE = '/chacal-paisaje-.webp';
 
-// Scale values: frontmost image stays at 1.0, images behind scale up progressively
-const getScaleForImage = (imageIndex: number, currentImageCount: number): number => {
-  if (currentImageCount <= 1) return 1;
-  const distanceFromFront = currentImageCount - 1 - imageIndex;
-  return 1 + distanceFromFront * 0.1;
-};
-
-// Check session storage - only runs on client
-const shouldShowIntro = (): boolean => {
-  if (typeof window === 'undefined') return false;
-  return !sessionStorage.getItem(SESSION_KEY);
+const CONTENT = {
+  es: {
+    title: "Comunicando lo humano",
+    subtitle: "Con un foco socio-ambiental"
+  },
+  en: {
+    title: "Communicating the human",
+    subtitle: "With a socio-environmental focus"
+  }
 };
 
 export function IntroLoader() {
-  const initializedRef = useRef(false);
+  const locale = useLocale();
+  const t = CONTENT[locale as keyof typeof CONTENT] || CONTENT.en;
   
   const [showLoader, setShowLoader] = useState(false);
-  const [visibleImages, setVisibleImages] = useState<number[]>([]);
-  const [isExpanding, setIsExpanding] = useState(false);
-  const [imagesLoaded, setImagesLoaded] = useState(0);
+  const [displayedText, setDisplayedText] = useState('');
+  // Stages: initial -> title-in -> subtitle-in -> expand (text out + image in) -> complete
+  const [stage, setStage] = useState<'initial' | 'title-in' | 'subtitle-in' | 'expand' | 'complete'>('initial');
+  
+  const initializedRef = useRef(false);
 
-  // Initialize visibility on mount (runs once)
+  // Check session storage
   useEffect(() => {
     if (initializedRef.current) return;
     initializedRef.current = true;
     
-    if (shouldShowIntro()) {
+    // Only run on client
+    const shouldShow = typeof window !== 'undefined' && !sessionStorage.getItem(SESSION_KEY);
+
+    if (shouldShow) {
+      // Use requestAnimationFrame to avoid synchronous setState warning and ensure smooth start
       requestAnimationFrame(() => {
         setShowLoader(true);
         document.body.style.overflow = 'hidden';
+        setStage('title-in');
       });
     }
   }, []);
 
-  // Preload images
+  // Sequence Controller
   useEffect(() => {
     if (!showLoader) return;
-    
-    LOADER_IMAGES.forEach((src) => {
-      const img = new window.Image();
-      img.onload = () => setImagesLoaded((prev) => prev + 1);
-      img.src = src;
-    });
-  }, [showLoader]);
 
-  // Image stacking animation sequence
+    let timer: NodeJS.Timeout;
+
+    if (stage === 'title-in') {
+      // Show subtitle after title animation
+      timer = setTimeout(() => {
+        setStage('subtitle-in');
+      }, 1200);
+    } else if (stage === 'subtitle-in') {
+      // Allow time for typing and reading
+      timer = setTimeout(() => {
+        setStage('expand');
+      }, 3000);
+    } else if (stage === 'expand') {
+      // Wait for expansion to finish before removing loader
+      timer = setTimeout(() => {
+        setStage('complete');
+        setShowLoader(false);
+        sessionStorage.setItem(SESSION_KEY, 'true');
+        document.body.style.overflow = '';
+      }, 2600); // Expansion duration + buffer
+    }
+
+    return () => clearTimeout(timer);
+  }, [stage, showLoader]);
+
+  // Typing Effect
   useEffect(() => {
-    if (!showLoader || imagesLoaded < LOADER_IMAGES.length) return;
+    if (stage === 'subtitle-in') {
+      const fullText = t.subtitle;
+      let index = 0;
+      setDisplayedText(''); // Start empty
 
-    const imageTimers: NodeJS.Timeout[] = [];
-    
-    LOADER_IMAGES.forEach((_, index) => {
-      const timer = setTimeout(() => {
-        setVisibleImages((prev) => [...prev, index]);
-      }, 300 + index * 450);
-      imageTimers.push(timer);
-    });
+      const interval = setInterval(() => {
+        index++;
+        setDisplayedText(fullText.slice(0, index));
+        if (index >= fullText.length) {
+          clearInterval(interval);
+        }
+      }, 50); // Typing speed
 
-    return () => imageTimers.forEach(clearTimeout);
-  }, [showLoader, imagesLoaded]);
+      return () => clearInterval(interval);
+    }
+  }, [stage, t.subtitle]);
 
-  // Final expansion and exit sequence
-  useEffect(() => {
-    if (visibleImages.length !== LOADER_IMAGES.length) return;
-
-    // Wait a moment after last image, then start expansion
-    const expansionTimer = setTimeout(() => {
-      setIsExpanding(true);
-      if (typeof window !== 'undefined') {
-        window.dispatchEvent(new CustomEvent('intro-exit-start'));
-      }
-    }, 1100);
-
-    // Fade out loader completely
-    const exitTimer = setTimeout(() => {
-      setShowLoader(false);
-      sessionStorage.setItem(SESSION_KEY, 'true');
-      document.body.style.overflow = '';
-    }, 2700);
-
-    return () => {
-      clearTimeout(expansionTimer);
-      clearTimeout(exitTimer);
-    };
-  }, [visibleImages.length]);
-
-  // Cleanup scroll lock on unmount
+  // Cleanup on unmount
   useEffect(() => {
     return () => {
       document.body.style.overflow = '';
     };
   }, []);
 
-  // Don't render if loader not active
-  if (!showLoader) {
-    return null;
-  }
+  if (!showLoader) return null;
 
   return (
     <AnimatePresence>
-      {showLoader && (
-        <motion.div
-          className="fixed inset-0 z-9999 flex flex-col items-center justify-center overflow-hidden"
-          style={{ backgroundColor: '#2F2E59' }}
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.6, ease: 'easeInOut' }}
-        >
-          {/* Image Stack Container */}
-          <div className="relative flex items-center justify-center w-full h-full">
-            {visibleImages.map((imageIndex) => {
-              const scale = getScaleForImage(imageIndex, visibleImages.length);
-              const isLastImage = imageIndex === LOADER_IMAGES.length - 1;
-              
-              return (
-                <motion.div
-                  key={imageIndex}
-                  className="absolute overflow-hidden shadow-2xl"
-                  style={{
-                    zIndex: imageIndex + 1,
-                    willChange: 'transform, width, height',
-                  }}
-                  initial={{ 
-                    opacity: 0, 
-                    scale: 0.8, 
-                    y: 50,
-                    width: '500px',
-                    height: '500px',
-                    borderRadius: '2px'
-                  }}
-                  animate={{
-                    opacity: isExpanding ? (isLastImage ? 1 : 0) : 1,
-                    scale: isExpanding ? 1 : scale,
-                    width: isExpanding && isLastImage ? '100vw' : '500px',
-                    height: isExpanding && isLastImage ? '100vh' : '500px',
-                    borderRadius: isExpanding && isLastImage ? 0 : '2px',
-                    y: 0,
-                  }}
-                  transition={{
-                    opacity: { duration: isExpanding ? 0.3 : 0.4, ease: 'easeOut' },
-                    scale: {
-                      duration: isExpanding ? 1.5 : 0.5,
-                      ease: isExpanding ? [0.25, 0.1, 0.25, 1] : 'easeOut',
-                    },
-                    width: {
-                      duration: 1.5,
-                      ease: [0.25, 0.1, 0.25, 1],
-                    },
-                    height: {
-                      duration: 1.5,
-                      ease: [0.25, 0.1, 0.25, 1],
-                    },
-                    borderRadius: { duration: 0.5 },
-                    y: { duration: 0.5, ease: 'easeOut' }, // For initial entry
-                  }}
-                >
-                  <Image
-                    src={LOADER_IMAGES[imageIndex]}
-                    alt={`Chacal project ${imageIndex + 1}`}
-                    fill
-                    className="object-cover"
-                    sizes="100vw"
-                    priority
-                  />
-                  {isLastImage && (
-                    <>
-                      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
-                      <div className="absolute inset-0 bg-gradient-to-r from-[#2F2E59]/30 via-transparent to-[#2F2E59]/30" />
-                    </>
-                  )}
-                </motion.div>
-              );
-            })}
-          </div>
+      <motion.div
+        className="fixed inset-0 z-9999 flex items-center justify-center bg-[#2F2E59]"
+        initial={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        {/* Text Container */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none px-4">
+          <AnimatePresence>
+            {/* Title: Left to Center */}
+            {(stage === 'title-in' || stage === 'subtitle-in') && (
+              <motion.h1
+                key="title"
+                initial={{ x: -1000, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ y: -500, opacity: 0 }} // Center to Top
+                transition={{ duration: 0.8, ease: "easeOut"}}
+                className="text-white font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-4 text-center leading-tight"
+              >
+                {t.title}
+              </motion.h1>
+            )}
+          </AnimatePresence>
 
-          {/* Loading indicator while images preload */}
-          {imagesLoaded < LOADER_IMAGES.length && (
-            <motion.div
-              className="absolute bottom-10 flex gap-1.5"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              {[...Array(3)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="w-2.5 h-2.5 bg-white/60 rounded-full"
-                  animate={{
-                    scale: [1, 1.4, 1],
-                    opacity: [0.5, 1, 0.5],
-                  }}
-                  transition={{
-                    duration: 0.9,
-                    repeat: Infinity,
-                    delay: i * 0.15,
-                  }}
-                />
-              ))}
-            </motion.div>
-          )}
+          <AnimatePresence>
+            {/* Subtitle: Typing Animation */}
+            {(stage === 'subtitle-in') && (
+              <motion.div
+                key="subtitle"
+                exit={{ y: 500, opacity: 0 }} // Center to Bottom/Right
+                transition={{ duration: 0.8, ease: "easeIn" }}
+                className="text-white/90 font-sans text-lg sm:text-xl md:text-2xl font-light tracking-wide text-center h-8 sm:h-10 flex items-center justify-center"
+              >
+                <span>
+                  {displayedText}
+                  <motion.span
+                    animate={{ opacity: [1, 0] }}
+                    transition={{
+                      duration: 0.8,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                    className="inline-block w-[3px] h-[1.1em] bg-white ml-1 align-middle"
+                  />
+                </span>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* Image Reveal */}
+        <motion.div
+          className="relative overflow-hidden shadow-2xl flex items-center justify-center z-10"
+          initial={{
+            width: 0,
+            height: 0,
+          }}
+          animate={stage === 'expand' ? {
+            width: '100vw',
+            height: '100vh',
+            opacity: 1,
+            borderRadius: 0
+          } : {
+            width: 0,
+            height: 0,
+            opacity: 0,
+          }}
+          transition={{
+            duration: 2.5,
+            ease: [0.25, 0.1, 0.25, 1], // Cubic bezier for dramatic expansion
+          }}
+        >
+          <Image
+            src={FINAL_IMAGE}
+            alt="Intro"
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+          {/* Overlays to match site style */}
+          <div className="absolute inset-0 bg-linear-to-b from-black/40 via-transparent to-black/60" />
+          <div className="absolute inset-0 bg-linear-to-r from-[#2F2E59]/30 via-transparent to-[#2F2E59]/30" />
         </motion.div>
-      )}
+      </motion.div>
     </AnimatePresence>
   );
 }
