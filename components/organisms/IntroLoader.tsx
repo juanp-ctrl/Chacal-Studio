@@ -11,7 +11,7 @@ const LOADER_IMAGES = [
   'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1600', // Impacto Visual
   'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=1600', // Voces Nativas
   'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=1600', // Energía Limpia
-  'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600', // Patagonia mountains
+  '/chacal-paisaje-.webp', // Patagonia mountains
 ];
 
 
@@ -181,6 +181,12 @@ export function IntroLoader() {
                     sizes="100vw"
                     priority
                   />
+                  {isLastImage && (
+                    <>
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#2F2E59]/30 via-transparent to-[#2F2E59]/30" />
+                    </>
+                  )}
                 </motion.div>
               );
             })}

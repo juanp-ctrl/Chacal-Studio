@@ -1,6 +1,6 @@
 'use client';
 
-import { Link } from '@/i18n/routing';
+import { ScrollLink } from '@/components/atoms/ScrollLink';
 import Image from 'next/image';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
@@ -30,7 +30,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay: index * 0.1 }}
     >
-      <Link href={`/projects/${project.slug}`} className="group block cursor-pointer">
+      <ScrollLink href={`/projects/${project.slug}`} className="group block cursor-pointer">
         {/* Image Container */}
         <div className="relative overflow-hidden rounded-2xl mb-6 aspect-[4/5] bg-muted">
           <Image
@@ -55,7 +55,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             {localizedSummary}
           </p>
         </div>
-      </Link>
+      </ScrollLink>
     </motion.div>
   );
 }

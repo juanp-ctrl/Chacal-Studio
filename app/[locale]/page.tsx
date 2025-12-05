@@ -10,7 +10,6 @@ import { SDGSection } from "@/components/sections/SDGSection";
 import { PartnersSection } from "@/components/sections/PartnersSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { JsonLd } from "@/components/SEO/JsonLd";
-import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import { routing } from "@/i18n/routing";
 
@@ -20,7 +19,6 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "hero" });
 
   const baseUrl = "https://chacalestudio.ar";
   const currentPath = locale === routing.defaultLocale ? "" : `/${locale}`;
@@ -82,7 +80,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: "website",
       images: [
         {
-          url: "/logo.webp",
+          url: "/logo-chacal-black.png",
           width: 600,
           height: 600,
           alt: "Chacal Estudio",

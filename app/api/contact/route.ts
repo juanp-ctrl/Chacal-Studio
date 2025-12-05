@@ -82,8 +82,7 @@ export async function POST(req: NextRequest) {
 
     try {
       const emailResponse = await resend.emails.send({
-        // TODO: Update 'from' to "Chacal Studio Contact <info@contact.chacalestudio.ar>" once domain verification is complete
-        from: "Chacal Studio Contact <onboarding@resend.dev>",
+        from: "Chacal Studio Contact <info@contact.chacalestudio.ar>",
         to: ["hola@chacalestudio.ar", "cuentas@chacalestudio.ar"],
         replyTo: email,
         subject: `¡Nuevo mensaje de contacto de ${name}!`,

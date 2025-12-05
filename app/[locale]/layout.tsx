@@ -67,7 +67,7 @@ export async function generateMetadata({
         : "Purpose-driven communication and design studio from Patagonia.",
       images: [
         {
-          url: "/logo.webp",
+          url: "/logo-chacal-black.png",
           width: 600,
           height: 600,
           alt: "Chacal Estudio",
