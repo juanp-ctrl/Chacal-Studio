@@ -5,7 +5,7 @@ import { motion, Transition } from 'motion/react';
 import { useEffect, useState } from 'react';
 
 // This will be replaced with a video in the future
-const HERO_MEDIA_URL = 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920';
+const HERO_MEDIA_URL = '/chacal-paisaje-.webp';
 
 export function VideoHeroSection() {
   const [hasSeenIntro, setHasSeenIntro] = useState(true);

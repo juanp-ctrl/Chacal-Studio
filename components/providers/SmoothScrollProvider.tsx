@@ -1,13 +1,30 @@
 'use client';
 
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect, useRef, Suspense, RefObject } from 'react';
 import Lenis from 'lenis';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 interface SmoothScrollProviderProps {
   children: ReactNode;
 }
 
+function ScrollHandler({ lenisRef }: { lenisRef: RefObject<Lenis | null> }) {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  // Reset scroll on route change
+  useEffect(() => {
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true });
+    }
+  }, [pathname, searchParams, lenisRef]);
+
+  return null;
+}
+
 export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
+  const lenisRef = useRef<Lenis | null>(null);
+
   useEffect(() => {
     // Check for reduced motion preference
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -25,6 +42,8 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
       touchMultiplier: 2.2,
     });
 
+    lenisRef.current = lenis;
+
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -34,9 +53,16 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
 
     return () => {
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
 
-  return <>{children}</>;
+  return (
+    <>
+      <Suspense fallback={null}>
+        <ScrollHandler lenisRef={lenisRef} />
+      </Suspense>
+      {children}
+    </>
+  );
 }
-

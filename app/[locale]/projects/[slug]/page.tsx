@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
+import { ScrollLink } from "@/components/atoms/ScrollLink";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowLeft, ArrowRight, Target, Lightbulb, TrendingUp } from "lucide-react";
 import * as Motion from "motion/react-client";
@@ -476,7 +477,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       )}
 
       {/* Next Project */}
-      <Link
+      <ScrollLink
         href={`/projects/${nextProject.slug}`}
         className="block relative h-[60vh] sm:h-[70vh] overflow-hidden bg-primary group cursor-pointer"
       >
@@ -521,7 +522,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             </div>
           </div>
         </div>
-      </Link>
+      </ScrollLink>
       </div>
     </>
   );
