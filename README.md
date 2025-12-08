@@ -5,7 +5,7 @@ A fast, animated portfolio/agency website built with Next.js, TypeScript and Tai
 Quick links
 - Website: https://chacalestudio.ar/
 - Environment example: .env.example
-- Source: this repository
+- Source: https://github.com/juanp-ctrl/Chacal-Studio
 
 ## What this project does
 Chacal Studio is a production-ready frontend for a creative agency portfolio. It provides:
