@@ -1,164 +1,110 @@
-# Chacal Studio
+# Chacal Studio Website 🐺 👨‍🎨
 
-A modern web application built with Next.js 16, React 19, and Tailwind CSS 4.
+A fast, animated portfolio/agency website built with Next.js, TypeScript and Tailwind CSS to showcase Chacal Studio's projects and creative work.
 
-## Tech Stack
+Quick links
+- Website: https://chacalestudio.ar/
+- Environment example: .env.example
+- Source: this repository
 
-| Technology                                | Version | Purpose                         |
-| ----------------------------------------- | ------- | ------------------------------- |
-| [Next.js](https://nextjs.org)             | 16.0.5  | React framework with App Router |
-| [React](https://react.dev)                | 19.2.0  | UI library                      |
-| [TypeScript](https://typescriptlang.org)  | 5.x     | Type safety                     |
-| [Tailwind CSS](https://tailwindcss.com)   | 4.x     | Utility-first CSS               |
-| [ESLint](https://eslint.org)              | 9.x     | Code linting                    |
-| [Prettier](https://prettier.io)           | 3.x     | Code formatting                 |
-| [Husky](https://typicode.github.io/husky) | 9.x     | Git hooks                       |
+## What this project does
+Chacal Studio is a production-ready frontend for a creative agency portfolio. It provides:
+- A performant, SEO-friendly website built on Next.js (app router)
+- Smooth scroll and animation primitives for a polished UX
+- Reusable UI primitives using Radix UI, Tailwind and utility components
+- Internationalization support via next-intl
+- Forms and validation with react-hook-form + zod
+- Carousel, charts and other interactive components for portfolio pages
+
+## Why this project is useful
+- Production-ready starter for creative/agency sites with accessible UI components
+- Focus on performance and animations for strong visual presentation
+- Modular structure (app, components, lib) makes it easy to extend
+- Integrates common services (email, captcha, analytics) in a developer-friendly way
+
+## Key features
+- Next.js 16 + React 19 + TypeScript
+- Tailwind CSS and utility-first styling
+- Radix UI primitives for accessible components
+- Smooth scrolling and animation libs (lenis, motion)
+- Embla carousel for project sliders
+- next-intl for i18n support
+- Form handling with react-hook-form + zod
+- Email + verification integrations (resend, Turnstile) included
+- Scripts for linting and formatting (eslint, prettier, husky)
 
 ## Prerequisites
+- Node.js (recommended: 18.x or 20.x)
+- pnpm (preferred; repository contains pnpm-lock.yaml)
+- Git
 
-- **Node.js** 18.17 or later
-- **pnpm** 8.x or later (recommended package manager)
+## Get started (local development)
+1. Clone the repo
+   git clone https://github.com/juanp-ctrl/Chacal-Studio.git
+   cd Chacal-Studio
 
-## Getting Started
+2. Install dependencies
+   pnpm install
 
-### 1. Clone the Repository
+3. Environment
+   - Copy the example env:
+     cp .env.example .env
+   - Edit `.env` and provide the required values (see .env.example for keys)
 
-```bash
-git clone <repository-url>
-cd chacal-studio
-```
+4. Run development server
+   pnpm dev
+   - Visit http://localhost:3000
 
-### 2. Install Dependencies
+5. Build for production
+   pnpm build
+   pnpm start
 
-```bash
-pnpm install
-```
+Useful npm scripts (from package.json)
+- pnpm dev — run development server
+- pnpm build — production build
+- pnpm start — start built server
+- pnpm lint — run ESLint
+- pnpm lint:fix — run ESLint and attempt automatic fixes
+- pnpm format — format code with Prettier
+- pnpm format:check — check formatting
 
-This will also set up Husky Git hooks automatically via the `prepare` script.
+## Project structure (high level)
+- app/ — Next.js app routes and page layout (app router)
+- components/ — shared React components and UI primitives
+- public/ — static assets (images, icons)
+- i18n/ — translation files
+- lib/ — utility functions and service wrappers
+- messages/ — localized messages
+- next.config.ts, tsconfig.json, postcss.config.mjs — core configs
 
-### 3. Run the Development Server
+(See the repository for the full structure)
 
-```bash
-pnpm dev
-```
+## Configuration & deployment
+- Review DEPLOYMENT.md for recommended hosting/deployment steps and environment options
+- Check next.config.ts for Next.js configuration and proxy.ts for any proxy rules
+- Use .env.example as the source of truth for environment variables
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+## Where to get help
+- Open an issue in this repository for bugs or feature requests: Issues
+- For quick questions, use the repository Discussions or open an issue (if enabled) or contact the maintainer via their GitHub profile
 
-The page auto-updates as you edit files in the `app/` directory.
+## Maintainers & Contributors
+- Maintained by @juanp-ctrl — see their GitHub profile for contact and other projects
+- Before opening PRs:
+  - Run linting and formatting locally (pnpm lint, pnpm format)
+  - Provide meaningful commit messages and follow the repository's contribution conventions
 
-## Available Scripts
+## Quick troubleshooting
+- If you run into dependency issues, remove node_modules and the pnpm store and reinstall:
+  rm -rf node_modules && pnpm install
+- If environment variables are missing, re-check .env.example and ensure values are present
+- For build/runtime errors, check next.config.ts and ensure any service keys (email, captcha) are configured
 
-| Command             | Description                                    |
-| ------------------- | ---------------------------------------------- |
-| `pnpm dev`          | Start development server with hot reload       |
-| `pnpm build`        | Create optimized production build              |
-| `pnpm start`        | Start production server (requires build first) |
-| `pnpm lint`         | Run ESLint to check for code issues            |
-| `pnpm lint:fix`     | Run ESLint and auto-fix issues                 |
-| `pnpm format`       | Format all files with Prettier                 |
-| `pnpm format:check` | Check if files are properly formatted          |
-
-## Code Quality
-
-### Linting
-
-ESLint is configured with Next.js recommended rules and TypeScript support:
-
-```bash
-# Check for linting issues
-pnpm lint
-
-# Auto-fix linting issues
-pnpm lint:fix
-```
-
-### Formatting
-
-Prettier ensures consistent code style across the project:
-
-```bash
-# Format all files
-pnpm format
-
-# Check formatting without modifying files
-pnpm format:check
-```
-
-### Git Hooks
-
-Husky enforces code quality on every commit and push:
-
-| Hook           | Action                    | Purpose                                   |
-| -------------- | ------------------------- | ----------------------------------------- |
-| **pre-commit** | `pnpm lint`               | Ensures code passes linting before commit |
-| **pre-push**   | `pnpm lint && pnpm build` | Validates lint + build before pushing     |
-
-These hooks run automatically — no manual setup required after `pnpm install`.
-
-## Project Structure
-
-```
-chacal-studio/
-├── app/                    # Next.js App Router
-│   ├── layout.tsx          # Root layout
-│   ├── page.tsx            # Home page
-│   ├── globals.css         # Global styles
-│   └── favicon.ico         # Site favicon
-├── public/                 # Static assets
-├── .husky/                 # Git hooks
-│   ├── pre-commit          # Lint on commit
-│   └── pre-push            # Lint + build on push
-├── eslint.config.mjs       # ESLint configuration
-├── prettier.config.mjs     # Prettier configuration
-├── next.config.ts          # Next.js configuration
-├── tailwind.config.ts      # Tailwind CSS configuration
-├── tsconfig.json           # TypeScript configuration
-└── package.json            # Project dependencies and scripts
-```
-
-## Git Workflow
-
-We use a **Git Flow-inspired** branching model:
-
-| Branch      | Purpose                              |
-| ----------- | ------------------------------------ |
-| `main`      | Production-ready code                |
-| `develop`   | Integration branch for features      |
-| `feature/*` | New features (branch from `develop`) |
-| `bugfix/*`  | Bug fixes (branch from `develop`)    |
-| `hotfix/*`  | Critical fixes (branch from `main`)  |
-
-### Quick Start for Contributors
-
-```bash
-# 1. Sync with develop
-git checkout develop
-git pull origin develop
-
-# 2. Create feature branch
-git checkout -b feature/your-feature-name
-
-# 3. Make changes and commit
-git add .
-git commit -m "feat: add your feature"
-
-# 4. Push and create PR
-git push origin feature/your-feature-name
-```
-
-For detailed contribution guidelines, see [CONTRIBUTING.md](./CONTRIBUTING.md).
-
-## Deployment
-
-For detailed deployment instructions, including connecting to AWS Amplify and configuring environment variables, please see [DEPLOYMENT.md](./DEPLOYMENT.md).
-
-## Learn More
-
-- [Next.js Documentation](https://nextjs.org/docs) — Learn about Next.js features and API
-- [React Documentation](https://react.dev) — Learn React
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs) — Utility-first CSS framework
-- [TypeScript Documentation](https://typescriptlang.org/docs) — JavaScript with types
-
-## License
-
-This project is private and proprietary.
+## Helpful files
+- .env.example — example environment variables
+- DEPLOYMENT.md — deployment instructions
+- CONTRIBUTING.md — how to contribute
+- package.json — scripts & dependencies
+- pnpm-lock.yaml — lockfile for reproducible installs
+- next.config.ts — Next.js configuration
+- tsconfig.json — TypeScript configuration
