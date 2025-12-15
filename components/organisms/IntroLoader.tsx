@@ -11,7 +11,7 @@ const FINAL_IMAGE = '/chacal-paisaje-.webp';
 const CONTENT = {
   es: {
     title: "Comunicando lo humano",
-    subtitle: "Con un foco socio-ambiental"
+    subtitle: "Con un foco socio ambiental"
   },
   en: {
     title: "Communicating the human",
@@ -124,7 +124,7 @@ export function IntroLoader() {
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ y: -500, opacity: 0 }} // Center to Top
                 transition={{ duration: 0.8, ease: "easeOut"}}
-                className="text-white font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-4 text-center leading-tight"
+                className="text-white font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-4 text-center leading-tight"
               >
                 {t.title}
               </motion.h1>
@@ -138,7 +138,7 @@ export function IntroLoader() {
                 key="subtitle"
                 exit={{ y: 500, opacity: 0 }} // Center to Bottom/Right
                 transition={{ duration: 0.8, ease: "easeIn" }}
-                className="text-white/90 font-sans text-lg sm:text-xl md:text-2xl font-light tracking-wide text-center h-8 sm:h-10 flex items-center justify-center"
+                className="text-white/90 font-sans text-lg sm:text-2xl md:text-3xl font-light tracking-wide text-center h-8 sm:h-10 flex items-center justify-center"
               >
                 <span>
                   {displayedText}

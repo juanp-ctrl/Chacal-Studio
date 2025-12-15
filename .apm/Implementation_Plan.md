@@ -1,7 +1,8 @@
 # Chacal Estudio Website – Implementation Plan
 
+**Version:** 1.0.1
 **Memory Strategy:** Dynamic-MD (directory structure with Markdown logs)
-**Last Modification:** Phase 9 added as Maintainability & Bug Fixing phase with 4 initial tasks (project pages 500 error, contact button hover, Open Graph, dark mode contrast) - Manager Agent 7
+**Last Modification:** Added Tasks 9.6 (IntroLoader i18n refactor), 9.7 (Hide Projects section), and 9.8 (Bebas Neue H1 typography); initiated per-task versioning starting at 1.0.1 - Manager Agent 8
 **Project Overview:** Rebuild the Chacal Estudio website as a high-fidelity Next.js App Router landing, implementing the Figma Make design pixel-close with atomic design, React Compiler, `next-intl` i18n (Spanish + English), strong SEO/JSON-LD, accessibility, legal pages, cookie banner, and a contact form powered by React Hook Form, Zod, Cloudflare Turnstile, and Resend. Deployment via AWS Amplify with Husky-enforced quality gates.
 
 ---
@@ -561,3 +562,47 @@
 5. **Framer Motion Compatibility:** Ensure existing scroll-triggered animations (useInView, etc.) work correctly with Lenis.
 6. **Accessibility:** Respect `prefers-reduced-motion` preference by disabling smooth scroll for users who prefer it.
 7. **Git Commit:** `git add -A && git commit -m "feat(task-9.5): implement Lenis smooth scroll"`
+
+---
+
+### Task 9.6 – Refactor IntroLoader i18n implementation │ Agent_Frontend_Architecture
+
+- **Objective:** Consolidate `IntroLoader` localization by moving hardcoded internal `CONTENT` to the central `next-intl` message files.
+- **Output:** `IntroLoader` component refactored to use `useTranslations` (client) or `getTranslations` (server) with keys from `messages/es.json` and `messages/en.json`; removal of unused `CONTENT` object.
+- **Guidance:** The component currently has duplicate content in both `IntroLoader.tsx` and the locale JSON files. Standardize on the locale files to ensure maintainability and consistency.
+- **Depends on:** Phase 4 i18n implementation.
+
+1. **Review i18n Keys:** Verify `IntroLoader` keys in `messages/es.json` and `messages/en.json` (headline, tagline1, tagline2) match the content needed.
+2. **Refactor Component:** Replace internal `CONTENT` object usage in `IntroLoader.tsx` with `next-intl` translation hooks.
+3. **Clean Up:** Delete the hardcoded `CONTENT` object from `IntroLoader.tsx`.
+4. **Verification:** Confirm the loader displays correctly in both Spanish and English after the refactor.
+5. **Git Commit:** `git add -A && git commit -m "fix(task-9.6): refactor IntroLoader to use central i18n messages"`
+
+---
+
+### Task 9.7 – Hide Projects Section Temporarily │ Agent_Frontend_Architecture
+
+- **Objective:** Hide the Projects section from the homepage and navigation while keeping the underlying code intact for future use.
+- **Output:** Projects section removed from the Home page layout; Projects link removed from Header and Footer navigation; direct `/projects` routes optionally disabled or hidden from UI.
+- **Guidance:** Do not delete the components or data files. Simply comment out or conditionally hide the entry points to the Projects section.
+- **Depends on:** Phase 3 implementation.
+
+1. **Homepage Update:** Remove or comment out the Projects section component in `app/[locale]/page.tsx`.
+2. **Navigation Update:** Remove "Proyectos" / "Projects" links from `Header.tsx` and `Footer.tsx`.
+3. **Verification:** Ensure the site functions correctly without the projects section and navigation links are updated in both languages.
+4. **Git Commit:** `git add -A && git commit -m "feat(task-9.7): hide projects section and navigation links"`
+
+---
+
+### Task 9.8 – Implement Bebas Neue typography for H1 elements │ Agent_Frontend_Architecture
+
+- **Objective:** Update all `H1` headings across the site to use the Bebas Neue font for a more impactful brand presentation.
+- **Output:** `H1` elements styled with Bebas Neue font; Next.js font loading updated to include Bebas Neue; design system/Tailwind config updated if necessary.
+- **Guidance:** Reference https://fonts.google.com/specimen/Bebas+Neue. Ensure the font is loaded efficiently via `next/font/google`. Check all pages (Home, legal, etc.) for `H1` consistency.
+- **Depends on:** Phase 2 Design System.
+
+1. **Font Configuration:** Add `Bebas_Neue` from `next/font/google` to the layout or a dedicated font utility.
+2. **CSS/Tailwind Update:** Update `H1` styles in `globals.css` or the `Heading` atom to use the new font family.
+3. **Audit Headings:** Review all sections and pages to ensure all `H1` elements have correctly transitioned to the new typography.
+4. **Verification:** Confirm Bebas Neue is rendering correctly and matches the intended design impact.
+5. **Git Commit:** `git add -A && git commit -m "feat(task-9.8): implement Bebas Neue typography for H1 headings"`
