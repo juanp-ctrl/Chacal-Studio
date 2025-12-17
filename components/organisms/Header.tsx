@@ -114,7 +114,7 @@ export function Header({ className }: HeaderProps) {
     { label: t("method"), href: "/#method", type: "anchor" },
     { label: t("impact"), href: "/#impacto", type: "anchor" },
     { label: t("services"), href: "/#servicios", type: "anchor" },
-    { label: t("projects"), href: "/projects", type: "route" },
+    // { label: t("projects"), href: "/projects", type: "route" },
     { label: t("plantBased"), href: "/#plant-based-treaty", type: "anchor" },
   ];
 
@@ -216,7 +216,7 @@ export function Header({ className }: HeaderProps) {
           <Button 
             variant="default" 
             size="sm" 
-            className="bg-accent hover:bg-(--accent)/90 text-white rounded-full px-6 cursor-pointer"
+            className="bg-accent hover:bg-(--accent)/90 text-foreground rounded-full px-6 cursor-pointer"
             onClick={() => {
                 const element = document.getElementById('contact'); // Assuming contact section has id 'contact'
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
@@ -307,7 +307,7 @@ export function Header({ className }: HeaderProps) {
                 <Button 
                   variant="default" 
                   size="lg" 
-                  className="bg-accent hover:bg-(--accent)/90 text-white rounded-full px-8 w-full cursor-pointer"
+                  className="bg-accent hover:bg-(--accent)/90 text-foreground rounded-full px-8 w-full cursor-pointer"
                   onClick={() => {
                       const element = document.getElementById('contact');
                       if (element) element.scrollIntoView({ behavior: 'smooth' });

@@ -3,25 +3,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
-import { useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 const SESSION_KEY = 'chacal-intro-seen';
 const FINAL_IMAGE = '/chacal-paisaje-.webp';
 
-const CONTENT = {
-  es: {
-    title: "Comunicando lo humano",
-    subtitle: "Con un foco socio-ambiental"
-  },
-  en: {
-    title: "Communicating the human",
-    subtitle: "With a socio-environmental focus"
-  }
-};
-
 export function IntroLoader() {
-  const locale = useLocale();
-  const t = CONTENT[locale as keyof typeof CONTENT] || CONTENT.en;
+  const t = useTranslations('IntroLoader');
   
   const [showLoader, setShowLoader] = useState(false);
   const [displayedText, setDisplayedText] = useState('');
@@ -80,7 +68,7 @@ export function IntroLoader() {
   // Typing Effect
   useEffect(() => {
     if (stage === 'subtitle-in') {
-      const fullText = t.subtitle;
+      const fullText = t('tagline1');
       let index = 0;
       setDisplayedText(''); // Start empty
 
@@ -94,7 +82,7 @@ export function IntroLoader() {
 
       return () => clearInterval(interval);
     }
-  }, [stage, t.subtitle]);
+  }, [stage, t]);
 
   // Cleanup on unmount
   useEffect(() => {
@@ -124,9 +112,9 @@ export function IntroLoader() {
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ y: -500, opacity: 0 }} // Center to Top
                 transition={{ duration: 0.8, ease: "easeOut"}}
-                className="text-white font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-4 text-center leading-tight"
+                className="text-white font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-4 text-center leading-tight"
               >
-                {t.title}
+                {t('headline')}
               </motion.h1>
             )}
           </AnimatePresence>
@@ -138,7 +126,7 @@ export function IntroLoader() {
                 key="subtitle"
                 exit={{ y: 500, opacity: 0 }} // Center to Bottom/Right
                 transition={{ duration: 0.8, ease: "easeIn" }}
-                className="text-white/90 font-sans text-lg sm:text-xl md:text-2xl font-light tracking-wide text-center h-8 sm:h-10 flex items-center justify-center"
+                className="text-white/90 font-sans text-lg sm:text-2xl md:text-3xl font-light tracking-wide text-center h-8 sm:h-10 flex items-center justify-center"
               >
                 <span>
                   {displayedText}

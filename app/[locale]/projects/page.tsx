@@ -2,6 +2,7 @@ import { ProjectsClient } from './ProjectsClient';
 import { JsonLd } from '@/components/SEO/JsonLd';
 import type { Metadata } from 'next';
 import { routing } from '@/i18n/routing';
+import { notFound } from 'next/navigation';
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -68,11 +69,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description,
     },
+    robots: {
+      index: false,
+      follow: false,
+    },
   };
 }
 
 export default async function ProjectsPage({ params }: PageProps) {
   const { locale } = await params;
+  
+  // Temporarily disabled
+  notFound();
+  return null;
+
+  /*
   const baseUrl = 'https://chacalestudio.ar';
   const currentPath = locale === routing.defaultLocale ? '/projects' : `/${locale}/projects`;
   const canonicalUrl = `${baseUrl}${currentPath}`;
@@ -103,4 +114,5 @@ export default async function ProjectsPage({ params }: PageProps) {
       <ProjectsClient />
     </>
   );
+  */
 }
