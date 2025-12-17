@@ -1,8 +1,8 @@
 # Chacal Estudio Website – Implementation Plan
 
-**Version:** 1.0.1
+**Version:** 1.0.2
 **Memory Strategy:** Dynamic-MD (directory structure with Markdown logs)
-**Last Modification:** Added Tasks 9.6 (IntroLoader i18n refactor), 9.7 (Hide Projects section), and 9.8 (Bebas Neue H1 typography); initiated per-task versioning starting at 1.0.1 - Manager Agent 8
+**Last Modification:** Completed Task 9.6 (IntroLoader i18n refactor); updated version to 1.0.2 for Task 9.7 (Hide Projects section) - Manager Agent 8
 **Project Overview:** Rebuild the Chacal Estudio website as a high-fidelity Next.js App Router landing, implementing the Figma Make design pixel-close with atomic design, React Compiler, `next-intl` i18n (Spanish + English), strong SEO/JSON-LD, accessibility, legal pages, cookie banner, and a contact form powered by React Hook Form, Zod, Cloudflare Turnstile, and Resend. Deployment via AWS Amplify with Husky-enforced quality gates.
 
 ---
@@ -567,16 +567,16 @@
 
 ### Task 9.6 – Refactor IntroLoader i18n implementation │ Agent_Frontend_Architecture
 
-- **Objective:** Consolidate `IntroLoader` localization by moving hardcoded internal `CONTENT` to the central `next-intl` message files.
+- **Objective:** Consolidate `IntroLoader` localization by moving hardcoded internal `CONTENT` to the central `next-intl` message files. ✅ **COMPLETE**
 - **Output:** `IntroLoader` component refactored to use `useTranslations` (client) or `getTranslations` (server) with keys from `messages/es.json` and `messages/en.json`; removal of unused `CONTENT` object.
 - **Guidance:** The component currently has duplicate content in both `IntroLoader.tsx` and the locale JSON files. Standardize on the locale files to ensure maintainability and consistency.
 - **Depends on:** Phase 4 i18n implementation.
 
-1. **Review i18n Keys:** Verify `IntroLoader` keys in `messages/es.json` and `messages/en.json` (headline, tagline1, tagline2) match the content needed.
-2. **Refactor Component:** Replace internal `CONTENT` object usage in `IntroLoader.tsx` with `next-intl` translation hooks.
-3. **Clean Up:** Delete the hardcoded `CONTENT` object from `IntroLoader.tsx`.
-4. **Verification:** Confirm the loader displays correctly in both Spanish and English after the refactor.
-5. **Git Commit:** `git add -A && git commit -m "fix(task-9.6): refactor IntroLoader to use central i18n messages"`
+1. **Review i18n Keys:** Verify `IntroLoader` keys in `messages/es.json` and `messages/en.json` (headline, tagline1, tagline2) match the content needed. ✅
+2. **Refactor Component:** Replace internal `CONTENT` object usage in `IntroLoader.tsx` with `next-intl` translation hooks. ✅
+3. **Clean Up:** Delete the hardcoded `CONTENT` object from `IntroLoader.tsx`. ✅
+4. **Verification:** Confirm the loader displays correctly in both Spanish and English after the refactor. ✅
+5. **Git Commit:** `git add -A && git commit -m "fix(task-9.6): refactor IntroLoader to use central i18n messages"` ✅
 
 ---
 

@@ -114,7 +114,7 @@ export function Header({ className }: HeaderProps) {
     { label: t("method"), href: "/#method", type: "anchor" },
     { label: t("impact"), href: "/#impacto", type: "anchor" },
     { label: t("services"), href: "/#servicios", type: "anchor" },
-    { label: t("projects"), href: "/projects", type: "route" },
+    // { label: t("projects"), href: "/projects", type: "route" },
     { label: t("plantBased"), href: "/#plant-based-treaty", type: "anchor" },
   ];
 
