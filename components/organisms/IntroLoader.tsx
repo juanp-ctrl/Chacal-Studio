@@ -3,25 +3,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
-import { useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 const SESSION_KEY = 'chacal-intro-seen';
 const FINAL_IMAGE = '/chacal-paisaje-.webp';
 
-const CONTENT = {
-  es: {
-    title: "Comunicando lo humano",
-    subtitle: "Con un foco socio ambiental"
-  },
-  en: {
-    title: "Communicating the human",
-    subtitle: "With a socio-environmental focus"
-  }
-};
-
 export function IntroLoader() {
-  const locale = useLocale();
-  const t = CONTENT[locale as keyof typeof CONTENT] || CONTENT.en;
+  const t = useTranslations('IntroLoader');
   
   const [showLoader, setShowLoader] = useState(false);
   const [displayedText, setDisplayedText] = useState('');
@@ -80,7 +68,7 @@ export function IntroLoader() {
   // Typing Effect
   useEffect(() => {
     if (stage === 'subtitle-in') {
-      const fullText = t.subtitle;
+      const fullText = t('tagline1');
       let index = 0;
       setDisplayedText(''); // Start empty
 
@@ -94,7 +82,7 @@ export function IntroLoader() {
 
       return () => clearInterval(interval);
     }
-  }, [stage, t.subtitle]);
+  }, [stage, t]);
 
   // Cleanup on unmount
   useEffect(() => {
@@ -126,7 +114,7 @@ export function IntroLoader() {
                 transition={{ duration: 0.8, ease: "easeOut"}}
                 className="text-white font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-4 text-center leading-tight"
               >
-                {t.title}
+                {t('headline')}
               </motion.h1>
             )}
           </AnimatePresence>
