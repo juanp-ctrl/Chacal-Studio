@@ -58,8 +58,10 @@ export function AnimatedText({
     if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(Component)) {
       // Cast component to specific heading type for type safety
       const HeadingTag = Component as "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+      // H1, H2, H3 use Bebas Neue (font-display), other headings use Crimson Text (font-heading)
+      const reducedMotionFontClass = ["h1", "h2", "h3"].includes(HeadingTag) ? "font-display" : "font-heading";
       return (
-        <Heading as={HeadingTag} className={cn("font-heading", className)}>
+        <Heading as={HeadingTag} className={cn(reducedMotionFontClass, className)}>
           {text}
         </Heading>
       );
@@ -98,12 +100,8 @@ export function AnimatedText({
   );
 
   // Determine font family class based on component type
-  // Note: Heading component already applies font-heading by default, so we don't strictly need to force it here
-  // but we keep it for consistency. The issue might be that Heading's base styles (font-heading) are winning 
-  // or losing against className depending on order.
-  // Using cn("relative", fontClass, className) puts className last (highest specificity in tailwind-merge).
-  // If the user passes 'font-medium', it should work.
-  const fontClass = isHeading ? "font-heading" : "font-body";
+  // H1, H2, H3 use Bebas Neue (font-display), other headings use Crimson Text (font-heading)
+  const fontClass = ["h1", "h2", "h3"].includes(Component) ? "font-display" : isHeading ? "font-heading" : "font-body";
 
   if (isHeading) {
     const HeadingTag = Component as "h1" | "h2" | "h3" | "h4" | "h5" | "h6";

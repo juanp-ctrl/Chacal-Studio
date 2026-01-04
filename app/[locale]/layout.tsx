@@ -9,7 +9,7 @@ import { IntroLoader } from "@/components/organisms/IntroLoader";
 import { FloatingActions } from "@/components/organisms/FloatingActions";
 import { CustomCursor } from "@/components/organisms/CustomCursor";
 import "../globals.css"; 
-import { Crimson_Text, DM_Sans, Alex_Brush } from "next/font/google";
+import { Crimson_Text, DM_Sans, Alex_Brush, Bebas_Neue } from "next/font/google";
 import type { Metadata } from "next";
 
 const crimsonText = Crimson_Text({
@@ -30,6 +30,13 @@ const alexBrush = Alex_Brush({
   subsets: ["latin"],
   weight: ["400"],
   variable: "--font-alex-brush",
+  display: "swap",
+});
+
+const bebasNeue = Bebas_Neue({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-bebas-neue",
   display: "swap",
 });
 
@@ -117,7 +124,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
  
   return (
-    <html lang={locale} className={`${crimsonText.variable} ${dmSans.variable} ${alexBrush.variable}`}>
+    <html lang={locale} className={`${crimsonText.variable} ${dmSans.variable} ${alexBrush.variable} ${bebasNeue.variable}`}>
       <body className="antialiased bg-background text-foreground font-body">
         <NextIntlClientProvider messages={messages}>
           <SmoothScrollProvider>
