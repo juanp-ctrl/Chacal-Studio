@@ -45,7 +45,7 @@ export function SDGSection() {
           transition={{ duration: 0.8 }}
         >
           <div className="mb-6 flex flex-col items-center">
-            <div className="inline-flex items-center justify-center px-4 py-2 bg-white rounded-2xl mb-6">
+            <div className="inline-flex items-center justify-center px-4 py-2 bg-white rounded-full mb-6 h-[66px]">
               <div className="relative w-[357px] h-[66px]">
                 <Image 
                   src="/ODS-logo.svg" 
@@ -56,7 +56,7 @@ export function SDGSection() {
                 />
               </div>
             </div>
-            <Heading as="h2" className="mb-6 text-3xl font-heading font-medium tracking-tight text-white sm:text-4xl md:text-5xl">
+            <Heading as="h2" className="mb-6 text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-5xl">
               {t("title")}
             </Heading>
           </div>
@@ -65,11 +65,11 @@ export function SDGSection() {
           </Text>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="flex flex-wrap justify-center gap-8">
           {sdgs.map((sdg, index) => (
             <motion.div
               key={sdg.number}
-              className="bg-white/[0.03] backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-white/10 hover:border-white/20 transition-all duration-300 group hover:-translate-y-1"
+              className="bg-white/[0.03] backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-white/10 hover:border-white/20 transition-all duration-300 group hover:-translate-y-1 w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
