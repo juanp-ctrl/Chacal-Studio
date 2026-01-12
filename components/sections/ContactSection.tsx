@@ -20,7 +20,7 @@ export function ContactSection() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="mb-6 tracking-tight capitalize font-serif text-3xl sm:text-4xl">
+          <h2 className="mb-6 tracking-tight capitalize font-display text-3xl sm:text-4xl">
             {t("title")}
           </h2>
           <p className="text-white/80 text-xl max-w-2xl mx-auto">
@@ -46,7 +46,7 @@ export function ContactSection() {
             transition={{ duration: 0.8 }}
           >
             <div>
-              <h3 className="mb-6 text-2xl font-serif">{t("connect")}</h3>
+              <h3 className="mb-6 text-2xl font-display">{t("connect")}</h3>
               <p className="text-white/80 mb-8 text-lg leading-relaxed">
                 {t("connectText")}
               </p>

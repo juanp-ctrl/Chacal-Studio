@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import Image from "next/image";
 import { ExternalLink, Leaf, Globe2, Sprout } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Heading } from "@/components/atoms/Heading";
@@ -42,20 +43,8 @@ export function PlantBasedTreatySection() {
   return (
     <section 
       id="plant-based-treaty" 
-      className="relative py-24 sm:py-32 px-6 lg:px-8 overflow-hidden bg-blue-darker border-t border-white/10"
+      className="relative py-24 sm:py-32 px-6 lg:px-8 overflow-hidden bg-pbt-green-dark border-t border-white/10"
     >
-      {/* Subtle decorative patterns - contained within overflow-hidden parent */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none overflow-hidden">
-        <div className="absolute top-10 left-10 w-64 h-64 rounded-full blur-3xl bg-pbt-green" />
-        <div className="absolute bottom-20 right-20 w-96 h-96 rounded-full blur-3xl bg-pbt-green-light" />
-      </div>
-
-      {/* Subtle leaf pattern overlay */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 10c-5 0-10 5-10 15 0 10 10 15 10 15s10-5 10-15c0-10-5-15-10-15z' fill='%2352B788' fill-opacity='1'/%3E%3C/svg%3E")`,
-        backgroundSize: '60px 60px'
-      }} />
-
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header with Plant Based Treaty visual cue */}
         <motion.div
@@ -65,11 +54,16 @@ export function PlantBasedTreatySection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center gap-3 mb-6 px-6 py-3 rounded-full bg-white/5 backdrop-blur-sm border border-white/10">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center bg-pbt-green">
-              <Leaf className="w-5 h-5 text-white" />
+          <div className="inline-flex items-center gap-3 mb-6 px-4 py-2 rounded-full bg-white/90 backdrop-blur-sm border border-white/10 shadow-lg">
+            <div className="relative w-32 h-8">
+              <Image 
+                src="/Plant-Based-Treaty-logo.svg" 
+                alt="Plant Based Treaty" 
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
-            <span className="text-white/70 uppercase tracking-wider text-sm font-medium">{t("title")}</span>
           </div>
           
           <Heading as="h2" className="mb-6 text-3xl font-normal tracking-tight text-white sm:text-4xl md:text-5xl capitalize">
@@ -106,9 +100,9 @@ export function PlantBasedTreatySection() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                >
-                  <div className="flex gap-4 p-5 rounded-xl backdrop-blur-sm border border-white/10 transition-all duration-300 group-hover:border-pbt-green/40 bg-white/[0.03]">
-                    <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 bg-pbt-green/15 text-pbt-green-light">
+                > 
+                  <div className="flex gap-4 p-5 rounded-xl backdrop-blur-sm border border-white/10 transition-all duration-300 group-hover:border-pbt-green-light/40 bg-white/[0.03]">
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 bg-pbt-green-light text-pbt-green-dark">
                       <principle.icon className="w-5 h-5" />
                     </div>
                     <div className="flex-1">
@@ -145,7 +139,7 @@ export function PlantBasedTreatySection() {
             {/* Impact Card */}
             <div className="p-8 rounded-2xl backdrop-blur-sm border border-white/10 bg-white/[0.03] transition-all duration-500 hover:scale-[1.02]">
               <div className="flex items-center mb-5">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mr-4 bg-blue-base">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mr-4 bg-pbt-green">
                   <Globe2 className="w-6 h-6 text-white" />
                 </div>
                 <Heading as="h3" className="text-white text-xl font-bold">{t("impact.title")}</Heading>
@@ -210,7 +204,7 @@ export function PlantBasedTreatySection() {
                 href="https://plantbasedtreaty.org/donate"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-pbt-green text-white font-medium"
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-pbt-green text-brand-blue font-medium"
               >
                 {t("donate.cta")}
                 <ExternalLink size={20} />

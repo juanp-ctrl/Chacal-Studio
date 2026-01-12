@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "motion/react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Heading } from "@/components/atoms/Heading";
 import { Text } from "@/components/atoms/Text";
-import { AnimatedText } from "../atoms/AnimatedText";
 
 const sdgColors = ['#EF402D', '#A31C44', '#F99D26', '#CF8D2A', '#48773E'];
 
@@ -44,11 +44,17 @@ export function SDGSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <AnimatedText
-            text={t("title")}
-            as="h2"
-            className="mb-6 text-3xl font-heading font-medium tracking-tight text-white sm:text-4xl md:text-5xl"
-          />
+          <div className="mb-8 flex justify-center">
+            <div className="relative w-48 h-48 md:w-64 md:h-64">
+              <Image 
+                src="/ODS-logo.svg" 
+                alt={t("title")}
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+          </div>
           <Text className="text-white/80 text-lg sm:text-xl max-w-3xl mx-auto font-light leading-relaxed">
             {t("subtitle")}
           </Text>
@@ -65,13 +71,20 @@ export function SDGSection() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
               <div
-                className="h-32 flex items-center justify-center text-white relative overflow-hidden"
+                className="h-32 flex items-center justify-between text-white relative overflow-hidden px-6"
                 style={{ backgroundColor: sdg.color }}
               >
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300" />
-                <div className="relative z-10 text-center">
-                  <span className="block text-6xl font-bold opacity-90 mb-1">{sdg.number}</span>
-                  <span className="block text-xs uppercase tracking-widest font-medium opacity-90">ODS</span>
+                <div className="relative z-10">
+                  <span className="block text-6xl font-bold opacity-90">{sdg.number}</span>
+                </div>
+                <div className="relative z-10 w-20 h-20">
+                  <Image 
+                    src={`/ODS/ODS-${sdg.number}.svg`} 
+                    alt={`ODS ${sdg.number}`}
+                    fill
+                    className="object-contain"
+                  />
                 </div>
               </div>
               <div className="p-8">
