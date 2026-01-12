@@ -11,9 +11,9 @@ import { cn } from "@/lib/utils";
 
 // Using the same Unsplash images from the reference implementation
 const impactImages = [
-  'https://images.unsplash.com/photo-1752650735943-d0fbf1edce21?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWFtJTIwY29sbGFib3JhdGlvbiUyMHdvcmtzcGFjZXxlbnwxfHx8fDE3NjMyOTI3Mzh8MA&ixlib=rb-4.1.0&q=80&w=1080',
-  'https://images.unsplash.com/photo-1761250027507-c0be614c0254?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21tdW5pdHklMjBwZW9wbGUlMjBoZWxwaW5nfGVufDF8fHx8MTc2MzIyMzc5MXww&ixlib=rb-4.1.0&q=80&w=1080',
-  'https://images.unsplash.com/photo-1647901493574-204e18ae897f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwbGFudHMlMjBncmVlbiUyMGVudmlyb25tZW50fGVufDF8fHx8MTc2MzMxODA5OHww&ixlib=rb-4.1.0&q=80&w=1080',
+  '/chacal-image-1.webp',
+  '/chacal-image-2.webp',
+  '/chacal-image-3.webp',
 ];
 
 export function ImpactSection() {
@@ -24,16 +24,19 @@ export function ImpactSection() {
       icon: Users,
       key: "team",
       image: impactImages[0],
+      objectPosition: "center",
     },
     {
       icon: Heart,
       key: "community",
       image: impactImages[1],
+      objectPosition: "center",
     },
     {
       icon: Globe,
       key: "planet",
       image: impactImages[2],
+      objectPosition: "center 25%",
     },
   ];
 
@@ -87,7 +90,7 @@ export function ImpactSection() {
                   alt={t(`${impact.key}.title`)}
                   fill
                   className="object-cover transition-transform duration-700 hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  style={{ objectPosition: impact.objectPosition }}
                 />
               </div>
             </motion.div>

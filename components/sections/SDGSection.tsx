@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "motion/react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Heading } from "@/components/atoms/Heading";
 import { Text } from "@/components/atoms/Text";
-import { AnimatedText } from "../atoms/AnimatedText";
 
 const sdgColors = ['#EF402D', '#A31C44', '#F99D26', '#CF8D2A', '#48773E'];
 
@@ -44,34 +44,52 @@ export function SDGSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <AnimatedText
-            text={t("title")}
-            as="h2"
-            className="mb-6 text-3xl font-heading font-medium tracking-tight text-white sm:text-4xl md:text-5xl"
-          />
+          <div className="mb-6 flex flex-col items-center">
+            <div className="inline-flex items-center justify-center px-4 py-2 bg-white rounded-full mb-6 h-[66px]">
+              <div className="relative w-[357px] h-[66px]">
+                <Image 
+                  src="/ODS-logo.svg" 
+                  alt={t("title")}
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </div>
+            <Heading as="h2" className="mb-6 text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-5xl">
+              {t("title")}
+            </Heading>
+          </div>
           <Text className="text-white/80 text-lg sm:text-xl max-w-3xl mx-auto font-light leading-relaxed">
             {t("subtitle")}
           </Text>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="flex flex-wrap justify-center gap-8">
           {sdgs.map((sdg, index) => (
             <motion.div
               key={sdg.number}
-              className="bg-white/[0.03] backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-white/10 hover:border-white/20 transition-all duration-300 group hover:-translate-y-1"
+              className="bg-white/[0.03] backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-white/10 hover:border-white/20 transition-all duration-300 group hover:-translate-y-1 w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
               <div
-                className="h-32 flex items-center justify-center text-white relative overflow-hidden"
+                className="h-32 flex items-center justify-between text-white relative overflow-hidden px-6"
                 style={{ backgroundColor: sdg.color }}
               >
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300" />
-                <div className="relative z-10 text-center">
-                  <span className="block text-6xl font-bold opacity-90 mb-1">{sdg.number}</span>
-                  <span className="block text-xs uppercase tracking-widest font-medium opacity-90">ODS</span>
+                <div className="relative z-10">
+                  <span className="block text-6xl font-bold opacity-90">{sdg.number}</span>
+                </div>
+                <div className="relative z-10 w-20 h-20">
+                  <Image 
+                    src={`/ODS/ODS-${index + 1}.svg`} 
+                    alt={`ODS ${sdg.number}`}
+                    fill
+                    className="object-contain"
+                  />
                 </div>
               </div>
               <div className="p-8">

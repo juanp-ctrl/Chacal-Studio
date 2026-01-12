@@ -3,18 +3,15 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
 
 const SESSION_KEY = 'chacal-intro-seen';
 const FINAL_IMAGE = '/chacal-paisaje-.webp';
 
 export function IntroLoader() {
-  const t = useTranslations('IntroLoader');
   
   const [showLoader, setShowLoader] = useState(false);
-  const [displayedText, setDisplayedText] = useState('');
-  // Stages: initial -> title-in -> subtitle-in -> expand (text out + image in) -> complete
-  const [stage, setStage] = useState<'initial' | 'title-in' | 'subtitle-in' | 'expand' | 'complete'>('initial');
+  // Stages: initial -> expand (image in) -> complete
+  const [stage, setStage] = useState<'initial' | 'expand' | 'complete'>('initial');
   
   const initializedRef = useRef(false);
 
@@ -31,7 +28,10 @@ export function IntroLoader() {
       requestAnimationFrame(() => {
         setShowLoader(true);
         document.body.style.overflow = 'hidden';
-        setStage('title-in');
+        // Small delay to ensure initial render allows for animation
+        setTimeout(() => {
+          setStage('expand');
+        }, 100);
       });
     }
   }, []);
@@ -42,17 +42,7 @@ export function IntroLoader() {
 
     let timer: NodeJS.Timeout;
 
-    if (stage === 'title-in') {
-      // Show subtitle after title animation
-      timer = setTimeout(() => {
-        setStage('subtitle-in');
-      }, 1200);
-    } else if (stage === 'subtitle-in') {
-      // Allow time for typing and reading
-      timer = setTimeout(() => {
-        setStage('expand');
-      }, 3000);
-    } else if (stage === 'expand') {
+    if (stage === 'expand') {
       // Wait for expansion to finish before removing loader
       timer = setTimeout(() => {
         setStage('complete');
@@ -64,25 +54,6 @@ export function IntroLoader() {
 
     return () => clearTimeout(timer);
   }, [stage, showLoader]);
-
-  // Typing Effect
-  useEffect(() => {
-    if (stage === 'subtitle-in') {
-      const fullText = t('tagline1');
-      let index = 0;
-      setDisplayedText(''); // Start empty
-
-      const interval = setInterval(() => {
-        index++;
-        setDisplayedText(fullText.slice(0, index));
-        if (index >= fullText.length) {
-          clearInterval(interval);
-        }
-      }, 50); // Typing speed
-
-      return () => clearInterval(interval);
-    }
-  }, [stage, t]);
 
   // Cleanup on unmount
   useEffect(() => {
@@ -101,50 +72,6 @@ export function IntroLoader() {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
       >
-        {/* Text Container */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none px-4">
-          <AnimatePresence>
-            {/* Title: Left to Center */}
-            {(stage === 'title-in' || stage === 'subtitle-in') && (
-              <motion.h1
-                key="title"
-                initial={{ x: -1000, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ y: -500, opacity: 0 }} // Center to Top
-                transition={{ duration: 0.8, ease: "easeOut"}}
-                className="text-white font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-4 text-center leading-tight"
-              >
-                {t('headline')}
-              </motion.h1>
-            )}
-          </AnimatePresence>
-
-          <AnimatePresence>
-            {/* Subtitle: Typing Animation */}
-            {(stage === 'subtitle-in') && (
-              <motion.div
-                key="subtitle"
-                exit={{ y: 500, opacity: 0 }} // Center to Bottom/Right
-                transition={{ duration: 0.8, ease: "easeIn" }}
-                className="text-white/90 font-sans text-lg sm:text-2xl md:text-3xl font-light tracking-wide text-center h-8 sm:h-10 flex items-center justify-center"
-              >
-                <span>
-                  {displayedText}
-                  <motion.span
-                    animate={{ opacity: [1, 0] }}
-                    transition={{
-                      duration: 0.8,
-                      repeat: Infinity,
-                      ease: "linear"
-                    }}
-                    className="inline-block w-[3px] h-[1.1em] bg-white ml-1 align-middle"
-                  />
-                </span>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-
         {/* Image Reveal */}
         <motion.div
           className="relative overflow-hidden shadow-2xl flex items-center justify-center z-10"

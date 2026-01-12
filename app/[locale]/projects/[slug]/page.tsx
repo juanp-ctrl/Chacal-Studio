@@ -1,14 +1,14 @@
 import { notFound } from "next/navigation";
-import Image from "next/image";
-import { Link } from "@/i18n/routing";
-import { ScrollLink } from "@/components/atoms/ScrollLink";
-import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ArrowLeft, ArrowRight, Target, Lightbulb, TrendingUp } from "lucide-react";
-import * as Motion from "motion/react-client";
+// import Image from "next/image";
+// import { Link } from "@/i18n/routing";
+// import { ScrollLink } from "@/components/atoms/ScrollLink";
+import { getTranslations } from "next-intl/server";
+// import { ArrowLeft, ArrowRight, Target, Lightbulb, TrendingUp } from "lucide-react";
+// import * as Motion from "motion/react-client";
 import { projects } from "@/lib/projects";
-import { Heading } from "@/components/atoms/Heading";
-import { Text } from "@/components/atoms/Text";
-import { JsonLd } from "@/components/SEO/JsonLd";
+// import { Heading } from "@/components/atoms/Heading";
+// import { Text } from "@/components/atoms/Text";
+// import { JsonLd } from "@/components/SEO/JsonLd";
 import type { Metadata } from "next";
 import { routing } from "@/i18n/routing";
 
@@ -120,8 +120,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function ProjectDetailPage({ params }: PageProps) {
-  const { slug, locale } = await params;
+export default async function ProjectDetailPage() {
+  // const { slug, locale } = await params;
   
   // Temporarily disabled
   notFound();

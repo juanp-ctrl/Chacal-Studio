@@ -2,7 +2,7 @@ import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
-const headingVariants = cva("font-heading font-bold leading-tight text-foreground", {
+const headingVariants = cva("font-bold leading-tight text-foreground", {
   variants: {
     size: {
       h1: "text-4xl md:text-5xl lg:text-6xl",
@@ -29,11 +29,14 @@ const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
     const Comp = as
     // Map 'as' prop to size if size is not provided, otherwise use size prop or default
     const variantSize = size || as
+    
+    // Apply Bebas Neue (font-display) for H1, H2, H3; standard heading font for others
+    const fontClass = ["h1", "h2", "h3"].includes(as) ? "font-display" : "font-heading"
 
     return (
       <Comp
         ref={ref}
-        className={cn(headingVariants({ size: variantSize, className }))}
+        className={cn(fontClass, headingVariants({ size: variantSize, className }))}
         {...props}
       />
     )

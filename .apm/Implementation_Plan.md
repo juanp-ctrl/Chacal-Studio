@@ -1,8 +1,8 @@
 # Chacal Estudio Website – Implementation Plan
 
-**Version:** 1.0.2
+**Version:** 1.0.5
 **Memory Strategy:** Dynamic-MD (directory structure with Markdown logs)
-**Last Modification:** Completed Task 9.6 (IntroLoader i18n refactor); updated version to 1.0.2 for Task 9.7 (Hide Projects section) - Manager Agent 8
+**Last Modification:** Completed Task 9.9 (UI Enhancements); updated version to 1.0.5 for verification - Manager Agent 8
 **Project Overview:** Rebuild the Chacal Estudio website as a high-fidelity Next.js App Router landing, implementing the Figma Make design pixel-close with atomic design, React Compiler, `next-intl` i18n (Spanish + English), strong SEO/JSON-LD, accessibility, legal pages, cookie banner, and a contact form powered by React Hook Form, Zod, Cloudflare Turnstile, and Resend. Deployment via AWS Amplify with Husky-enforced quality gates.
 
 ---
@@ -582,27 +582,62 @@
 
 ### Task 9.7 – Hide Projects Section Temporarily │ Agent_Frontend_Architecture
 
-- **Objective:** Hide the Projects section from the homepage and navigation while keeping the underlying code intact for future use.
+- **Objective:** Hide the Projects section from the homepage and navigation while keeping the underlying code intact for future use. ✅ **COMPLETE**
 - **Output:** Projects section removed from the Home page layout; Projects link removed from Header and Footer navigation; direct `/projects` routes optionally disabled or hidden from UI.
 - **Guidance:** Do not delete the components or data files. Simply comment out or conditionally hide the entry points to the Projects section.
 - **Depends on:** Phase 3 implementation.
 
-1. **Homepage Update:** Remove or comment out the Projects section component in `app/[locale]/page.tsx`.
-2. **Navigation Update:** Remove "Proyectos" / "Projects" links from `Header.tsx` and `Footer.tsx`.
-3. **Verification:** Ensure the site functions correctly without the projects section and navigation links are updated in both languages.
-4. **Git Commit:** `git add -A && git commit -m "feat(task-9.7): hide projects section and navigation links"`
+1. **Homepage Update:** Remove or comment out the Projects section component in `app/[locale]/page.tsx`. ✅ (Not present)
+2. **Navigation Update:** Remove "Proyectos" / "Projects" links from `Header.tsx` and `Footer.tsx`. ✅ (Header updated; Footer had no link)
+3. **Route Disabling:** Added `notFound()` and noindex/nofollow to `/projects` and `/projects/[slug]` pages. ✅
+4. **Verification:** Ensure the site functions correctly without the projects section and navigation links are updated in both languages. ✅
+5. **Git Commit:** `git add -A && git commit -m "feat(task-9.7): hide projects section and navigation links"` ✅
 
 ---
 
 ### Task 9.8 – Implement Bebas Neue typography for H1 elements │ Agent_Frontend_Architecture
 
-- **Objective:** Update all `H1` headings across the site to use the Bebas Neue font for a more impactful brand presentation.
+- **Objective:** Update all `H1` headings across the site to use the Bebas Neue font for a more impactful brand presentation. ✅ **COMPLETE**
 - **Output:** `H1` elements styled with Bebas Neue font; Next.js font loading updated to include Bebas Neue; design system/Tailwind config updated if necessary.
 - **Guidance:** Reference https://fonts.google.com/specimen/Bebas+Neue. Ensure the font is loaded efficiently via `next/font/google`. Check all pages (Home, legal, etc.) for `H1` consistency.
 - **Depends on:** Phase 2 Design System.
 
-1. **Font Configuration:** Add `Bebas_Neue` from `next/font/google` to the layout or a dedicated font utility.
-2. **CSS/Tailwind Update:** Update `H1` styles in `globals.css` or the `Heading` atom to use the new font family.
-3. **Audit Headings:** Review all sections and pages to ensure all `H1` elements have correctly transitioned to the new typography.
-4. **Verification:** Confirm Bebas Neue is rendering correctly and matches the intended design impact.
-5. **Git Commit:** `git add -A && git commit -m "feat(task-9.8): implement Bebas Neue typography for H1 headings"`
+1. **Font Configuration:** Add `Bebas_Neue` from `next/font/google` to the layout or a dedicated font utility. ✅
+2. **CSS/Tailwind Update:** Update `H1` styles in `globals.css` or the `Heading` atom to use the new font family. ✅ (Extended to H1-H3)
+3. **Audit Headings:** Review all sections and pages to ensure all `H1` elements have correctly transitioned to the new typography. ✅
+4. **Verification:** Confirm Bebas Neue is rendering correctly and matches the intended design impact. ✅
+5. **Git Commit:** `git add -A && git commit -m "feat(task-9.8): implement Bebas Neue typography for H1 headings"` ✅ (Commit: daa1494)
+
+---
+
+### Task 9.9 – Implement Phase 9 UI Enhancements (PBT, SDG, Partners) │ Agent_Frontend_Architecture
+
+- **Objective:** Implement specific UI enhancements for the Plant Based Treaty, SDG, and Partners sections involving logo integrations and layout adjustments. ✅ **COMPLETE**
+- **Output:** Updated sections with new logo treatments, corrected card layouts, and improved visual hierarchy.
+- **Guidance:**
+    - **PBT Section:** Replace leaf icon/title with `Plant-Based-Treaty-logo.svg` in a white rounded div.
+    - **SDG Section:** Replace text title with `ODS-logo.svg` in similar rounded style. Update cards to show Number (left) + Image `ODS-X.svg` (right).
+    - **Partners Section:** Add partner logos (`partner-X.svg`) to cards. Fix "Conocer más" link positioning (pinned to bottom).
+- **Depends on:** Phase 3 implementation.
+
+1. **PlantBasedTreatySection:** Replace the header pill content with the logo image on a white background. ✅
+2. **SDGSection Title:** Replace the `AnimatedText` title with the `ODS-logo.svg` centered image. Keep the subtitle. ✅
+3. **SDGSection Cards:** Update the card header layout to a flex row displaying the number and the corresponding `ODS/ODS-{index+1}.svg` image. ✅
+4. **PartnersSection Images:** Add `Image` component to partner cards using `partners/partner-{index+1}.svg`. Ensure consistent sizing. ✅
+5. **PartnersSection Layout:** Update card flex layout to ensure the "Conocer más" link is pushed to the bottom (`mt-auto`). ✅
+6. **Git Commit:** `git add -A && git commit -m "feat(task-9.9): implement UI enhancements for PBT, SDG, and Partners sections"` ✅
+
+---
+
+### Task 9.10 – Verify Deployment Readiness │ Agent_Frontend_Architecture
+
+- **Objective:** Final check of all Phase 9 changes (Tasks 9.1-9.9) to ensure readiness for deployment to `develop` and eventually `main`.
+- **Output:** Verification report confirming no critical issues; fix any final linter or build warnings.
+- **Guidance:** Run a full build (`pnpm build`) locally. Check for any regression in the hidden Projects section (ensure 404 works). Verify all new assets load correctly.
+- **Depends on:** All Phase 9 tasks.
+
+1. **Local Build:** Run `pnpm build` to ensure the application builds successfully with all recent changes.
+2. **Asset Verification:** Verify that all new images (PBT logo, ODS logo, partner logos) are in `public/` and load correctly in a local build.
+3. **Regression Check:** Confirm Projects section is still hidden and routes return 404.
+4. **Git Status:** Ensure all changes are committed.
+5. **Final Push:** Push all commits to the `develop` branch.
