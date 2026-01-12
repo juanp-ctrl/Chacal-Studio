@@ -20,7 +20,7 @@ export function ContactSection() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="mb-6 tracking-tight capitalize font-display text-3xl sm:text-4xl">
+          <h2 className="mb-6 tracking-tight capitalize font-display text-4xl sm:text-5xl">
             {t("title")}
           </h2>
           <p className="text-white/80 text-xl max-w-2xl mx-auto">

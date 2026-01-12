@@ -26,7 +26,7 @@ export function PartnersSection() {
     },
     {
       key: "redCreer",
-      url: "https://redcreer.org/",
+      url: "https://redcreer.com.ar/",
     },
   ];
 

@@ -128,7 +128,7 @@ export default async function LocaleLayout({
       <body className="antialiased bg-background text-foreground font-body">
         <NextIntlClientProvider messages={messages}>
           <SmoothScrollProvider>
-            <IntroLoader />
+          <IntroLoader />
             <CustomCursor />
             <a 
               href="#main-content" 
