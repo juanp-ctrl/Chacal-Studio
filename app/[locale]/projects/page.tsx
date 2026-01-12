@@ -1,5 +1,5 @@
-import { ProjectsClient } from './ProjectsClient';
-import { JsonLd } from '@/components/SEO/JsonLd';
+// import { ProjectsClient } from './ProjectsClient';
+// import { JsonLd } from '@/components/SEO/JsonLd';
 import type { Metadata } from 'next';
 import { routing } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
@@ -76,8 +76,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function ProjectsPage({ params }: PageProps) {
-  const { locale } = await params;
+export default async function ProjectsPage() {
+  // const { locale } = await params;
   
   // Temporarily disabled
   notFound();
