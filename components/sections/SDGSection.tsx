@@ -44,16 +44,21 @@ export function SDGSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="mb-8 flex justify-center">
-            <div className="relative w-48 h-48 md:w-64 md:h-64">
-              <Image 
-                src="/ODS-logo.svg" 
-                alt={t("title")}
-                fill
-                className="object-contain"
-                priority
-              />
+          <div className="mb-6 flex flex-col items-center">
+            <div className="inline-flex items-center justify-center px-4 py-2 bg-white rounded-2xl mb-6">
+              <div className="relative w-[357px] h-[66px]">
+                <Image 
+                  src="/ODS-logo.svg" 
+                  alt={t("title")}
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
             </div>
+            <Heading as="h2" className="mb-6 text-3xl font-heading font-medium tracking-tight text-white sm:text-4xl md:text-5xl">
+              {t("title")}
+            </Heading>
           </div>
           <Text className="text-white/80 text-lg sm:text-xl max-w-3xl mx-auto font-light leading-relaxed">
             {t("subtitle")}
@@ -80,7 +85,7 @@ export function SDGSection() {
                 </div>
                 <div className="relative z-10 w-20 h-20">
                   <Image 
-                    src={`/ODS/ODS-${sdg.number}.svg`} 
+                    src={`/ODS/ODS-${index + 1}.svg`} 
                     alt={`ODS ${sdg.number}`}
                     fill
                     className="object-contain"
