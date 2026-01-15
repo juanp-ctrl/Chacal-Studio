@@ -76,7 +76,7 @@ export function ContactSection() {
               </a>
 
               <a
-                href="https://www.linkedin.com/company/chacalestudio"
+                href="https://www.linkedin.com/company/chacal-estudio/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 text-white/80 hover:text-accent transition-colors duration-300 group"

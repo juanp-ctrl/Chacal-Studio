@@ -11,9 +11,9 @@ import { cn } from "@/lib/utils";
 
 // Using the same Unsplash images from the reference implementation
 const impactImages = [
-  '/chacal-image-1.webp',
-  '/chacal-image-2.webp',
-  '/chacal-image-3.webp',
+  '/chacal-image1.webp',
+  '/chacal-image2.webp',
+  '/chacal-image3.webp',
 ];
 
 export function ImpactSection() {

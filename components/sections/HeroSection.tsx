@@ -44,13 +44,14 @@ export function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
         >
           <AnimatedText
             text={t("subtitle")}
             as="p"
             className="mx-auto mb-16 max-w-3xl text-base font-light leading-relaxed text-white/90 sm:text-lg md:text-xl"
-            delay={0.5}
+            delay={0}
+
           />
         </motion.div>
 

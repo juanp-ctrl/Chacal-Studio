@@ -132,7 +132,7 @@ export default async function Home({ params }: PageProps) {
     },
     sameAs: [
       "https://www.instagram.com/chacal.estudio/",
-      "https://www.linkedin.com/company/chacalestudio",
+      "https://www.linkedin.com/company/chacal-estudio/",
     ],
     areaServed: {
       "@type": "Country",

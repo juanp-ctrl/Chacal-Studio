@@ -19,7 +19,7 @@ export function Footer() {
             <div className="mb-6 w-32">
               <Logo className="text-white" />
             </div>
-            <p className="text-white/70 leading-relaxed font-light max-w-md">
+            <p className="text-white/70 leading-relaxed font-light max-w-md font-display">
               {t("tagline")}
             </p>
           </div>
@@ -38,7 +38,7 @@ export function Footer() {
                 <Instagram size={18} />
               </a>
               <a
-                href="https://www.linkedin.com/company/chacalestudio"
+                href="https://www.linkedin.com/company/chacal-estudio/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent hover:scale-110 transition-all duration-300"
