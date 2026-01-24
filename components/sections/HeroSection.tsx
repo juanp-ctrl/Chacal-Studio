@@ -49,9 +49,9 @@ export function HeroSection() {
           <AnimatedText
             text={t("subtitle")}
             as="p"
+            speed="fast"
             className="mx-auto mb-16 max-w-3xl text-base font-light leading-relaxed text-white/90 sm:text-lg md:text-xl"
             delay={0}
-
           />
         </motion.div>
 

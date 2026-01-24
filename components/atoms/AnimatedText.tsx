@@ -10,13 +10,16 @@ interface AnimatedTextProps {
   className?: string;
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span" | "div" | "p";
   delay?: number;
+  /** Animation speed: "normal" (default) or "fast" (2x faster for long texts) */
+  speed?: "normal" | "fast";
 }
 
 export function AnimatedText({ 
   text, 
   className, 
   as: Component = "h1",
-  delay = 0 
+  delay = 0,
+  speed = "normal"
 }: AnimatedTextProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.5, once: true });
@@ -25,12 +28,15 @@ export function AnimatedText({
   // Split text into words and then letters to handle spacing correctly
   const words = text.split(" ");
 
+  // Stagger delay: "fast" mode is 2x faster (half the delay) for long texts
+  const staggerDelay = speed === "fast" ? 0.015 : 0.03;
+
   const container: Variants = {
     hidden: { opacity: 0 },
     visible: (i = 1) => ({
       opacity: 1,
       transition: { 
-        staggerChildren: 0.03, 
+        staggerChildren: staggerDelay, 
         delayChildren: delay * i 
       },
     }),
