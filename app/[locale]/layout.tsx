@@ -5,7 +5,6 @@ import { routing } from '@/i18n/routing';
 import { Header } from "@/components/organisms/Header";
 import { Footer } from "@/components/organisms/Footer";
 import { CookieBanner } from "@/components/organisms/CookieBanner";
-import { IntroLoader } from "@/components/organisms/IntroLoader";
 import { FloatingActions } from "@/components/organisms/FloatingActions";
 import { CustomCursor } from "@/components/organisms/CustomCursor";
 import "../globals.css"; 
@@ -128,7 +127,6 @@ export default async function LocaleLayout({
       <body className="antialiased bg-background text-foreground font-body">
         <NextIntlClientProvider messages={messages}>
           <SmoothScrollProvider>
-          <IntroLoader />
             <CustomCursor />
             <a 
               href="#main-content" 
