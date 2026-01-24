@@ -59,7 +59,7 @@ export function ImpactSection() {
           </Text>
         </motion.div>
 
-        <div className="space-y-32">
+        <div className="space-y-16">
           {impacts.map((impact, index) => (
             <motion.div
               key={impact.key}
