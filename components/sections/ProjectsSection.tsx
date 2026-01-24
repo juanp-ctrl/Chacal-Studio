@@ -1,37 +1,46 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { useTranslations } from "next-intl";
-import { Heading } from "@/components/atoms/Heading";
-import { projectImages, type ProjectImage } from "@/lib/project-images";
+import Image from 'next/image';
+import { useTranslations } from 'next-intl';
+import { Heading } from '@/components/atoms/Heading';
+import { projectImages, type ProjectImage } from '@/lib/project-images';
+import { motion } from 'motion/react';
+import { AnimatedText } from '../atoms/AnimatedText';
 
 /** Returns Tailwind aspect ratio class based on image aspectRatio property */
-function getAspectRatioClass(aspectRatio: ProjectImage["aspectRatio"]): string {
+function getAspectRatioClass(aspectRatio: ProjectImage['aspectRatio']): string {
   switch (aspectRatio) {
-    case "portrait":
-      return "aspect-[3/4]";
-    case "square":
-      return "aspect-square";
-    case "landscape":
+    case 'portrait':
+      return 'aspect-[3/4]';
+    case 'square':
+      return 'aspect-square';
+    case 'landscape':
     default:
-      return "aspect-video";
+      return 'aspect-video';
   }
 }
 
 export function ProjectsSection() {
-  const t = useTranslations("ProjectsSection");
+  const t = useTranslations('ProjectsSection');
 
   return (
     <section id="projects" className="bg-white py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+      <div className="mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section Title */}
-        <Heading
-          as="h2"
-          size="h2"
-          className="mb-12 text-center text-(--brand-blue) md:mb-16"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-20 text-center"
         >
-          {t("title")}
-        </Heading>
+          <AnimatedText
+            text={t('title')}
+            as="h2"
+            className="text-primary mb-6 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl dark:text-white"
+            delay={0.3}
+          />
+        </motion.div>
 
         {/* Masonry Grid - CSS Columns approach */}
         {/* Responsive: 2 cols default, 3 cols at lg (1024px), 4 cols at xl (1280px) */}
