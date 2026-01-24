@@ -1,5 +1,6 @@
 import { VideoHeroSection } from "@/components/sections/VideoHeroSection";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { MarqueeSection } from "@/components/sections/MarqueeSection";
 import { MethodSection } from "@/components/sections/MethodSection";
 import { FutureSection } from "@/components/sections/FutureSection";
@@ -179,6 +180,7 @@ export default async function Home({ params }: PageProps) {
       <div className="flex min-h-screen flex-col">
         <VideoHeroSection />
         <HeroSection />
+        <ProjectsSection />
         <MarqueeSection />
         <MethodSection />
         <FutureSection />

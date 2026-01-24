@@ -467,5 +467,8 @@
     "whatsappLabel": "Contactar por WhatsApp",
     "whatsappMessage": "¡Hola! Me gustaría consultar sobre sus servicios.",
     "scrollTopLabel": "Volver arriba"
+  },
+  "ProjectsSection": {
+    "title": "Proyectos"
   }
 }
