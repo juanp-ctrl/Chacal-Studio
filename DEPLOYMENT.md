@@ -20,16 +20,19 @@ This project is configured for continuous deployment using **AWS Amplify**.
 ## Deployment Workflow
 
 ### Production
+
 - **Branch**: `main`
 - **Trigger**: Every push to the `main` branch triggers a production deployment.
 - **URL**: Your production URL (e.g., `https://main.d...amplifyapp.com` or your custom domain).
 
 ### Integration / Preview
+
 - **Branch**: `develop`
 - **Trigger**: Pushes to `develop` trigger a deployment to the integration environment.
 - **Pull Requests**: (Optional) Enable "Web Previews" in Amplify settings to automatically build and deploy Pull Requests to temporary URLs.
 
 ## Build Specification
+
 The project uses an `amplify.yml` file in the root directory to define the build process. This ensures that the build environment matches our local standards (pnpm, linting, build).
 
 ## Environment Variables
@@ -40,10 +43,10 @@ The following environment variables are **REQUIRED** for the application to buil
 2.  Click **Manage variables**.
 3.  Add the following key-value pairs:
 
-| Variable Key | Description |
-| :--- | :--- |
-| `RESEND_API_KEY` | API key for [Resend](https://resend.com) email service. |
-| `TURNSTILE_SITE_KEY` | Public Site Key for [Cloudflare Turnstile](https://developers.cloudflare.com/turnstile/). |
-| `TURNSTILE_SECRET_KEY` | Secret Key for Cloudflare Turnstile server-side validation. |
+| Variable Key           | Description                                                                               |
+| :--------------------- | :---------------------------------------------------------------------------------------- |
+| `RESEND_API_KEY`       | API key for [Resend](https://resend.com) email service.                                   |
+| `TURNSTILE_SITE_KEY`   | Public Site Key for [Cloudflare Turnstile](https://developers.cloudflare.com/turnstile/). |
+| `TURNSTILE_SECRET_KEY` | Secret Key for Cloudflare Turnstile server-side validation.                               |
 
 **Note:** Never commit actual secrets to the repository. Use `.env.example` as a reference for local development, and copy it to `.env.local` with your real keys.

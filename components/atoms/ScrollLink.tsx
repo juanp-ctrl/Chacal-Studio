@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { Link } from "@/i18n/routing";
-import { ReactNode } from "react";
+import { Link } from '@/i18n/routing';
+import { ReactNode } from 'react';
 
 interface ScrollLinkProps {
   href: string;
@@ -13,7 +13,7 @@ interface ScrollLinkProps {
 
 export function ScrollLink({ href, children, className, onClick, ...props }: ScrollLinkProps) {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     if (onClick) {
       onClick(e);
     }
@@ -25,4 +25,3 @@ export function ScrollLink({ href, children, className, onClick, ...props }: Scr
     </Link>
   );
 }
-

@@ -8,18 +8,17 @@ const SESSION_KEY = 'chacal-intro-seen';
 const FINAL_IMAGE = '/chacal-paisaje-.webp';
 
 export function IntroLoader() {
-  
   const [showLoader, setShowLoader] = useState(false);
   // Stages: initial -> expand (image in) -> complete
   const [stage, setStage] = useState<'initial' | 'expand' | 'complete'>('initial');
-  
+
   const initializedRef = useRef(false);
 
   // Check session storage
   useEffect(() => {
     if (initializedRef.current) return;
     initializedRef.current = true;
-    
+
     // Only run on client
     const shouldShow = typeof window !== 'undefined' && !sessionStorage.getItem(SESSION_KEY);
 
@@ -74,21 +73,25 @@ export function IntroLoader() {
       >
         {/* Image Reveal */}
         <motion.div
-          className="relative overflow-hidden shadow-2xl flex items-center justify-center z-10"
+          className="relative z-10 flex items-center justify-center overflow-hidden shadow-2xl"
           initial={{
             width: 0,
             height: 0,
           }}
-          animate={stage === 'expand' ? {
-            width: '100vw',
-            height: '100vh',
-            opacity: 1,
-            borderRadius: 0
-          } : {
-            width: 0,
-            height: 0,
-            opacity: 0,
-          }}
+          animate={
+            stage === 'expand'
+              ? {
+                  width: '100vw',
+                  height: '100vh',
+                  opacity: 1,
+                  borderRadius: 0,
+                }
+              : {
+                  width: 0,
+                  height: 0,
+                  opacity: 0,
+                }
+          }
           transition={{
             duration: 2.5,
             ease: [0.25, 0.1, 0.25, 1], // Cubic bezier for dramatic expansion

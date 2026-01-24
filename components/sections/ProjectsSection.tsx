@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { Heading } from '@/components/atoms/Heading';
 import { projectImages, type ProjectImage } from '@/lib/project-images';
 import { motion } from 'motion/react';
 import { AnimatedText } from '../atoms/AnimatedText';

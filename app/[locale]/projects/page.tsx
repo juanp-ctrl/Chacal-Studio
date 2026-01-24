@@ -18,9 +18,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const alternateEn = `${baseUrl}${locale === 'en' ? '/projects' : '/en/projects'}`;
 
   const title =
-    locale === 'es'
-      ? 'Nuestros Proyectos | Chacal Estudio'
-      : 'Our Projects | Chacal Estudio';
+    locale === 'es' ? 'Nuestros Proyectos | Chacal Estudio' : 'Our Projects | Chacal Estudio';
   const description =
     locale === 'es'
       ? 'Descubre nuestros proyectos de comunicación con propósito. Casos seleccionados que reflejan nuestro compromiso con el triple impacto y la comunicación estratégica.'
@@ -78,7 +76,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ProjectsPage() {
   // const { locale } = await params;
-  
+
   // Temporarily disabled
   notFound();
   return null;
