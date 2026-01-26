@@ -42,7 +42,7 @@ export function MethodSection() {
           </Text>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="flex flex-wrap justify-center gap-8">
           {stepsMapped.map((step, index) => (
             <motion.div
               key={step.key}
@@ -51,7 +51,7 @@ export function MethodSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className={cn(
-                'bg-primary relative flex flex-col items-start rounded-2xl border-none p-6 shadow-sm'
+                'bg-primary relative flex w-full flex-col items-start rounded-2xl border-none p-6 shadow-sm sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)]'
               )}
             >
               <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-white/10 text-white">

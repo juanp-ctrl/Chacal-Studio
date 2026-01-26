@@ -23,8 +23,8 @@ export function ProjectsSection() {
   const t = useTranslations('ProjectsSection');
 
   return (
-    <section id="projects" className="bg-white py-16 md:py-24">
-      <div className="mx-auto px-6 sm:px-8 lg:px-12">
+    <section id="projects" className="bg-white px-6 py-24 sm:px-8 sm:py-32 lg:px-12">
+      <div className="mx-auto max-w-7xl">
         {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

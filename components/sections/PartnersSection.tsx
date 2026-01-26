@@ -37,7 +37,7 @@ export function PartnersSection() {
     >
       <div className="mx-auto max-w-7xl">
         <motion.div
-          className="mb-16 text-center"
+          className="mb-20 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

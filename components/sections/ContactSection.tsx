@@ -18,7 +18,7 @@ export function ContactSection() {
     >
       <div className="mx-auto max-w-7xl" ref={ref}>
         <motion.div
-          className="mb-16 text-center"
+          className="mb-20 text-center"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
