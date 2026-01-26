@@ -36,7 +36,7 @@ export function ProjectsSection() {
           <AnimatedText
             text={t('title')}
             as="h2"
-            className="text-primary mb-6 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl dark:text-white"
+            className="text-primary mb-6 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
             delay={0.3}
           />
         </motion.div>

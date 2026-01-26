@@ -39,7 +39,7 @@ export function ImpactSection() {
   return (
     <section
       id="impacto"
-      className="border-t border-gray-100 bg-white px-6 py-24 sm:px-8 sm:py-32 lg:px-12 dark:border-white/10 dark:bg-zinc-900"
+      className="border-t border-gray-100 bg-white px-6 py-24 sm:px-8 sm:py-32 lg:px-12"
     >
       <div className="mx-auto max-w-7xl">
         <motion.div
@@ -51,10 +51,10 @@ export function ImpactSection() {
         >
           <AnimatedText
             as="h2"
-            className="font-heading text-primary mb-6 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl dark:text-white"
+            className="font-heading text-primary mb-6 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
             text={t('title')}
           />
-          <Text className="text-muted-foreground text-center text-lg dark:text-white/80">
+          <Text className="text-muted-foreground text-center text-lg">
             {t('subtitle')}
           </Text>
         </motion.div>
@@ -71,14 +71,14 @@ export function ImpactSection() {
             >
               <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
                 <div className="mb-6 flex items-center">
-                  <div className="bg-accent/10 dark:bg-accent/20 text-accent mr-4 flex h-14 w-14 items-center justify-center rounded-2xl">
+                  <div className="bg-accent/10 text-accent mr-4 flex h-14 w-14 items-center justify-center rounded-2xl">
                     <impact.icon className="h-7 w-7" strokeWidth={1.5} />
                   </div>
-                  <Heading as="h3" className="text-primary text-3xl font-bold dark:text-white">
+                  <Heading as="h3" className="text-primary text-3xl font-bold">
                     {t(`${impact.key}.title`)}
                   </Heading>
                 </div>
-                <Text className="text-muted-foreground text-lg leading-relaxed dark:text-white/80">
+                <Text className="text-muted-foreground text-lg leading-relaxed">
                   {t(`${impact.key}.description`)}
                 </Text>
               </div>

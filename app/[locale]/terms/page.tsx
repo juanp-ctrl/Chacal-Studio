@@ -105,7 +105,7 @@ export default async function TermsPage({ params }: PageProps) {
         {/* Content Section */}
         <section className="px-6 pb-24 sm:px-8 lg:px-12">
           <div className="mx-auto max-w-4xl">
-            <div className="space-y-12 rounded-2xl bg-white p-8 shadow-lg sm:p-12 dark:bg-zinc-900">
+            <div className="space-y-12 rounded-2xl bg-white p-8 shadow-lg sm:p-12">
               {/* ==================== TERMS OF SERVICE ==================== */}
 
               {/* Introduction */}

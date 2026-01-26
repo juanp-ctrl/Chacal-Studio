@@ -22,7 +22,7 @@ export function MethodSection() {
   ];
 
   return (
-    <section id="method" className="bg-white px-6 py-24 sm:px-8 sm:py-32 lg:px-12 dark:bg-zinc-900">
+    <section id="method" className="bg-white px-6 py-24 sm:px-8 sm:py-32 lg:px-12">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -34,10 +34,10 @@ export function MethodSection() {
           <AnimatedText
             text={t('title')}
             as="h2"
-            className="text-primary mb-6 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl dark:text-white"
+            className="text-primary mb-6 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
             delay={0.3}
           />
-          <Text className="text-muted-foreground mx-auto max-w-2xl text-lg dark:text-white/80">
+          <Text className="text-muted-foreground mx-auto max-w-2xl text-lg">
             {t('description')}
           </Text>
         </motion.div>

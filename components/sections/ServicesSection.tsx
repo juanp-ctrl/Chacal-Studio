@@ -32,7 +32,7 @@ export function ServicesSection() {
   return (
     <section
       id="servicios"
-      className="bg-secondary/30 dark:bg-blue-dark border-t border-transparent px-6 py-24 sm:px-8 sm:py-32 lg:px-12 dark:border-white/10"
+      className="bg-secondary/30 border-t border-transparent px-6 py-24 sm:px-8 sm:py-32 lg:px-12"
     >
       <div className="mx-auto max-w-7xl">
         <motion.div
@@ -45,7 +45,7 @@ export function ServicesSection() {
           <AnimatedText
             text={t('title')}
             as="h2"
-            className="font-heading text-primary mb-6 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl dark:text-white"
+            className="font-heading text-primary mb-6 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
           />
         </motion.div>
 

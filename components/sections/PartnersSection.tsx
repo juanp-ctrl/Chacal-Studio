@@ -33,7 +33,7 @@ export function PartnersSection() {
   return (
     <section
       id="alianzas"
-      className="dark:bg-blue-dark border-t border-transparent bg-white px-6 py-24 sm:py-32 lg:px-8 dark:border-white/10"
+      className="border-t border-transparent bg-white px-6 py-24 sm:py-32 lg:px-8"
     >
       <div className="mx-auto max-w-7xl">
         <motion.div
@@ -46,9 +46,9 @@ export function PartnersSection() {
           <AnimatedText
             text={t('title')}
             as="h2"
-            className="font-heading text-primary mb-6 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl dark:text-white"
+            className="font-heading text-primary mb-6 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
           />
-          <Text className="text-muted-foreground mx-auto max-w-3xl text-lg leading-relaxed font-light sm:text-xl dark:text-white/80">
+          <Text className="text-muted-foreground mx-auto max-w-3xl text-lg leading-relaxed font-light sm:text-xl">
             {t('subtitle')}
           </Text>
         </motion.div>
