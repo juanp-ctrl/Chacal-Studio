@@ -44,8 +44,19 @@ export function ProjectsSection() {
         {/* Masonry Grid - CSS Columns approach */}
         {/* Responsive: 2 cols default, 3 cols at lg (1024px), 4 cols at xl (1280px) */}
         <div className="columns-2 gap-4 lg:columns-3 xl:columns-4">
-          {projectImages.map((image) => (
-            <div key={image.id} className="mb-4 break-inside-avoid">
+          {projectImages.map((image, index) => (
+            <motion.div
+              key={image.id}
+              className="mb-4 break-inside-avoid"
+              initial={{ opacity: 0, scale: 0.85 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{
+                duration: 0.6,
+                ease: 'easeOut',
+                delay: index * 0.05,
+              }}
+            >
               <div
                 className={`relative overflow-hidden rounded-lg ${getAspectRatioClass(image.aspectRatio)}`}
               >
@@ -57,7 +68,7 @@ export function ProjectsSection() {
                   className="object-cover"
                 />
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
