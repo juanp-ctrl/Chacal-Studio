@@ -51,10 +51,10 @@ export function MethodSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className={cn(
-                'group bg-primary relative flex flex-col items-start rounded-2xl border-none p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md'
+                'bg-primary relative flex flex-col items-start rounded-2xl border-none p-6 shadow-sm'
               )}
             >
-              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-white/10 text-white transition-colors group-hover:bg-white/20">
+              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-white/10 text-white">
                 <step.icon className="h-7 w-7" strokeWidth={1.5} />
               </div>
 
