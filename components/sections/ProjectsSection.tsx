@@ -24,7 +24,7 @@ export function ProjectsSection() {
 
   return (
     <section id="projects" className="bg-white px-6 py-24 sm:px-8 sm:py-32 lg:px-12">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto">
         {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
