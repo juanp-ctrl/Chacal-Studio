@@ -54,9 +54,7 @@ export function ImpactSection() {
             className="font-heading text-primary mb-6 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
             text={t('title')}
           />
-          <Text className="text-muted-foreground text-center text-lg">
-            {t('subtitle')}
-          </Text>
+          <Text className="text-muted-foreground text-center text-lg">{t('subtitle')}</Text>
         </motion.div>
 
         <div className="space-y-16">

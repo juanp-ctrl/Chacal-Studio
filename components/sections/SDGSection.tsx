@@ -49,7 +49,7 @@ export function SDGSection() {
         >
           <div className="mb-6 flex flex-col items-center">
             <div className="mb-6 inline-flex h-[66px] items-center justify-center rounded-full bg-white px-4 py-2">
-              <div className="relative h-[66px] w-[357px]">
+              <div className="relative h-[66px] w-[280px] sm:w-[357px]">
                 <Image
                   src="/ODS-logo.svg"
                   alt={t('title')}

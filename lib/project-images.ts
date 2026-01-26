@@ -18,7 +18,7 @@ export interface ProjectImage {
  * Using popular/featured Unsplash images for reliability.
  */
 export const projectImages: ProjectImage[] = [
-  // Row 1 - Mixed aspects for visual interest
+  // Column 1 - Mixed aspects for visual interest
   {
     id: 'ecosfera-01',
     src: 'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=1600&q=90&fm=webp',
@@ -44,10 +44,10 @@ export const projectImages: ProjectImage[] = [
     id: 'impacto-01',
     src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&q=90&fm=webp',
     projectSlug: 'impacto-visual',
-    aspectRatio: 'landscape',
+    aspectRatio: 'square',
     alt: 'Impacto Visual - Data visualization',
   },
-  // Row 2
+  // Column 2
   {
     id: 'voces-01',
     src: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=1600&q=90&fm=webp',
@@ -76,7 +76,7 @@ export const projectImages: ProjectImage[] = [
     aspectRatio: 'landscape',
     alt: 'Conexión Aula - Team collaboration',
   },
-  // Row 3
+  // Column 3
   {
     id: 'raices-02',
     src: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1600&q=90&fm=webp',
@@ -100,12 +100,12 @@ export const projectImages: ProjectImage[] = [
   },
   {
     id: 'energia-02',
-    src: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1600&q=90&fm=webp',
+    src: 'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=1600&q=90&fm=webp',
     projectSlug: 'energia-limpia',
-    aspectRatio: 'portrait',
-    alt: 'Energía Limpia - Wind turbines',
+    aspectRatio: 'square',
+    alt: 'Energía Limpia',
   },
-  // Row 4
+  // Column 4
   {
     id: 'ecosfera-03',
     src: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=90&fm=webp',

@@ -55,7 +55,7 @@ export function PlantBasedTreatySection() {
           transition={{ duration: 0.8 }}
         >
           <div className="mb-6 inline-flex h-[66px] items-center gap-3 rounded-full border border-white/10 bg-white/90 px-4 py-2 shadow-lg backdrop-blur-sm">
-            <div className="relative h-[66px] w-[357px]">
+            <div className="relative h-[66px] w-[280px] sm:w-[357px]">
               <Image
                 src="/Plant-Based-Treaty-logo.svg"
                 alt="Plant Based Treaty"
