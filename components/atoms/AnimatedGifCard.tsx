@@ -30,6 +30,7 @@ function getAspectRatioClass(aspectRatio: ProjectImage['aspectRatio']): string {
  */
 export function AnimatedGifCard({ image, className = '' }: AnimatedGifCardProps) {
   const [isActive, setIsActive] = useState(false);
+  const [useFallback, setUseFallback] = useState(false);
   const [staticFrame, setStaticFrame] = useState<string | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -40,10 +41,21 @@ export function AnimatedGifCard({ image, className = '' }: AnimatedGifCardProps)
   const videoRef = useRef<HTMLVideoElement>(null);
   const hasExtractedFrame = useRef(false);
 
-  // Determine media type
-  const isAnimatedGif = useMemo(() => image.type === 'gif', [image.type]);
-  const isVideo = useMemo(() => image.type === 'mp4', [image.type]);
+  // Determine media type (with fallback for MP4)
+  const isVideo = useMemo(() => image.type === 'mp4' && !useFallback, [image.type, useFallback]);
+  const isAnimatedGif = useMemo(
+    () => image.type === 'gif' || (image.type === 'mp4' && useFallback),
+    [image.type, useFallback]
+  );
   const isStaticImage = useMemo(() => image.type === 'png', [image.type]);
+
+  // Determine the display source (switch to GIF if fallback is active)
+  const displaySrc = useMemo(() => {
+    if (image.type === 'mp4' && useFallback) {
+      return image.src.replace('.mp4', '.gif');
+    }
+    return image.src;
+  }, [image.src, image.type, useFallback]);
 
   // Get the aspect ratio class for this image
   const aspectClass = getAspectRatioClass(image.aspectRatio);
@@ -149,9 +161,25 @@ export function AnimatedGifCard({ image, className = '' }: AnimatedGifCardProps)
 
   // Handle video error
   const handleVideoError = useCallback(() => {
-    setHasError(true);
-    setIsLoaded(true);
-  }, []);
+    if (image.type === 'mp4' && !useFallback) {
+      setUseFallback(true);
+    } else {
+      setHasError(true);
+      setIsLoaded(true);
+    }
+  }, [image.type, useFallback]);
+
+  // Fallback timeout for videos: if it doesn't load in 2s, switch to GIF
+  useEffect(() => {
+    if (image.type === 'mp4' && !isLoaded && isInView && !useFallback) {
+      const timer = setTimeout(() => {
+        if (!isLoaded) {
+          setUseFallback(true);
+        }
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [image.type, isLoaded, isInView, useFallback]);
 
   // Handle video seeked
   const handleVideoSeeked = useCallback(() => {
@@ -241,10 +269,6 @@ export function AnimatedGifCard({ image, className = '' }: AnimatedGifCardProps)
             onError={handleImageError}
           />
         )}
-
-        <div className="absolute inset-0 flex items-end bg-linear-to-t from-black/50 via-black/10 to-transparent opacity-0 transition-opacity duration-300 hover:opacity-100">
-          <p className="p-4 text-sm font-medium text-white">{image.projectName}</p>
-        </div>
       </div>
     );
   }
@@ -288,14 +312,6 @@ export function AnimatedGifCard({ image, className = '' }: AnimatedGifCardProps)
             onError={handleVideoError}
           />
         )}
-
-        <div
-          className={`absolute inset-0 flex items-end bg-linear-to-t from-black/40 via-black/10 to-transparent transition-opacity duration-300 ${
-            isActive ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          <p className="p-4 text-sm font-medium text-white">{image.projectName}</p>
-        </div>
       </div>
     );
   }
@@ -329,7 +345,7 @@ export function AnimatedGifCard({ image, className = '' }: AnimatedGifCardProps)
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             ref={imgRef}
-            src={image.src}
+            src={displaySrc}
             alt={image.alt}
             className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${
               isActive || !staticFrame ? 'opacity-100' : 'opacity-0'
@@ -341,14 +357,6 @@ export function AnimatedGifCard({ image, className = '' }: AnimatedGifCardProps)
           />
         </>
       )}
-
-      <div
-        className={`absolute inset-0 flex items-end bg-linear-to-t from-black/40 via-black/10 to-transparent transition-opacity duration-300 ${
-          isActive ? 'opacity-100' : 'opacity-0'
-        }`}
-      >
-        <p className="p-4 text-sm font-medium text-white">{image.projectName}</p>
-      </div>
     </div>
   );
 }
