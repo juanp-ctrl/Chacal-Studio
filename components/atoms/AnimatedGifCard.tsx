@@ -23,16 +23,20 @@ function getAspectRatioClass(aspectRatio: ProjectImage['aspectRatio']): string {
 
 /**
  * A card component that displays GIFs with hover-to-play functionality.
- * - For GIFs: Shows the first frame statically, plays animation on hover
+ * - Desktop: Shows the first frame statically, plays animation on hover
+ * - Mobile: Shows the first frame statically, plays animation on tap (click)
  * - For PNGs: Shows the image normally (no animation)
  *
  * Uses canvas to extract the first frame of GIFs for the static state.
+ * Both images are kept in DOM to prevent flicker on transition.
  */
 export function AnimatedGifCard({ image, className = '' }: AnimatedGifCardProps) {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isActive, setIsActive] = useState(false);
   const [staticFrame, setStaticFrame] = useState<string | null>(null);
-  // PNGs are considered loaded immediately since they don't need frame extraction
   const [isLoaded, setIsLoaded] = useState(image.type === 'png');
+  const [gifLoaded, setGifLoaded] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
 
   // Determine if this is a GIF that needs animation control
@@ -40,6 +44,14 @@ export function AnimatedGifCard({ image, className = '' }: AnimatedGifCardProps)
 
   // Get the aspect ratio class for this image
   const aspectClass = getAspectRatioClass(image.aspectRatio);
+
+  // Detect touch device on mount
+  useEffect(() => {
+    const checkTouchDevice = () => {
+      setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    };
+    checkTouchDevice();
+  }, []);
 
   // Extract first frame from GIF using canvas
   const extractFirstFrame = useCallback((imgElement: HTMLImageElement): string | null => {
@@ -58,16 +70,17 @@ export function AnimatedGifCard({ image, className = '' }: AnimatedGifCardProps)
     return null;
   }, []);
 
-  // Handle image load - extract first frame for GIFs
-  const handleImageLoad = useCallback(() => {
-    setIsLoaded(true);
-    if (isAnimatedGif && imgRef.current) {
+  // Handle GIF load
+  const handleGifLoad = useCallback(() => {
+    setGifLoaded(true);
+    if (isAnimatedGif && imgRef.current && !staticFrame) {
       const frame = extractFirstFrame(imgRef.current);
       if (frame) {
         setStaticFrame(frame);
+        setIsLoaded(true);
       }
     }
-  }, [isAnimatedGif, extractFirstFrame]);
+  }, [isAnimatedGif, extractFirstFrame, staticFrame]);
 
   // Preload the GIF image to extract first frame
   useEffect(() => {
@@ -88,6 +101,48 @@ export function AnimatedGifCard({ image, className = '' }: AnimatedGifCardProps)
     img.src = image.src;
   }, [image.src, isAnimatedGif, extractFirstFrame]);
 
+  // Handle click outside to deactivate on mobile
+  useEffect(() => {
+    if (!isTouchDevice || !isActive) return;
+
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setIsActive(false);
+      }
+    };
+
+    // Small delay to prevent immediate deactivation from the same tap
+    const timer = setTimeout(() => {
+      document.addEventListener('click', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [isTouchDevice, isActive]);
+
+  // Event handlers
+  const handleMouseEnter = () => {
+    if (!isTouchDevice) {
+      setIsActive(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (!isTouchDevice) {
+      setIsActive(false);
+    }
+  };
+
+  const handleClick = () => {
+    if (isTouchDevice) {
+      setIsActive((prev) => !prev);
+    }
+  };
+
   // For PNGs, just show the image
   if (!isAnimatedGif) {
     return (
@@ -107,45 +162,58 @@ export function AnimatedGifCard({ image, className = '' }: AnimatedGifCardProps)
     );
   }
 
-  // For GIFs, show static frame by default, animated on hover
+  // For GIFs, keep both images in DOM and use opacity to switch (prevents flicker)
   return (
     <div
-      className={`relative overflow-hidden rounded-lg ${aspectClass} ${className}`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      ref={containerRef}
+      className={`relative cursor-pointer overflow-hidden rounded-lg ${aspectClass} ${className}`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
     >
       {/* Loading skeleton */}
       {!isLoaded && <div className="bg-muted absolute inset-0 animate-pulse" />}
 
-      {/* Static frame (shown when not hovered) */}
-      {staticFrame && !isHovered && (
+      {/* Static frame - always in DOM, visible when not active */}
+      {staticFrame && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={staticFrame}
           alt={image.alt}
-          className="h-full w-full object-cover transition-transform duration-500"
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${
+            isActive ? 'opacity-0' : 'opacity-100'
+          }`}
         />
       )}
 
-      {/* Animated GIF (shown on hover or as fallback) */}
-      {(isHovered || !staticFrame) && (
+      {/* Animated GIF - always in DOM (for preloading), visible when active */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        ref={imgRef}
+        src={image.src}
+        alt={image.alt}
+        className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${
+          isActive && gifLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
+        onLoad={handleGifLoad}
+        loading="lazy"
+      />
+
+      {/* Fallback while loading - show GIF directly if no static frame yet */}
+      {!staticFrame && isLoaded && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          ref={imgRef}
           src={image.src}
           alt={image.alt}
-          className="h-full w-full object-cover transition-transform duration-500"
-          onLoad={handleImageLoad}
+          className="absolute inset-0 h-full w-full object-cover"
           loading="lazy"
-          // Add unique key to force GIF restart on hover
-          key={isHovered ? `${image.id}-animated` : `${image.id}-static`}
         />
       )}
 
-      {/* Project name overlay on hover */}
+      {/* Project name overlay */}
       <div
         className={`absolute inset-0 flex items-end bg-linear-to-t from-black/40 via-black/10 to-transparent transition-opacity duration-300 ${
-          isHovered ? 'opacity-100' : 'opacity-0'
+          isActive ? 'opacity-100' : 'opacity-0'
         }`}
       >
         <p className="p-4 text-sm font-medium text-white">{image.projectName}</p>
