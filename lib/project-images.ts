@@ -1,10 +1,12 @@
 export interface ProjectImage {
   /** Unique identifier for the image */
   id: string;
-  /** Image source URL (Unsplash for now, will be /projects/filename.webp in production) */
+  /** Image source URL - path to the file in /Proyectos/ folder */
   src: string;
-  /** Reference to the project this image belongs to */
-  projectSlug: string;
+  /** Project name extracted from filename */
+  projectName: string;
+  /** File type for handling static vs animated content */
+  type: 'gif' | 'png';
   /** Aspect ratio for masonry grid layout */
   aspectRatio: 'landscape' | 'portrait' | 'square';
   /** Alt text for accessibility */
@@ -12,126 +14,190 @@ export interface ProjectImage {
 }
 
 /**
- * Flat array of all project images for the homepage masonry grid.
+ * Array of all project images for the homepage masonry grid.
  * Each image is a separate card in the grid.
- * Order determines visual composition - arrange for best masonry flow.
- * Using popular/featured Unsplash images for reliability.
+ * Ordered to create balanced column heights in masonry layout.
+ *
+ * Aspect ratio assignments:
+ * - Portrait (vertical): 01, 05, 06, 08, 10, 11, 12, 13, 18, 20, 21
+ * - Landscape: 02, 03, 04, 09, 15, 17
+ * - Square: 07, 14, 16, 19
+ *
+ * Order optimized for CSS columns to balance heights across 4 columns.
+ * Pattern: distribute landscapes early, mix squares in middle, portraits throughout.
  */
 export const projectImages: ProjectImage[] = [
-  // Column 1 - Mixed aspects for visual interest
+  // Row 1 - Start with mix to establish balanced column heights
   {
-    id: 'ecosfera-01',
-    src: 'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=1600&q=90&fm=webp',
-    projectSlug: 'ecosfera-urbana',
+    id: '02-clinica-emilia',
+    src: '/Proyectos/02 - Clínica Integral Emilia Monsalvez.gif',
+    projectName: 'Clínica Integral Emilia Monsalvez',
+    type: 'gif',
     aspectRatio: 'landscape',
-    alt: 'Ecosfera Urbana - Urban sustainability campaign',
+    alt: 'Clínica Integral Emilia Monsalvez - Project showcase',
   },
   {
-    id: 'conexion-01',
-    src: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1600&q=90&fm=webp',
-    projectSlug: 'conexion-aula',
+    id: '01-enso',
+    src: '/Proyectos/01 - ēnso.gif',
+    projectName: 'ēnso',
+    type: 'gif',
     aspectRatio: 'portrait',
-    alt: 'Conexión Aula - Digital learning platform',
+    alt: 'ēnso - Project showcase',
   },
   {
-    id: 'raices-01',
-    src: 'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1600&q=90&fm=webp',
-    projectSlug: 'raices-del-futuro',
-    aspectRatio: 'square',
-    alt: 'Raíces del Futuro - Community reforestation',
+    id: '03-fresca',
+    src: '/Proyectos/03 - Fresca.gif',
+    projectName: 'Fresca',
+    type: 'gif',
+    aspectRatio: 'landscape',
+    alt: 'Fresca - Project showcase',
   },
   {
-    id: 'impacto-01',
-    src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&q=90&fm=webp',
-    projectSlug: 'impacto-visual',
-    aspectRatio: 'square',
-    alt: 'Impacto Visual - Data visualization',
-  },
-  // Column 2
-  {
-    id: 'voces-01',
-    src: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=1600&q=90&fm=webp',
-    projectSlug: 'voces-nativas',
+    id: '05-hhs',
+    src: '/Proyectos/05 - HHS.gif',
+    projectName: 'HHS',
+    type: 'gif',
     aspectRatio: 'portrait',
-    alt: 'Voces Nativas - Indigenous languages podcast',
+    alt: 'HHS - Project showcase',
   },
+  // Row 2 - Mix in squares
   {
-    id: 'energia-01',
-    src: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1600&q=90&fm=webp',
-    projectSlug: 'energia-limpia',
-    aspectRatio: 'landscape',
-    alt: 'Energía Limpia - Solar panels field',
-  },
-  {
-    id: 'ecosfera-02',
-    src: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1600&q=90&fm=webp',
-    projectSlug: 'ecosfera-urbana',
+    id: '07-xinca',
+    src: '/Proyectos/07 - Xinca.gif',
+    projectName: 'Xinca',
+    type: 'gif',
     aspectRatio: 'square',
-    alt: 'Ecosfera Urbana - Modern office space',
+    alt: 'Xinca - Project showcase',
   },
   {
-    id: 'conexion-02',
-    src: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&q=90&fm=webp',
-    projectSlug: 'conexion-aula',
+    id: '04-mutisia',
+    src: '/Proyectos/04 - Mutisia.png',
+    projectName: 'Mutisia',
+    type: 'png',
     aspectRatio: 'landscape',
-    alt: 'Conexión Aula - Team collaboration',
+    alt: 'Mutisia - Project showcase',
   },
-  // Column 3
   {
-    id: 'raices-02',
-    src: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1600&q=90&fm=webp',
-    projectSlug: 'raices-del-futuro',
+    id: '06-wesley',
+    src: '/Proyectos/06 - Wesley.gif',
+    projectName: 'Wesley',
+    type: 'gif',
     aspectRatio: 'portrait',
-    alt: 'Raíces del Futuro - Mountain peaks',
+    alt: 'Wesley - Project showcase',
   },
   {
-    id: 'impacto-02',
-    src: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1600&q=90&fm=webp',
-    projectSlug: 'impacto-visual',
+    id: '14-rana',
+    src: '/Proyectos/14 - Raña.gif',
+    projectName: 'Raña',
+    type: 'gif',
+    aspectRatio: 'square',
+    alt: 'Raña - Project showcase',
+  },
+  // Row 3 - Continue balancing
+  {
+    id: '09-modoprevia',
+    src: '/Proyectos/09 - ModoPrevia.gif',
+    projectName: 'ModoPrevia',
+    type: 'gif',
     aspectRatio: 'landscape',
-    alt: 'Impacto Visual - Analytics workspace',
+    alt: 'ModoPrevia - Project showcase',
   },
   {
-    id: 'voces-02',
-    src: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1600&q=90&fm=webp',
-    projectSlug: 'voces-nativas',
-    aspectRatio: 'square',
-    alt: 'Voces Nativas - Community gathering',
-  },
-  {
-    id: 'energia-02',
-    src: 'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=1600&q=90&fm=webp',
-    projectSlug: 'energia-limpia',
-    aspectRatio: 'square',
-    alt: 'Energía Limpia',
-  },
-  // Column 4
-  {
-    id: 'ecosfera-03',
-    src: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=90&fm=webp',
-    projectSlug: 'ecosfera-urbana',
+    id: '08-merli',
+    src: '/Proyectos/08 - Merlí.gif',
+    projectName: 'Merlí',
+    type: 'gif',
     aspectRatio: 'portrait',
-    alt: 'Ecosfera Urbana - Modern architecture',
+    alt: 'Merlí - Project showcase',
   },
   {
-    id: 'conexion-03',
-    src: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1600&q=90&fm=webp',
-    projectSlug: 'conexion-aula',
+    id: '16-mutisia-2',
+    src: '/Proyectos/16 - Mutisia.gif',
+    projectName: 'Mutisia',
+    type: 'gif',
     aspectRatio: 'square',
-    alt: 'Conexión Aula - Workshop session',
+    alt: 'Mutisia - Project showcase',
   },
   {
-    id: 'raices-03',
-    src: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1600&q=90&fm=webp',
-    projectSlug: 'raices-del-futuro',
+    id: '10-confluencia',
+    src: '/Proyectos/10 - Confluencia de Cervezas.gif',
+    projectName: 'Confluencia de Cervezas',
+    type: 'gif',
+    aspectRatio: 'portrait',
+    alt: 'Confluencia de Cervezas - Project showcase',
+  },
+  // Row 4 - Mix remaining
+  {
+    id: '15-confluencia-2',
+    src: '/Proyectos/15 - Confluencia de Cervezas.gif',
+    projectName: 'Confluencia de Cervezas',
+    type: 'gif',
     aspectRatio: 'landscape',
-    alt: 'Raíces del Futuro - Green valley landscape',
+    alt: 'Confluencia de Cervezas - Project showcase',
   },
   {
-    id: 'voces-03',
-    src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=90&fm=webp',
-    projectSlug: 'voces-nativas',
+    id: '11-mutisia-fotos',
+    src: '/Proyectos/11 - Mutisia fotos.gif',
+    projectName: 'Mutisia fotos',
+    type: 'gif',
+    aspectRatio: 'portrait',
+    alt: 'Mutisia fotos - Project showcase',
+  },
+  {
+    id: '19-kalevala',
+    src: '/Proyectos/19 - Kalevala.png',
+    projectName: 'Kalevala',
+    type: 'png',
+    aspectRatio: 'square',
+    alt: 'Kalevala - Project showcase',
+  },
+  {
+    id: '12-greenheads',
+    src: '/Proyectos/12 - GIF Greenheads.gif',
+    projectName: 'Greenheads',
+    type: 'gif',
+    aspectRatio: 'portrait',
+    alt: 'Greenheads - Project showcase',
+  },
+  // Row 5 - Final items
+  {
+    id: '17-iki',
+    src: '/Proyectos/17 - IKi.gif',
+    projectName: 'IKi',
+    type: 'gif',
     aspectRatio: 'landscape',
-    alt: 'Voces Nativas - Mountain range',
+    alt: 'IKi - Project showcase',
+  },
+  {
+    id: '13-oh-my-veggie',
+    src: '/Proyectos/13 - Oh My Veggie.gif',
+    projectName: 'Oh My Veggie',
+    type: 'gif',
+    aspectRatio: 'portrait',
+    alt: 'Oh My Veggie - Project showcase',
+  },
+  {
+    id: '18-zigzag',
+    src: '/Proyectos/18 - ZigZag.gif',
+    projectName: 'ZigZag',
+    type: 'gif',
+    aspectRatio: 'portrait',
+    alt: 'ZigZag - Project showcase',
+  },
+  {
+    id: '20-keni',
+    src: '/Proyectos/20 - Keñi.png',
+    projectName: 'Keñi',
+    type: 'png',
+    aspectRatio: 'portrait',
+    alt: 'Keñi - Project showcase',
+  },
+  {
+    id: '21-rana-fotos',
+    src: '/Proyectos/21 - Raña fotos.gif',
+    projectName: 'Raña fotos',
+    type: 'gif',
+    aspectRatio: 'portrait',
+    alt: 'Raña fotos - Project showcase',
   },
 ];

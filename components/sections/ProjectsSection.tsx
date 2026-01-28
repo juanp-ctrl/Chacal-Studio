@@ -1,23 +1,10 @@
 'use client';
 
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { projectImages, type ProjectImage } from '@/lib/project-images';
+import { projectImages } from '@/lib/project-images';
 import { motion } from 'motion/react';
 import { AnimatedText } from '../atoms/AnimatedText';
-
-/** Returns Tailwind aspect ratio class based on image aspectRatio property */
-function getAspectRatioClass(aspectRatio: ProjectImage['aspectRatio']): string {
-  switch (aspectRatio) {
-    case 'portrait':
-      return 'aspect-[3/4]';
-    case 'square':
-      return 'aspect-square';
-    case 'landscape':
-    default:
-      return 'aspect-video';
-  }
-}
+import { AnimatedGifCard } from '../atoms/AnimatedGifCard';
 
 export function ProjectsSection() {
   const t = useTranslations('ProjectsSection');
@@ -57,17 +44,7 @@ export function ProjectsSection() {
                 delay: index * 0.05,
               }}
             >
-              <div
-                className={`relative overflow-hidden rounded-lg ${getAspectRatioClass(image.aspectRatio)}`}
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  sizes="(max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                  className="object-cover"
-                />
-              </div>
+              <AnimatedGifCard image={image} />
             </motion.div>
           ))}
         </div>
