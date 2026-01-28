@@ -6,7 +6,7 @@ export interface ProjectImage {
   /** Project name extracted from filename */
   projectName: string;
   /** File type for handling static vs animated content */
-  type: 'gif' | 'png';
+  type: 'gif' | 'png' | 'mp4';
   /** Aspect ratio for masonry grid layout */
   aspectRatio: 'landscape' | 'portrait' | 'square';
   /** Alt text for accessibility */
@@ -30,7 +30,7 @@ export const projectImages: ProjectImage[] = [
   // Row 1 - Start with mix to establish balanced column heights
   {
     id: '02-clinica-emilia',
-    src: '/Proyectos/02 - Clínica Integral Emilia Monsalvez.gif',
+    src: '/Proyectos/02 - Clinica Integral Emilia Monsalvez.gif',
     projectName: 'Clínica Integral Emilia Monsalvez',
     type: 'gif',
     aspectRatio: 'landscape',
@@ -38,7 +38,7 @@ export const projectImages: ProjectImage[] = [
   },
   {
     id: '01-enso',
-    src: '/Proyectos/01 - ēnso.gif',
+    src: '/Proyectos/01 - enso.gif',
     projectName: 'ēnso',
     type: 'gif',
     aspectRatio: 'portrait',
@@ -87,7 +87,7 @@ export const projectImages: ProjectImage[] = [
   },
   {
     id: '14-rana',
-    src: '/Proyectos/14 - Raña.gif',
+    src: '/Proyectos/14 - Rana.gif',
     projectName: 'Raña',
     type: 'gif',
     aspectRatio: 'square',
@@ -104,7 +104,7 @@ export const projectImages: ProjectImage[] = [
   },
   {
     id: '08-merli',
-    src: '/Proyectos/08 - Merlí.gif',
+    src: '/Proyectos/08 - Merli.gif',
     projectName: 'Merlí',
     type: 'gif',
     aspectRatio: 'portrait',
@@ -129,9 +129,9 @@ export const projectImages: ProjectImage[] = [
   // Row 4 - Mix remaining
   {
     id: '15-confluencia-2',
-    src: '/Proyectos/15 - Confluencia de Cervezas.gif',
+    src: '/Proyectos/15 - Confluencia de Cervezas.mp4',
     projectName: 'Confluencia de Cervezas',
-    type: 'gif',
+    type: 'mp4',
     aspectRatio: 'landscape',
     alt: 'Confluencia de Cervezas - Project showcase',
   },
@@ -153,9 +153,9 @@ export const projectImages: ProjectImage[] = [
   },
   {
     id: '12-greenheads',
-    src: '/Proyectos/12 - GIF Greenheads.gif',
+    src: '/Proyectos/12 - GIF Greenheads.mp4',
     projectName: 'Greenheads',
-    type: 'gif',
+    type: 'mp4',
     aspectRatio: 'portrait',
     alt: 'Greenheads - Project showcase',
   },
@@ -186,7 +186,7 @@ export const projectImages: ProjectImage[] = [
   },
   {
     id: '20-keni',
-    src: '/Proyectos/20 - Keñi.png',
+    src: '/Proyectos/20 - Keni.png',
     projectName: 'Keñi',
     type: 'png',
     aspectRatio: 'portrait',
@@ -194,7 +194,7 @@ export const projectImages: ProjectImage[] = [
   },
   {
     id: '21-rana-fotos',
-    src: '/Proyectos/21 - Raña fotos.gif',
+    src: '/Proyectos/21 - Rana fotos.gif',
     projectName: 'Raña fotos',
     type: 'gif',
     aspectRatio: 'portrait',

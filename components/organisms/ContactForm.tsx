@@ -1,12 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { Turnstile } from '@marsidev/react-turnstile';
 import { toast } from 'sonner';
 import { Send, Loader2, Check } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useInView } from 'motion/react';
 import { Button } from '@/components/atoms/Button';
 import { Input } from '@/components/atoms/Input';
 import { createContactSchema, type ContactFormData } from '@/lib/schemas/contact';
@@ -15,6 +16,8 @@ export function ContactForm() {
   const t = useTranslations('contact.form');
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const isVisible = useInView(formRef, { once: true, amount: 0.1 });
 
   const schema = createContactSchema((key) => t(`error.${key}`));
 
@@ -77,7 +80,7 @@ export function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <form ref={formRef} onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <div>
         <label htmlFor="name" className="mb-2 block text-white">
           {t('name')} *
@@ -196,14 +199,16 @@ export function ContactForm() {
         )}
       </div>
 
-      <div className="flex justify-center sm:justify-start">
-        <Turnstile
-          siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ''}
-          onSuccess={(token) => setTurnstileToken(token)}
-          options={{
-            theme: 'dark',
-          }}
-        />
+      <div className="flex min-h-[65px] justify-center sm:justify-start">
+        {isVisible && (
+          <Turnstile
+            siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ''}
+            onSuccess={(token) => setTurnstileToken(token)}
+            options={{
+              theme: 'dark',
+            }}
+          />
+        )}
       </div>
 
       <Button
