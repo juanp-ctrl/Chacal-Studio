@@ -37,9 +37,7 @@ export function MethodSection() {
             className="text-foreground mb-6 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
             delay={0.3}
           />
-          <Text className="text-muted-foreground mx-auto max-w-2xl text-lg">
-            {t('description')}
-          </Text>
+          <Text className="text-muted-foreground mx-auto max-w-xl text-lg">{t('description')}</Text>
         </motion.div>
 
         <div className="flex flex-wrap justify-center gap-8">
