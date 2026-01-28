@@ -63,7 +63,7 @@ export function PartnersSection() {
               <div className="relative mb-6 flex h-16 w-full items-center justify-start">
                 <div className="relative h-full w-48">
                   <Image
-                    src={`/Partners/partner-${index + 1}.svg`}
+                    src={`/Partners/partner-${index + 1}.png`}
                     alt={t(`${partner.key}.name`)}
                     fill
                     className="object-contain object-left"
