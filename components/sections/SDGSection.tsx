@@ -35,10 +35,7 @@ export function SDGSection() {
   ];
 
   return (
-    <section
-      id="ods"
-      className="border-t border-white/10 bg-(--bg-brand-blue-dark) px-6 py-24 text-white sm:py-32 lg:px-8"
-    >
+    <section id="ods" className="bg-blue-background px-6 py-24 text-white sm:py-32 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <motion.div
           className="mb-20 text-center"

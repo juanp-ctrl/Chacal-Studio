@@ -13,7 +13,7 @@ export function FutureSection() {
   const t = useTranslations('future');
 
   return (
-    <section className="overflow-hidden bg-(--bg-brand-blue-dark) px-4 py-24 text-white sm:px-6 sm:py-32 lg:px-8">
+    <section className="bg-blue-background overflow-hidden px-4 py-24 text-white sm:px-6 sm:py-32 lg:px-8">
       <div className="mx-auto max-w-7xl" ref={ref}>
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <motion.div

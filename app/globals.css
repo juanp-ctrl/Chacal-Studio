@@ -7,26 +7,26 @@
 
   /* Brand Colors */
   --brand-blue: #2f2e59;
-  --bg-brand-blue-dark: #161534;
 
-  /* Light mode - clean and professional with brand colors */
-  --background: #ffffff;
-  --foreground: #2f2e59;
+  /* Clean and professional with brand colors */
+  --background: #020214;
+  --blue-background: #161534;
+  --foreground: #ffffff;
   --card: #f8f9fa;
-  --card-foreground: #2f2e59;
-  --popover: #ffffff;
-  --popover-foreground: #2f2e59;
+  --card-foreground: #ffffff;
+  --popover: #242424;
+  --popover-foreground: #ffffff;
 
   /* Primary = Brand blue */
   --primary: #2f2e59;
   --primary-foreground: #ffffff;
 
-  /* Secondary = Lighter blue tints */
+  /* Secondary = Darker tints */
   --secondary: #f0f1f7;
-  --secondary-foreground: #2f2e59;
+  --secondary-foreground: #ffffff;
 
-  --muted: #e8e9f2;
-  --muted-foreground: #5a5987;
+  --muted: #f1f1fa;
+  --muted-foreground: #f6f6f9;
 
   /* Accent = Orange ONLY for CTAs */
   --accent: #fd9a6b;
@@ -134,6 +134,7 @@
   --color-blue-lighter: var(--blue-lighter);
   --color-blue-lightest: var(--blue-lightest);
   --color-blue-subtle: var(--blue-subtle);
+  --color-blue-background: var(--blue-background);
 
   /* Plant Based Treaty */
   --color-pbt-green: var(--pbt-green);

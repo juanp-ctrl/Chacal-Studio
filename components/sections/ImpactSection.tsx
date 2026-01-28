@@ -37,10 +37,7 @@ export function ImpactSection() {
   ];
 
   return (
-    <section
-      id="impacto"
-      className="border-t border-gray-100 bg-white px-6 py-24 sm:px-8 sm:py-32 lg:px-12"
-    >
+    <section id="impacto" className="bg-background px-6 py-24 sm:px-8 sm:py-32 lg:px-12">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -51,7 +48,7 @@ export function ImpactSection() {
         >
           <AnimatedText
             as="h2"
-            className="font-heading text-primary mb-6 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
+            className="font-heading text-foreground mb-6 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
             text={t('title')}
           />
           <Text className="text-muted-foreground text-center text-lg">{t('subtitle')}</Text>
@@ -72,7 +69,7 @@ export function ImpactSection() {
                   <div className="bg-accent/10 text-accent mr-4 flex h-14 w-14 items-center justify-center rounded-2xl">
                     <impact.icon className="h-7 w-7" strokeWidth={1.5} />
                   </div>
-                  <Heading as="h3" className="text-primary text-3xl font-bold">
+                  <Heading as="h3" className="text-foreground text-3xl font-bold">
                     {t(`${impact.key}.title`)}
                   </Heading>
                 </div>

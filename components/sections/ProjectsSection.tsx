@@ -23,7 +23,7 @@ export function ProjectsSection() {
   const t = useTranslations('ProjectsSection');
 
   return (
-    <section id="projects" className="bg-white px-6 py-24 sm:px-8 sm:py-32 lg:px-12">
+    <section id="projects" className="bg-background px-6 py-24 sm:px-8 sm:py-32 lg:px-12">
       <div className="mx-auto">
         {/* Section Title */}
         <motion.div
@@ -36,7 +36,7 @@ export function ProjectsSection() {
           <AnimatedText
             text={t('title')}
             as="h2"
-            className="text-primary mb-6 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
+            className="text-foreground mb-6 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
             delay={0.3}
           />
         </motion.div>
