@@ -41,7 +41,7 @@ export function FloatingActions() {
             exit={{ scale: 0, opacity: 0 }}
             transition={{ duration: 0.3, delay: 0.1 }}
             onClick={openWhatsApp}
-            className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-all duration-300 hover:scale-110 hover:bg-[#20BA5A] hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 sm:h-14 sm:w-14"
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-[transform,background-color,box-shadow] duration-300 hover:scale-110 hover:bg-[#20BA5A] hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 sm:h-14 sm:w-14"
             aria-label={t('whatsappLabel')}
           >
             <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6" />
@@ -54,7 +54,7 @@ export function FloatingActions() {
             exit={{ scale: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
             onClick={scrollToTop}
-            className="bg-primary hover:bg-accent focus-visible:ring-primary flex h-12 w-12 items-center justify-center rounded-full text-white shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 sm:h-14 sm:w-14"
+            className="bg-primary hover:bg-accent focus-visible:ring-primary flex h-12 w-12 items-center justify-center rounded-full text-white shadow-lg transition-[transform,background-color,box-shadow] duration-300 hover:scale-110 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 sm:h-14 sm:w-14"
             aria-label={t('scrollTopLabel')}
           >
             <ChevronUp className="h-5 w-5 sm:h-6 sm:w-6" />

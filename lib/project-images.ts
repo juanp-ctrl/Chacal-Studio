@@ -70,12 +70,12 @@ export const projectImages: ProjectImage[] = [
     alt: 'Xinca - Project showcase',
   },
   {
-    id: '04-mutisia',
-    src: '/Proyectos/04 - Mutisia.png',
-    projectName: 'Mutisia',
-    type: 'png',
+    id: '15-confluencia-2',
+    src: '/Proyectos/15 - Confluencia de Cervezas.mp4',
+    projectName: 'Confluencia de Cervezas',
+    type: 'mp4',
     aspectRatio: 'landscape',
-    alt: 'Mutisia - Project showcase',
+    alt: 'Confluencia de Cervezas - Project showcase',
   },
   {
     id: '06-wesley',
@@ -128,12 +128,12 @@ export const projectImages: ProjectImage[] = [
   },
   // Row 4 - Mix remaining
   {
-    id: '15-confluencia-2',
-    src: '/Proyectos/15 - Confluencia de Cervezas.mp4',
-    projectName: 'Confluencia de Cervezas',
-    type: 'mp4',
+    id: '04-mutisia',
+    src: '/Proyectos/04 - Mutisia.png',
+    projectName: 'Mutisia',
+    type: 'png',
     aspectRatio: 'landscape',
-    alt: 'Confluencia de Cervezas - Project showcase',
+    alt: 'Mutisia - Project showcase',
   },
   {
     id: '11-mutisia-fotos',

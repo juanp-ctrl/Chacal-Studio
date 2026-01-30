@@ -53,13 +53,13 @@ export function ServicesSection() {
           {services.map((service, index) => (
             <motion.div
               key={service.key}
-              className="group bg-primary hover:border-accent/20 rounded-3xl border border-transparent p-10 transition-all duration-300"
+              className="group bg-primary hover:border-accent/20 rounded-3xl border border-transparent p-10 transition-[border-color] duration-300"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
             >
-              <div className="group-hover:bg-accent/10 mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 transition-all duration-300">
+              <div className="group-hover:bg-accent/10 mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 transition-colors duration-300">
                 <service.icon
                   className="group-hover:text-accent h-7 w-7 text-white transition-colors duration-300"
                   strokeWidth={1.5}

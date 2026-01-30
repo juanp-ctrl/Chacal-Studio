@@ -11,7 +11,7 @@ export function MarqueeSection() {
   const repeatedText = Array(4).fill(marqueeText).join('   ');
 
   return (
-    <section className="from-blue-background via-blue-background relative overflow-hidden bg-linear-to-b to-black py-12 sm:py-16">
+    <section className="from-blue-background via-blue-background to-background relative overflow-hidden bg-linear-to-b py-12 sm:py-16">
       <motion.div
         className="relative"
         initial={{ opacity: 0, y: 20 }}

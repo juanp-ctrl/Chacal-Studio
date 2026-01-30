@@ -106,8 +106,8 @@ export function PlantBasedTreatySection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
                 >
-                  <div className="group-hover:border-pbt-green-light/40 flex gap-4 rounded-xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-sm transition-all duration-300">
-                    <div className="bg-pbt-green-light text-pbt-green-dark flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg transition-all duration-300">
+                  <div className="group-hover:border-pbt-green-light/40 flex gap-4 rounded-xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-sm transition-[border-color] duration-300">
+                    <div className="bg-pbt-green-light text-pbt-green-dark flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg">
                       <principle.icon className="h-5 w-5" />
                     </div>
                     <div className="flex-1">
@@ -131,7 +131,7 @@ export function PlantBasedTreatySection() {
             transition={{ duration: 0.8 }}
           >
             {/* Contribution Card */}
-            <div className="border-pbt-green/20 bg-pbt-green/[0.08] flex h-1/2 flex-col justify-center rounded-2xl border-2 p-8 backdrop-blur-sm transition-all duration-500 hover:scale-[1.02]">
+            <div className="border-pbt-green/20 bg-pbt-green/[0.08] flex h-1/2 flex-col justify-center rounded-2xl border-2 p-8 backdrop-blur-sm transition-transform duration-500 hover:scale-[1.02]">
               <div className="mb-5 flex items-center">
                 <div className="bg-pbt-green mr-4 flex h-12 w-12 items-center justify-center rounded-xl">
                   <Leaf className="h-6 w-6 text-white" />
@@ -146,7 +146,7 @@ export function PlantBasedTreatySection() {
             </div>
 
             {/* Impact Card */}
-            <div className="flex h-1/2 flex-col justify-center rounded-2xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-sm transition-all duration-500 hover:scale-[1.02]">
+            <div className="flex h-1/2 flex-col justify-center rounded-2xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-sm transition-transform duration-500 hover:scale-[1.02]">
               <div className="mb-5 flex items-center">
                 <div className="bg-pbt-green mr-4 flex h-12 w-12 items-center justify-center rounded-xl">
                   <Globe2 className="h-6 w-6 text-white" />
@@ -179,7 +179,7 @@ export function PlantBasedTreatySection() {
                   href={action.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:bg-pbt-green/15 hover:border-pbt-green inline-flex items-center gap-2 rounded-full border-2 border-white/15 bg-white/5 px-7 py-3.5 text-white transition-all duration-300 hover:scale-105"
+                  className="hover:bg-pbt-green/15 hover:border-pbt-green inline-flex items-center gap-2 rounded-full border-2 border-white/15 bg-white/5 px-7 py-3.5 text-white transition-[transform,border-color,background-color] duration-300 hover:scale-105"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}

@@ -53,7 +53,7 @@ export function ContactSection() {
                 href="mailto:hola@chacalestudio.ar"
                 className="hover:text-accent group flex items-center gap-4 text-white/80 transition-colors duration-300"
               >
-                <div className="group-hover:bg-accent flex h-12 w-12 items-center justify-center rounded-full bg-white/10 transition-all duration-300 group-hover:scale-110">
+                <div className="group-hover:bg-accent flex h-12 w-12 items-center justify-center rounded-full bg-white/10 transition-[transform,background-color] duration-300 group-hover:scale-110">
                   <Mail className="h-6 w-6 text-white" />
                 </div>
                 <span>hola@chacalestudio.ar</span>
@@ -65,7 +65,7 @@ export function ContactSection() {
                 rel="noopener noreferrer"
                 className="hover:text-accent group flex items-center gap-4 text-white/80 transition-colors duration-300"
               >
-                <div className="group-hover:bg-accent flex h-12 w-12 items-center justify-center rounded-full bg-white/10 transition-all duration-300 group-hover:scale-110">
+                <div className="group-hover:bg-accent flex h-12 w-12 items-center justify-center rounded-full bg-white/10 transition-[transform,background-color] duration-300 group-hover:scale-110">
                   <Instagram className="h-6 w-6 text-white" />
                 </div>
                 <span>@chacal.estudio</span>
@@ -77,7 +77,7 @@ export function ContactSection() {
                 rel="noopener noreferrer"
                 className="hover:text-accent group flex items-center gap-4 text-white/80 transition-colors duration-300"
               >
-                <div className="group-hover:bg-accent flex h-12 w-12 items-center justify-center rounded-full bg-white/10 transition-all duration-300 group-hover:scale-110">
+                <div className="group-hover:bg-accent flex h-12 w-12 items-center justify-center rounded-full bg-white/10 transition-[transform,background-color] duration-300 group-hover:scale-110">
                   <Linkedin className="h-6 w-6 text-white" />
                 </div>
                 <span>Chacal Estudio</span>

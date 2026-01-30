@@ -62,7 +62,7 @@ export function Footer() {
           <p>
             &copy; {currentYear} {t('copyright')}
           </p>
-          <div className="flex gap-6">
+          <div className="flex w-full justify-between gap-6">
             <Link href="/privacy" className="hover:text-accent transition-colors duration-300">
               {t('privacy')}
             </Link>

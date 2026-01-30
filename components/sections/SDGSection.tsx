@@ -72,7 +72,7 @@ export function SDGSection() {
           {sdgs.map((sdg, index) => (
             <motion.div
               key={sdg.number}
-              className="group w-full max-w-sm overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-lg backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/20 md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)]"
+              className="group w-full max-w-sm overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-lg backdrop-blur-sm transition-[transform,border-color] duration-300 hover:-translate-y-1 hover:border-white/20 md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

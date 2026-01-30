@@ -62,7 +62,7 @@ export function HeroSection() {
           <Button
             variant="accent"
             size="lg"
-            className="rounded-full px-8 py-6 text-base font-medium shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+            className="rounded-full px-8 py-6 text-base font-medium shadow-lg transition-[transform,box-shadow] hover:scale-105 hover:shadow-xl"
             onClick={scrollToNext}
           >
             {t('cta')}

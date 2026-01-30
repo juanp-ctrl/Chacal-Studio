@@ -54,7 +54,7 @@ export function PartnersSection() {
           {partners.map((partner, index) => (
             <motion.div
               key={partner.key}
-              className="group bg-primary hover:border-accent/20 relative flex h-full flex-col overflow-hidden rounded-2xl border border-transparent p-8 transition-all duration-300 hover:shadow-lg"
+              className="group bg-primary hover:border-accent/20 relative flex h-full flex-col overflow-hidden rounded-2xl border border-transparent p-8 transition-[border-color,box-shadow] duration-300 hover:shadow-lg"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
