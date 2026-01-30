@@ -80,7 +80,7 @@ export default async function PrivacyPage({ params }: PageProps) {
   };
 
   // Last updated date
-  const lastUpdatedDate = new Date('2025-01-15').toLocaleDateString(
+  const lastUpdatedDate = new Date('2026-01-15').toLocaleDateString(
     locale === 'es' ? 'es-AR' : 'en-US',
     { year: 'numeric', month: 'long', day: 'numeric' }
   );

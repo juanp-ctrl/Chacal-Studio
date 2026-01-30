@@ -10,7 +10,7 @@ export function ProjectsSection() {
   const t = useTranslations('ProjectsSection');
 
   return (
-    <section id="projects" className="bg-background px-6 py-24 sm:px-8 sm:py-32 lg:px-12">
+    <section id="projects" className="bg-blue-background px-6 py-24 sm:px-8 sm:py-32 lg:px-12">
       <div className="mx-auto">
         {/* Section Title */}
         <motion.div
