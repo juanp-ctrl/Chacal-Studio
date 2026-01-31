@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
 import { useTranslations } from 'next-intl';
-import Image from "next/image";
-import * as motion from "motion/react-client"
+import Image from 'next/image';
+import * as motion from 'motion/react-client';
 import { useRef } from 'react';
 import { useInView } from 'motion/react';
 import { AnimatedText } from '../atoms/AnimatedText';
@@ -13,21 +13,21 @@ export function FutureSection() {
   const t = useTranslations('future');
 
   return (
-    <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-blue-dark text-white overflow-hidden">
-      <div className="max-w-7xl mx-auto" ref={ref}>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section className="bg-blue-background overflow-hidden px-4 py-24 text-white sm:px-6 sm:py-32 lg:px-8">
+      <div className="mx-auto max-w-7xl" ref={ref}>
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.8 }}
           >
             <AnimatedText
-              text={t("title")}
+              text={t('title')}
               as="h2"
-              className="mb-6 text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-5xl font-serif"
+              className="mb-6 font-serif text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-5xl"
               delay={0.3}
             />
-            <div className="space-y-4 text-white/90 text-lg font-light leading-relaxed">
+            <div className="space-y-4 text-lg leading-relaxed font-light text-white/90">
               <p>{t('p1')}</p>
               <p>{t('p2')}</p>
               <p>{t('p3')}</p>
@@ -36,7 +36,7 @@ export function FutureSection() {
           </motion.div>
 
           <motion.div
-            className="relative h-[400px] sm:h-[500px] rounded-2xl overflow-hidden shadow-2xl"
+            className="relative h-[400px] overflow-hidden rounded-2xl shadow-2xl sm:h-[500px]"
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8 }}
@@ -48,11 +48,10 @@ export function FutureSection() {
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
           </motion.div>
         </div>
       </div>
     </section>
   );
 }
-

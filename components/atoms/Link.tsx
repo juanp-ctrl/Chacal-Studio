@@ -1,29 +1,28 @@
-import * as React from "react"
-import Link from "next/link"
-import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
+import * as React from 'react';
+import Link from 'next/link';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { cn } from '@/lib/utils';
 
 const linkVariants = cva(
-  "font-medium underline-offset-4 hover:underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background rounded-sm",
+  'font-medium underline-offset-4 hover:underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background rounded-sm',
   {
     variants: {
       variant: {
-        default: "text-primary hover:text-primary/80",
-        muted: "text-muted-foreground hover:text-foreground",
-        accent: "text-accent hover:text-accent/80",
+        default: 'text-primary hover:text-primary/80',
+        muted: 'text-muted-foreground hover:text-foreground',
+        accent: 'text-accent hover:text-accent/80',
       },
     },
     defaultVariants: {
-      variant: "default",
+      variant: 'default',
     },
   }
-)
+);
 
 export interface LinkProps
-  extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
-    VariantProps<typeof linkVariants> {
-  href: string
-  external?: boolean
+  extends React.AnchorHTMLAttributes<HTMLAnchorElement>, VariantProps<typeof linkVariants> {
+  href: string;
+  external?: boolean;
 }
 
 const CustomLink = React.forwardRef<HTMLAnchorElement, LinkProps>(
@@ -38,7 +37,7 @@ const CustomLink = React.forwardRef<HTMLAnchorElement, LinkProps>(
           className={cn(linkVariants({ variant, className }))}
           {...props}
         />
-      )
+      );
     }
     return (
       <Link
@@ -47,10 +46,9 @@ const CustomLink = React.forwardRef<HTMLAnchorElement, LinkProps>(
         className={cn(linkVariants({ variant, className }))}
         {...props}
       />
-    )
+    );
   }
-)
-CustomLink.displayName = "Link"
+);
+CustomLink.displayName = 'Link';
 
-export { CustomLink as Link, linkVariants }
-
+export { CustomLink as Link, linkVariants };

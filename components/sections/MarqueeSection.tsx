@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
 import { useTranslations } from 'next-intl';
-import * as motion from "motion/react-client"
+import * as motion from 'motion/react-client';
 
 export function MarqueeSection() {
   const t = useTranslations('marquee');
@@ -11,8 +11,8 @@ export function MarqueeSection() {
   const repeatedText = Array(4).fill(marqueeText).join('   ');
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary to-accent/80 py-12 sm:py-16">
-      <motion.div 
+    <section className="from-blue-background via-blue-background to-background relative overflow-hidden bg-linear-to-b py-12 sm:py-16">
+      <motion.div
         className="relative"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -35,7 +35,10 @@ export function MarqueeSection() {
         >
           {/* Renderizamos el bloque de texto repetido varias veces para asegurar que cubra pantallas grandes */}
           {[...Array(2)].map((_, i) => (
-            <span key={i} className="text-white text-2xl md:text-3xl pr-8 font-serif italic tracking-wide">
+            <span
+              key={i}
+              className="pr-8 font-serif text-2xl tracking-wide text-white italic md:text-3xl"
+            >
               {repeatedText}
             </span>
           ))}
@@ -44,4 +47,3 @@ export function MarqueeSection() {
     </section>
   );
 }
-

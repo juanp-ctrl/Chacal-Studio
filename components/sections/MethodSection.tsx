@@ -1,39 +1,28 @@
-"use client";
+'use client';
 
-import { motion } from "motion/react";
-import { useTranslations } from "next-intl";
-import { 
-  Search, 
-  Compass, 
-  Target, 
-  Map, 
-  Zap, 
-  TrendingUp, 
-  Footprints 
-} from "lucide-react";
-import { Heading } from "@/components/atoms/Heading";
-import { Text } from "@/components/atoms/Text";
-import { cn } from "@/lib/utils";
-import { AnimatedText } from "../atoms/AnimatedText";
+import { motion } from 'motion/react';
+import { useTranslations } from 'next-intl';
+import { Search, Compass, Target, Map, Zap, TrendingUp, Footprints } from 'lucide-react';
+import { Heading } from '@/components/atoms/Heading';
+import { Text } from '@/components/atoms/Text';
+import { cn } from '@/lib/utils';
+import { AnimatedText } from '../atoms/AnimatedText';
 
 export function MethodSection() {
-  const t = useTranslations("method");
+  const t = useTranslations('method');
 
   const stepsMapped = [
-    { icon: Search, key: "step1" },
-    { icon: Compass, key: "step2" },
-    { icon: Target, key: "step3" },
-    { icon: Map, key: "step4" }, // Strategies
-    { icon: Zap, key: "step5" }, // Solutions
-    { icon: TrendingUp, key: "step6" }, // Results
-    { icon: Footprints, key: "step7" }, // Footprints
+    { icon: Search, key: 'step1' },
+    { icon: Compass, key: 'step2' },
+    { icon: Target, key: 'step3' },
+    { icon: Map, key: 'step4' }, // Strategies
+    { icon: Zap, key: 'step5' }, // Solutions
+    { icon: TrendingUp, key: 'step6' }, // Results
+    { icon: Footprints, key: 'step7' }, // Footprints
   ];
 
   return (
-    <section 
-      id="method" 
-      className="bg-white px-6 py-24 sm:px-8 sm:py-32 lg:px-12 dark:bg-zinc-900"
-    >
+    <section id="method" className="bg-background px-6 py-24 sm:px-8 sm:py-32 lg:px-12">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -43,17 +32,15 @@ export function MethodSection() {
           className="mb-20 text-center"
         >
           <AnimatedText
-            text={t("title")}
+            text={t('title')}
             as="h2"
-            className="mb-6 text-3xl font-medium tracking-tight text-primary dark:text-white sm:text-4xl md:text-5xl"
+            className="text-foreground mb-6 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
             delay={0.3}
           />
-          <Text className="mx-auto max-w-2xl text-lg text-muted-foreground dark:text-white/80">
-            {t("description")}
-          </Text>
+          <Text className="text-muted-foreground mx-auto max-w-xl text-lg">{t('description')}</Text>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="flex flex-wrap justify-center gap-8">
           {stepsMapped.map((step, index) => (
             <motion.div
               key={step.key}
@@ -62,17 +49,17 @@ export function MethodSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className={cn(
-                "group relative flex flex-col items-start rounded-2xl border-none bg-primary p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
+                'bg-primary relative flex w-full flex-col items-start rounded-2xl border-none p-6 shadow-sm sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)]'
               )}
             >
-              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-white/10 text-white transition-colors group-hover:bg-white/20">
+              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-white/10 text-white">
                 <step.icon className="h-7 w-7" strokeWidth={1.5} />
               </div>
-              
+
               <Heading as="h3" className="mb-3 text-xl font-semibold text-white">
                 {t(`${step.key}.title`)}
               </Heading>
-              
+
               <Text className="text-sm leading-relaxed text-white/90">
                 {t(`${step.key}.description`)}
               </Text>

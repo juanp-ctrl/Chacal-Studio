@@ -1,8 +1,8 @@
 # Chacal Estudio Website – Implementation Plan
 
-**Version:** 1.0.5
+**Version:** 1.0.7
 **Memory Strategy:** Dynamic-MD (directory structure with Markdown logs)
-**Last Modification:** Completed Task 9.9 (UI Enhancements); updated version to 1.0.5 for verification - Manager Agent 8
+**Last Modification:** Added Tasks 9.15-9.21 (Projects animation, image quality, MethodSection hover, PBT alignment, dark mode removal, responsive headers, spacing audit) - Manager Agent 9
 **Project Overview:** Rebuild the Chacal Estudio website as a high-fidelity Next.js App Router landing, implementing the Figma Make design pixel-close with atomic design, React Compiler, `next-intl` i18n (Spanish + English), strong SEO/JSON-LD, accessibility, legal pages, cookie banner, and a contact form powered by React Hook Form, Zod, Cloudflare Turnstile, and Resend. Deployment via AWS Amplify with Husky-enforced quality gates.
 
 ---
@@ -641,3 +641,190 @@
 3. **Regression Check:** Confirm Projects section is still hidden and routes return 404.
 4. **Git Status:** Ensure all changes are committed.
 5. **Final Push:** Push all commits to the `develop` branch.
+
+---
+
+### Task 9.11 – Refactor Custom Cursor for Accessibility │ Agent_Frontend_Architecture
+
+- **Objective:** Refactor the custom cursor implementation to restore normal browser cursor behavior while keeping the Chacal logo image as a following element, ensuring proper accessibility.
+- **Output:** Updated `CustomCursor` component that displays the Chacal logo following the mouse without replacing the native cursor; normal cursor behavior preserved for all interactive elements.
+- **Guidance:** The current implementation replaces the cursor with the Chacal image, which can cause accessibility issues. Instead, keep the native cursor visible and have the Chacal image follow as a decorative trailing element. Use `pointer-events: none` on the following image to avoid interaction interference.
+
+1. **Review Current Implementation:** Examine `components/organisms/CustomCursor.tsx` to understand current cursor replacement logic.
+2. **Restore Native Cursor:** Remove any CSS that hides the default cursor (`cursor: none`). Ensure all elements show their appropriate cursor (pointer, text, default, etc.).
+3. **Implement Following Element:** Keep the Chacal logo as a decorative element that follows the cursor with smooth animation, positioned slightly offset from the actual cursor.
+4. **Ensure Non-Interference:** Apply `pointer-events: none` to the following element so it doesn't block clicks or hover states.
+5. **Test Accessibility:** Verify that all interactive elements (buttons, links, inputs) show correct cursor states and remain fully accessible.
+6. **Git Commit:** `git add -A && git commit -m "fix(task-9.11): refactor custom cursor for accessibility"`
+
+---
+
+### Task 9.12 – Create Fast AnimatedText Variant for Long Texts │ Agent_Frontend_Architecture
+
+- **Objective:** Create a speed variant for the `AnimatedText` component to display long texts 2x faster, specifically for the HeroSection subtitle.
+- **Output:** Updated `AnimatedText` component with a `speed` prop or variant; HeroSection subtitle using the faster animation variant.
+- **Guidance:** The current letter-by-letter animation is too slow for longer text blocks like the HeroSection subtitle. Create a configurable speed option (e.g., `speed="fast"` or `staggerDelay` prop) that doubles the animation speed. Apply this to the HeroSection subtitle specifically.
+
+1. **Review AnimatedText:** Examine `components/atoms/AnimatedText.tsx` to understand current animation timing configuration.
+2. **Add Speed Prop:** Add a `speed` prop with options like `"normal"` (default) and `"fast"` (2x speed), or a numeric `staggerMultiplier` prop.
+3. **Update Animation Logic:** Modify the stagger delay calculation to account for the speed setting (e.g., halve the delay for "fast" mode).
+4. **Update HeroSection:** Apply the fast variant to the subtitle `AnimatedText` in `components/sections/HeroSection.tsx`.
+5. **Test Animation:** Verify the faster animation feels natural and readable while being noticeably quicker.
+6. **Git Commit:** `git add -A && git commit -m "feat(task-9.12): add fast variant for AnimatedText long texts"`
+
+---
+
+### Task 9.13 – Deprecate IntroLoader Animation │ Agent_Frontend_Architecture
+
+- **Objective:** Deprecate the IntroLoader animation by moving it to a deprecated folder, preserving the code for potential future use while removing it from the active page load flow.
+- **Output:** IntroLoader component moved to `components/deprecated/IntroLoader/`; removed from layout/page rendering; normal page load without intro animation.
+- **Guidance:** Do not delete the IntroLoader code—move it to a deprecated folder structure. Remove all references from the active rendering pipeline. The page should now load directly without any intro animation sequence.
+
+1. **Create Deprecated Folder:** Create `components/deprecated/IntroLoader/` directory structure.
+2. **Move Component:** Move `components/organisms/IntroLoader.tsx` to `components/deprecated/IntroLoader/IntroLoader.tsx`.
+3. **Update Exports:** If IntroLoader is exported from `components/index.ts`, remove or comment out that export.
+4. **Remove from Layout/Page:** Remove IntroLoader usage from `app/[locale]/layout.tsx` or `app/[locale]/page.tsx` (wherever it's rendered).
+5. **Clean Up Related Code:** Remove any sessionStorage logic (`chacal-intro-seen`) or state management related to intro visibility from parent components.
+6. **Verify Page Load:** Confirm the page loads directly without intro animation.
+7. **Git Commit:** `git add -A && git commit -m "chore(task-9.13): deprecate IntroLoader animation"`
+
+---
+
+### Task 9.14 – Implement Projects Portfolio Section │ Agent_Frontend_Architecture
+
+- **Objective:** Create a new Projects portfolio section for the homepage with a responsive masonry-style grid that respects image aspect ratios, positioned after the HeroSection.
+- **Output:** New `ProjectsSection` component with centered H2 title "Proyectos", responsive grid (max 4 columns desktop, min 2 columns mobile), 16 placeholder images/gifs with proper aspect ratio handling, small border radius and gaps. Reference: https://bardo.ar portfolio grid.
+- **Guidance:** This is a new feature implementation. Create a responsive grid that adapts column count based on viewport (4 cols → 3 cols → 2 cols). Each card should maintain the original image aspect ratio (vertical images taller, horizontal images wider). Use CSS Grid with `grid-auto-rows` or a masonry library. Use free placeholder images from Unsplash or similar. Add i18n support for the section title.
+
+1. **Plan Implementation:**
+   - Research CSS Grid masonry approaches or consider libraries like `react-masonry-css`
+   - Design responsive breakpoints: 4 cols (≥1280px), 3 cols (≥768px), 2 cols (<768px)
+   - Plan image sourcing (16 varied aspect ratio placeholders)
+
+2. **Create ProjectsSection Component:**
+   - Create `components/sections/ProjectsSection.tsx`
+   - Add centered H2 title using `Heading` component with i18n key
+   - Implement responsive grid container with gap and border-radius styling
+
+3. **Implement Responsive Grid:**
+   - Use CSS Grid with responsive column configuration
+   - Ensure images maintain aspect ratio (object-fit: cover or natural sizing)
+   - Apply small border-radius to cards and consistent gap between items
+
+4. **Add Placeholder Content:**
+   - Source 16 free images/gifs with varied aspect ratios (mix of vertical and horizontal)
+   - Create project card component with image and optional overlay/hover effect
+   - Store placeholder images in `public/projects/` or use external URLs
+
+5. **Add i18n Support:**
+   - Add `ProjectsSection.title` key to `messages/es.json` ("Proyectos") and `messages/en.json` ("Projects")
+
+6. **Integrate into Homepage:**
+   - Import and add `ProjectsSection` to `app/[locale]/page.tsx` after `HeroSection` (before `MarqueeSection`)
+
+7. **Test Responsiveness:**
+   - Verify grid behavior at all breakpoints
+   - Confirm image aspect ratios are preserved
+   - Test on mobile viewports (2 columns minimum)
+
+8. **Git Commit:** `git add -A && git commit -m "feat(task-9.14): implement Projects portfolio section"`
+
+---
+
+### Task 9.15 – Add Fade-In Scale Animation to Projects Section │ Agent_Frontend_Architecture
+
+- **Objective:** Add scroll-triggered fade-in animation with scale effect to all project images in the ProjectsSection, animating from a smaller size to full size.
+- **Output:** Updated `ProjectsSection.tsx` with Framer Motion animations; each image fades in and scales from ~80-90% to 100% size when entering viewport.
+- **Guidance:** Use Framer Motion's `whileInView` with `initial` and `animate` states. Apply staggered delays for visual interest. Ensure animation feels smooth and doesn't cause layout shifts.
+
+1. **Review Current Component:** Examine `components/sections/ProjectsSection.tsx` to understand the current image rendering structure.
+2. **Add Animation Wrapper:** Wrap each project image card with a `motion.div` that handles the fade-in scale animation.
+3. **Configure Animation:** Set `initial={{ opacity: 0, scale: 0.85 }}` and `whileInView={{ opacity: 1, scale: 1 }}` with appropriate duration and easing.
+4. **Add Viewport Settings:** Use `viewport={{ once: true, margin: "-50px" }}` to trigger animation slightly before images enter view.
+5. **Test Animation:** Verify smooth animation on scroll without layout shifts or jank.
+6. **Git Commit:** `git add -A && git commit -m "feat(task-9.15): add fade-in scale animation to Projects section"`
+
+---
+
+### Task 9.16 – Improve Projects Section Image Quality │ Agent_Frontend_Architecture
+
+- **Objective:** Replace current placeholder images with higher quality alternatives, ensuring crisp display across all viewport sizes.
+- **Output:** Updated `lib/project-images.ts` with higher resolution images; verified visual quality improvement in browser.
+- **Guidance:** Current Unsplash images may be using low resolution parameters. Increase quality parameters (e.g., `?w=1200&q=90`) or source from alternative high-quality image providers. Verify improvement visually before marking complete.
+
+1. **Audit Current Images:** Review `lib/project-images.ts` and check current image URL parameters/quality.
+2. **Update Image Sources:** Either increase Unsplash quality parameters (`w=1200`, `q=90`, remove `fm=webp` if causing issues) or replace with higher quality sources.
+3. **Visual Verification:** Load the site and visually confirm images are noticeably sharper and higher quality than before.
+4. **Performance Balance:** Ensure images aren't excessively large (aim for good quality without excessive file sizes).
+5. **Git Commit:** `git add -A && git commit -m "fix(task-9.16): improve Projects section image quality"`
+
+---
+
+### Task 9.17 – Remove Hover Effects from MethodSection Cards │ Agent_Frontend_Architecture
+
+- **Objective:** Remove all hover behavior from MethodSection cards to avoid misleading users into thinking the cards are clickable/lead to other pages.
+- **Output:** Updated `MethodSection.tsx` with hover effects removed; cards display static styling without interactive visual feedback.
+- **Guidance:** Remove any hover-related Tailwind classes (`hover:*`), Framer Motion `whileHover` props, or CSS hover states. Keep the cards visually appealing but non-interactive in appearance.
+
+1. **Review Current Styling:** Examine `components/sections/MethodSection.tsx` for hover classes and animation props.
+2. **Remove Hover Classes:** Remove Tailwind hover classes like `hover:scale-*`, `hover:shadow-*`, `hover:bg-*`, etc.
+3. **Remove Motion Hover Props:** Remove any `whileHover` or `whileTap` props from Framer Motion components.
+4. **Verify Static Appearance:** Confirm cards look good without hover effects and don't suggest interactivity.
+5. **Git Commit:** `git add -A && git commit -m "fix(task-9.17): remove hover effects from MethodSection cards"`
+
+---
+
+### Task 9.18 – Align PlantBasedTreatySection Impact Cards at Bottom │ Agent_Frontend_Architecture
+
+- **Objective:** Fix the alignment of the two impact cards in PlantBasedTreatySection so they align at the bottom of their container, regardless of content height differences.
+- **Output:** Updated `PlantBasedTreatySection.tsx` with flexbox alignment; both impact cards bottom-aligned.
+- **Guidance:** The issue is likely in the parent container of the impact cards (lines 126-132). Use `items-end` or `self-end` for bottom alignment. Ensure the fix works across all viewport sizes.
+
+1. **Identify Card Container:** Locate the parent flex/grid container holding the two impact cards in `PlantBasedTreatySection.tsx`.
+2. **Apply Bottom Alignment:** Add `items-end` to the parent container or `self-end` to individual cards as needed.
+3. **Test Across Viewports:** Verify alignment works on desktop, tablet, and mobile views.
+4. **Git Commit:** `git add -A && git commit -m "fix(task-9.18): align PlantBasedTreatySection impact cards at bottom"`
+
+---
+
+### Task 9.19 – Remove Dark/Light Mode Behavior │ Agent_Frontend_Architecture
+
+- **Objective:** Remove all dark mode and light mode switching behavior from the site, keeping only the default light mode styles. The site has a mixed dark/light aesthetic by design and shouldn't respond to system preferences.
+- **Output:** Removed all `dark:` Tailwind variants; updated `globals.css` and Tailwind config if needed; site displays consistently regardless of system color scheme preference.
+- **Guidance:** Search for `dark:` classes across all components and remove them. Check `tailwind.config.ts` for `darkMode` setting and consider setting to `'class'` without ever applying the class, or removing dark mode entirely. Check `globals.css` for any `@media (prefers-color-scheme: dark)` rules.
+
+1. **Audit Dark Mode Usage:** Search codebase for `dark:` Tailwind classes and `prefers-color-scheme` media queries.
+2. **Remove Dark Variants:** Remove all `dark:*` classes from components, keeping only the light mode (default) styles.
+3. **Update Tailwind Config:** If `darkMode` is set in `tailwind.config.ts`, consider removing or setting to prevent automatic switching.
+4. **Check globals.css:** Remove any dark mode specific CSS rules.
+5. **Verify Consistency:** Test site with system in both light and dark mode to confirm site appearance is unchanged.
+6. **Git Commit:** `git add -A && git commit -m "fix(task-9.19): remove dark/light mode behavior, keep light mode only"`
+
+---
+
+### Task 9.20 – Fix Responsive Header Images in PBT and SDG Sections │ Agent_Frontend_Architecture
+
+- **Objective:** Fix the Plant Based Treaty and SDG section header images to be properly responsive on mobile, staying centered and not breaking the viewport width.
+- **Output:** Updated `PlantBasedTreatySection.tsx` and `SDGSection.tsx` with responsive header image containers; images scale appropriately and stay centered on mobile without horizontal overflow.
+- **Guidance:** The fixed `w-[357px]` width is causing overflow on mobile (390px viewport). Use responsive width classes like `w-full max-w-[357px]` or Tailwind responsive breakpoints. Ensure the container also adapts.
+
+1. **Identify Issue:** Review `PlantBasedTreatySection.tsx` lines 50-67 and `SDGSection.tsx` lines 42-61 for fixed-width containers.
+2. **Make Container Responsive:** Change fixed `w-[357px]` to responsive width like `w-full max-w-[357px]` or use responsive breakpoints `w-[280px] sm:w-[357px]`.
+3. **Update Parent Containers:** Ensure parent `inline-flex` containers also adapt to smaller widths.
+4. **Test Mobile Viewports:** Verify at 390px and smaller viewports that images are centered and don't cause horizontal scroll.
+5. **Git Commit:** `git add -A && git commit -m "fix(task-9.20): fix responsive header images in PBT and SDG sections"`
+
+---
+
+### Task 9.21 – Assess and Standardize Section Spacing │ Agent_Frontend_Architecture
+
+- **Objective:** Audit all homepage sections to ensure consistent Y-axis padding/margins for section containers and title blocks, creating visual harmony across the site.
+- **Output:** Assessment report documenting current spacing values; implementation plan for standardization if inconsistencies found; updated components with consistent spacing.
+- **Guidance:** Review each section component for `py-*`, `pt-*`, `pb-*`, `my-*`, `mt-*`, `mb-*` classes on section containers and title areas. Document findings and propose a standardized spacing system (e.g., `py-16 md:py-24` for sections, `mb-12` for titles).
+
+1. **Audit All Sections:** Review spacing in: HeroSection, MarqueeSection, ProjectsSection, MethodSection, FutureSection, ImpactSection, ServicesSection, PlantBasedTreatySection, SDGSection, PartnersSection, ContactSection.
+2. **Document Current Values:** Create a list of current spacing values for each section (container padding, title margins).
+3. **Identify Inconsistencies:** Note any sections with different spacing patterns.
+4. **Propose Standards:** If inconsistencies found, propose standardized values (e.g., section padding: `py-16 md:py-24`, title bottom margin: `mb-12 md:mb-16`).
+5. **Implement Fixes:** Apply standardized spacing to any inconsistent sections.
+6. **Git Commit:** `git add -A && git commit -m "fix(task-9.21): standardize section spacing across homepage"`

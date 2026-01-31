@@ -1,8 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
-import { createContactSchema } from "@/lib/schemas/contact";
-import { z } from "zod";
-
+import { NextRequest, NextResponse } from 'next/server';
+import { Resend } from 'resend';
+import { createContactSchema } from '@/lib/schemas/contact';
+import { z } from 'zod';
 
 export async function POST(req: NextRequest) {
   try {
@@ -13,44 +12,44 @@ export async function POST(req: NextRequest) {
     // 1. Verify Turnstile Token
     const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
     if (!turnstileSecret) {
-      console.error("TURNSTILE_SECRET_KEY is not defined");
+      console.error('TURNSTILE_SECRET_KEY is not defined');
       return NextResponse.json(
-        { success: false, error: "Server configuration error" },
+        { success: false, error: 'Server configuration error' },
         { status: 500 }
       );
     }
 
     if (!turnstileToken) {
       return NextResponse.json(
-        { success: false, error: "Turnstile token is required" },
+        { success: false, error: 'Turnstile token is required' },
         { status: 400 }
       );
     }
 
-    const turnstileVerifyUrl = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
-    
-    const ip = req.headers.get("x-forwarded-for");
+    const turnstileVerifyUrl = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+
+    const ip = req.headers.get('x-forwarded-for');
     const turnstileFormData = new URLSearchParams();
-    turnstileFormData.append("secret", turnstileSecret);
-    turnstileFormData.append("response", turnstileToken);
+    turnstileFormData.append('secret', turnstileSecret);
+    turnstileFormData.append('response', turnstileToken);
     if (ip) {
-      turnstileFormData.append("remoteip", ip);
+      turnstileFormData.append('remoteip', ip);
     }
 
     const turnstileResponse = await fetch(turnstileVerifyUrl, {
-      method: "POST",
+      method: 'POST',
       body: turnstileFormData,
     });
 
     const turnstileResult = await turnstileResponse.json();
 
     if (!turnstileResult.success) {
-      console.error("Turnstile verification failed:", turnstileResult);
+      console.error('Turnstile verification failed:', turnstileResult);
       return NextResponse.json(
-        { 
-          success: false, 
-          error: "Turnstile verification failed",
-          details: turnstileResult 
+        {
+          success: false,
+          error: 'Turnstile verification failed',
+          details: turnstileResult,
         },
         { status: 400 }
       );
@@ -60,16 +59,16 @@ export async function POST(req: NextRequest) {
     // We use a simple identity function for translation keys as we just need the keys/codes
     // or English defaults if we wanted to provide them.
     const schema = createContactSchema((key) => key);
-    
+
     try {
       schema.parse(formData);
     } catch (error) {
       if (error instanceof z.ZodError) {
         return NextResponse.json(
-          { 
-            success: false, 
-            error: "Validation failed", 
-            details: error.issues 
+          {
+            success: false,
+            error: 'Validation failed',
+            details: error.issues,
           },
           { status: 400 }
         );
@@ -82,8 +81,8 @@ export async function POST(req: NextRequest) {
 
     try {
       const emailResponse = await resend.emails.send({
-        from: "Chacal Studio Contact <info@contact.chacalestudio.ar>",
-        to: "hola@chacalestudio.ar",
+        from: 'Chacal Studio Contact <info@contact.chacalestudio.ar>',
+        to: 'hola@chacalestudio.ar',
         replyTo: email,
         subject: `¡Nuevo mensaje de contacto de ${name}!`,
         html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -209,12 +208,12 @@ export async function POST(req: NextRequest) {
                               <p
                                 style="margin:0;padding:0;font-size:1em;padding-top:0.5em;padding-bottom:0.5em">
                                 <span><strong>Teléfono:</strong></span
-                                ><span> ${phone || "No especificado"}</span>
+                                ><span> ${phone || 'No especificado'}</span>
                               </p>
                               <p
                                 style="margin:0;padding:0;font-size:1em;padding-top:0.5em;padding-bottom:0.5em">
                                 <span><strong>Organización:</strong></span
-                                ><span> ${organization || "No especificada"}</span>
+                                ><span> ${organization || 'No especificada'}</span>
                               </p>
                             </div>
                             <div
@@ -230,7 +229,7 @@ export async function POST(req: NextRequest) {
                               <p
                                 style="margin:0;padding:0;font-size:16px;padding-top:0.5em;padding-bottom:0.5em;color:rgb(68, 68, 68);line-height:1.6">
                                 <span
-                                  >${message.replace(/\n/g, "<br>")}</span
+                                  >${message.replace(/\n/g, '<br>')}</span
                                 >
                               </p>
                             </div>
@@ -279,32 +278,31 @@ export async function POST(req: NextRequest) {
       });
 
       if (emailResponse.error) {
-        console.error("Resend error:", emailResponse.error);
+        console.error('Resend error:', emailResponse.error);
         return NextResponse.json(
-          { success: false, error: emailResponse.error.message || "Failed to send email", details: emailResponse.error },
+          {
+            success: false,
+            error: emailResponse.error.message || 'Failed to send email',
+            details: emailResponse.error,
+          },
           { status: 500 }
         );
       }
 
-      return NextResponse.json({ success: true, message: "Email sent successfully" });
+      return NextResponse.json({ success: true, message: 'Email sent successfully' });
     } catch (emailError) {
-      console.error("Email sending error:", emailError);
+      console.error('Email sending error:', emailError);
       return NextResponse.json(
-        { 
-          success: false, 
-          error: emailError instanceof Error ? emailError.message : "Failed to send email", 
-          details: emailError 
+        {
+          success: false,
+          error: emailError instanceof Error ? emailError.message : 'Failed to send email',
+          details: emailError,
         },
         { status: 500 }
       );
     }
-
   } catch (error) {
-    console.error("API route error:", error);
-    return NextResponse.json(
-      { success: false, error: "Internal server error" },
-      { status: 500 }
-    );
+    console.error('API route error:', error);
+    return NextResponse.json({ success: false, error: 'Internal server error' }, { status: 500 });
   }
 }
-

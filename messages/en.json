@@ -110,7 +110,7 @@
     },
     "contribution": {
       "title": "Our contribution",
-      "text": "We actively support this cause by donating pro bono consulting and strategic management hours to amplify its message, and we donate 2% of our total monthly sales to fund its programs."
+      "text": "We actively support this cause by donating pro bono consulting and strategic management hours to amplify its message, and we donate a percentage of our total monthly sales to fund its programs."
     },
     "impact": {
       "title": "The Impact",
@@ -467,5 +467,8 @@
     "whatsappLabel": "Contact via WhatsApp",
     "whatsappMessage": "Hello! I'd like to inquire about your services.",
     "scrollTopLabel": "Back to top"
+  },
+  "ProjectsSection": {
+    "title": "Projects"
   }
 }

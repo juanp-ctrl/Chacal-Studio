@@ -1,36 +1,37 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   /* Typography variables are now injected by next/font/google in app/layout.tsx */
   /* --font-family-heading: 'Crimson Text', serif; */
   /* --font-family-body: 'DM Sans', sans-serif; */
-  
-  /* Brand Colors */
-  --brand-blue: #2F2E59;
 
-  /* Light mode - clean and professional with brand colors */
-  --background: #ffffff;
-  --foreground: #2F2E59;
+  /* Brand Colors */
+  --brand-blue: #2f2e59;
+
+  /* Clean and professional with brand colors */
+  --background: #020214;
+  --blue-background: #161534;
+  --foreground: #ffffff;
   --card: #f8f9fa;
-  --card-foreground: #2F2E59;
-  --popover: #ffffff;
-  --popover-foreground: #2F2E59;
-  
+  --card-foreground: #ffffff;
+  --popover: #242424;
+  --popover-foreground: #ffffff;
+
   /* Primary = Brand blue */
-  --primary: #2F2E59;
+  --primary: #2f2e59;
   --primary-foreground: #ffffff;
-  
-  /* Secondary = Lighter blue tints */
+
+  /* Secondary = Darker tints */
   --secondary: #f0f1f7;
-  --secondary-foreground: #2F2E59;
-  
-  --muted: #e8e9f2;
-  --muted-foreground: #5a5987;
-  
+  --secondary-foreground: #ffffff;
+
+  --muted: #f1f1fa;
+  --muted-foreground: #f6f6f9;
+
   /* Accent = Orange ONLY for CTAs */
-  --accent: #FD9A6B;
-  --accent-foreground: #2F2E59;
-  
+  --accent: #fd9a6b;
+  --accent-foreground: #2f2e59;
+
   /* Utility colors */
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
@@ -40,31 +41,31 @@
   --switch-background: #d1d5db;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
-  --ring: #2F2E59;
-  
+  --ring: #2f2e59;
+
   /* Charts - blue dominant */
-  --chart-1: #2F2E59;
+  --chart-1: #2f2e59;
   --chart-2: #4a4879;
   --chart-3: #6b689d;
-  --chart-4: #FD9A6B;
+  --chart-4: #fd9a6b;
   --chart-5: #8b88b8;
-  
+
   --radius: 0.625rem;
-  
+
   /* Sidebar */
   --sidebar: #f9fafb;
-  --sidebar-foreground: #2F2E59;
-  --sidebar-primary: #2F2E59;
+  --sidebar-foreground: #2f2e59;
+  --sidebar-primary: #2f2e59;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #e8e9f2;
-  --sidebar-accent-foreground: #2F2E59;
+  --sidebar-accent-foreground: #2f2e59;
   --sidebar-border: rgba(47, 46, 89, 0.1);
-  --sidebar-ring: #2F2E59;
+  --sidebar-ring: #2f2e59;
 
   /* Extended blue scale */
   --blue-darkest: #1a1a3d;
   --blue-darker: #251e4a;
-  --blue-dark: #2F2E59;
+  --blue-dark: #2f2e59;
   --blue-base: #3d3c6e;
   --blue-medium: #4a4879;
   --blue-light: #5a5987;
@@ -73,39 +74,10 @@
   --blue-subtle: #9591c9;
 
   /* Plant Based Treaty */
-  --pbt-green: #B8C954;
-  --pbt-green-light: #B8C954;
+  --pbt-green: #b8c954;
+  --pbt-green-light: #b8c954;
   --pbt-green-dark: #003226;
-  --pbt-earth: #95D5B2;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #1a1a3d; /* blue-darkest */
-    --foreground: #ffffff;
-    --card: #251e4a; /* blue-darker */
-    --card-foreground: #ffffff;
-    --popover: #251e4a;
-    --popover-foreground: #ffffff;
-    
-    /* Keep primary as brand blue but ensure text on it is white */
-    /* If primary is used for text, it might be hard to read on dark bg. */
-    /* So we often swap primary in dark mode to be lighter or keep it as brand color if contrast allows. */
-    /* Brand blue (#2F2E59) on dark blue (#1a1a3d) is low contrast. */
-    /* Ideally primary for TEXT should be light in dark mode. */
-    /* But primary for BUTTONS can be brand blue. */
-    /* Tailwind 'text-primary' uses this variable. */
-    /* So we should probably lighten it for dark mode if it's used for text. */
-    /* Let's set it to accent or white? Or maybe a lighter blue. */
-    /* But that changes button colors too. */
-    /* Better to leave primary as is and use 'dark:text-white' utility in components as planned. */
-    
-    --muted: #251e4a;
-    --muted-foreground: #9ca3af; /* gray-400 */
-    
-    --border: rgba(255, 255, 255, 0.15);
-    --input-background: #1a1a3d;
-  }
+  --pbt-earth: #95d5b2;
 }
 
 @theme inline {
@@ -151,7 +123,7 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  
+
   /* Extended blue scale */
   --color-blue-darkest: var(--blue-darkest);
   --color-blue-darker: var(--blue-darker);
@@ -162,7 +134,8 @@
   --color-blue-lighter: var(--blue-lighter);
   --color-blue-lightest: var(--blue-lightest);
   --color-blue-subtle: var(--blue-subtle);
-  
+  --color-blue-background: var(--blue-background);
+
   /* Plant Based Treaty */
   --color-pbt-green: var(--pbt-green);
   --color-pbt-green-light: var(--pbt-green-light);
@@ -187,23 +160,25 @@
     overflow-x: hidden;
     max-width: 100vw;
   }
-  
-  h1, h2, h3 {
+
+  h1,
+  h2,
+  h3 {
     font-family: var(--font-bebas-neue);
   }
-  
-  h1 span, h2 span, h3 span {
+
+  h1 span,
+  h2 span,
+  h3 span {
     font-family: var(--font-bebas-neue);
   }
-  
-  h4, h5, h6 {
+
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-family-heading);
   }
 }
 
-/* Custom Cursor - Hide default cursor on desktop/fine pointer devices */
-@media (pointer: fine) {
-  body, a, button, input, textarea, select, [role="button"] {
-    cursor: none !important;
-  }
-}
+/* Custom Cursor - Native cursor remains visible for accessibility
+   The Chacal logo follows as a decorative element without interfering */

@@ -1,16 +1,16 @@
-import { notFound } from "next/navigation";
+import { notFound } from 'next/navigation';
 // import Image from "next/image";
 // import { Link } from "@/i18n/routing";
 // import { ScrollLink } from "@/components/atoms/ScrollLink";
-import { getTranslations } from "next-intl/server";
+import { getTranslations } from 'next-intl/server';
 // import { ArrowLeft, ArrowRight, Target, Lightbulb, TrendingUp } from "lucide-react";
 // import * as Motion from "motion/react-client";
-import { projects } from "@/lib/projects";
+import { projects } from '@/lib/projects';
 // import { Heading } from "@/components/atoms/Heading";
 // import { Text } from "@/components/atoms/Text";
 // import { JsonLd } from "@/components/SEO/JsonLd";
-import type { Metadata } from "next";
-import { routing } from "@/i18n/routing";
+import type { Metadata } from 'next';
+import { routing } from '@/i18n/routing';
 
 // Define params type for Next.js 16
 interface PageProps {
@@ -33,28 +33,26 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!project) {
     return {
-      title: locale === "es" ? "Proyecto no encontrado" : "Project not found",
+      title: locale === 'es' ? 'Proyecto no encontrado' : 'Project not found',
     };
   }
 
   // Get localized content
   const tProject = await getTranslations({ locale, namespace: `projects.${slug}` });
-  const titleTranslation = tProject("title");
-  const summaryTranslation = tProject("summary");
-  
+  const titleTranslation = tProject('title');
+  const summaryTranslation = tProject('summary');
+
   const localizedTitle =
     titleTranslation !== `projects.${slug}.title` ? titleTranslation : project.title;
   const localizedSummary =
     summaryTranslation !== `projects.${slug}.summary` ? summaryTranslation : project.summary;
 
-  const baseUrl = "https://chacalestudio.ar";
+  const baseUrl = 'https://chacalestudio.ar';
   const currentPath =
-    locale === routing.defaultLocale
-      ? `/projects/${slug}`
-      : `/${locale}/projects/${slug}`;
+    locale === routing.defaultLocale ? `/projects/${slug}` : `/${locale}/projects/${slug}`;
   const canonicalUrl = `${baseUrl}${currentPath}`;
-  const alternateEs = `${baseUrl}${locale === "es" ? `/projects/${slug}` : `/es/projects/${slug}`}`;
-  const alternateEn = `${baseUrl}${locale === "en" ? `/projects/${slug}` : `/en/projects/${slug}`}`;
+  const alternateEs = `${baseUrl}${locale === 'es' ? `/projects/${slug}` : `/es/projects/${slug}`}`;
+  const alternateEn = `${baseUrl}${locale === 'en' ? `/projects/${slug}` : `/en/projects/${slug}`}`;
 
   const title = `${localizedTitle} | Chacal Estudio`;
   const description = localizedSummary;
@@ -63,19 +61,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title,
     description,
     keywords:
-      locale === "es"
+      locale === 'es'
         ? [
             project.title,
-            "proyecto comunicación",
-            "caso de estudio",
-            "comunicación con propósito",
+            'proyecto comunicación',
+            'caso de estudio',
+            'comunicación con propósito',
             ...(project.tags || []),
           ]
         : [
             project.title,
-            "communication project",
-            "case study",
-            "purpose-driven communication",
+            'communication project',
+            'case study',
+            'purpose-driven communication',
             ...(project.tags || []),
           ],
     alternates: {
@@ -83,17 +81,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       languages: {
         es: alternateEs,
         en: alternateEn,
-        "x-default": alternateEs,
+        'x-default': alternateEs,
       },
     },
     openGraph: {
       title,
       description,
       url: canonicalUrl,
-      siteName: "Chacal Estudio",
-      locale: locale === "es" ? "es_AR" : "en_US",
-      alternateLocale: locale === "es" ? "en_US" : "es_AR",
-      type: "article",
+      siteName: 'Chacal Estudio',
+      locale: locale === 'es' ? 'es_AR' : 'en_US',
+      alternateLocale: locale === 'es' ? 'en_US' : 'es_AR',
+      type: 'article',
       ...(project.thumbnail
         ? {
             images: [
@@ -108,7 +106,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         : {}),
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title,
       description,
       ...(project.thumbnail ? { images: [project.thumbnail] } : {}),
@@ -122,7 +120,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ProjectDetailPage() {
   // const { slug, locale } = await params;
-  
+
   // Temporarily disabled
   notFound();
   return null;
