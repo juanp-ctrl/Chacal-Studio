@@ -24,11 +24,15 @@ export function CookieBanner() {
 
   const handleAccept = () => {
     localStorage.setItem('chacal-cookie-consent', 'accepted');
+    // Dispatch custom event for Google Analytics provider to listen to
+    window.dispatchEvent(new CustomEvent('cookie-consent-change'));
     setIsVisible(false);
   };
 
   const handleDecline = () => {
     localStorage.setItem('chacal-cookie-consent', 'declined');
+    // Dispatch custom event for Google Analytics provider to listen to
+    window.dispatchEvent(new CustomEvent('cookie-consent-change'));
     setIsVisible(false);
   };
 
