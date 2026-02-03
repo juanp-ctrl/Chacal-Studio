@@ -7,6 +7,7 @@ import { Footer } from '@/components/organisms/Footer';
 import { CookieBanner } from '@/components/organisms/CookieBanner';
 import { FloatingActions } from '@/components/organisms/FloatingActions';
 import { CustomCursor } from '@/components/organisms/CustomCursor';
+import { GoogleAnalyticsProvider } from '@/components/providers/GoogleAnalyticsProvider';
 import '../globals.css';
 import { Crimson_Text, DM_Sans, Alex_Brush, Bebas_Neue } from 'next/font/google';
 import type { Metadata } from 'next';
@@ -151,6 +152,7 @@ export default async function LocaleLayout({
             <FloatingActions />
             <CookieBanner />
           </SmoothScrollProvider>
+          <GoogleAnalyticsProvider />
         </NextIntlClientProvider>
       </body>
     </html>
